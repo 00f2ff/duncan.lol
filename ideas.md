@@ -8,7 +8,9 @@
 - I think I'll load content from Notion in and put custom styling on it
 - Image hosting, interactive code, etc will start as uploads to Notion / Codepen embeds in Notion and I'll expand from there
 
-## Issues
+## Tech notes
 
-This app doesn't load on my Chrome browser profile. It's fine on joint and work, but for some reason
-on the personal email one Chrome has permanently cached the Curious Cardinals dashboard redirect.
+- react-notion-x is good for rendering blocks, but doesn't have good collection/database query support, so
+  I'm using the official notion client for that
+
+## Issues

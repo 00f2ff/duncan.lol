@@ -10,5 +10,5 @@ export const notionSecretToken = process.env.NOTION_CONNECTION_TOKEN;
 
 export const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV; // can be undefined in test environments
 
-export const port = process.env.PORT || 3000;
-export const rootDomain = isDev ? `localhost:${port}` : null;
+export const port = process.env.PORT || 8080;
+export const rootDomain = isDev ? `http://localhost:${port}` : null;

@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const pageId = context.params.pageId as string;
+  console.log(JSON.stringify(context));
   const recordMap = await notionX.getPage(pageId);
 
   console.log("hellloooo")
