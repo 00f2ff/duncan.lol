@@ -3,18 +3,12 @@
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start",
-    "script": "ts-node --transpile-only scripts/test.ts"
+    "start": "next start"
   },
   "dependencies": {
-    "@notionhq/client": "^2.2.1",
-    "dotenv": "^16.0.3",
     "next": "latest",
-    "notion-to-md": "^2.5.5",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0"
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@types/node": "^18.8.3",

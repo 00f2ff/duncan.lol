@@ -3,8 +3,6 @@ import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/
 import { notionDatabaseId, notionSecretToken } from "./config";
 import { NotionToMarkdown } from "notion-to-md";
 
-console.log(notionSecretToken)
-
 const notion = new Client({
   auth: notionSecretToken
 });
