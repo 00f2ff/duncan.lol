@@ -1,6 +1,6 @@
 import { getPublishedPosts, n2m } from "./lib/notion";
 import { promises as fs } from "fs";
-import { uuidToPageId } from "lib/util";
+import { uuidToPageId } from "./lib/util";
 
 // todo: replace with top-level await
 export async function base(script: () => Promise<void>) {
@@ -26,18 +26,18 @@ export async function base(script: () => Promise<void>) {
   process.exit();
 }
 
+const PAGES_PATH = "../src/pages/";
+
 export async function mdTest() {
-  const posts = await getPublishedPosts(); // todo: pull more metadata out of this and write to md files too?
+  const posts = await getPublishedPosts(); // todo: pull more metadata out of this and write to md files too (frontmatter)
 
   const pageIds = posts.map((post) => uuidToPageId(post.id));
   for await (const id of pageIds) {
     const mdblocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(mdblocks);
   
-    await fs.writeFile(`${id}.md`, mdString);
+    await fs.writeFile(`${PAGES_PATH}${"index"}.mdx`, mdString);
   }
-
-  
 }
 
 base(mdTest);
