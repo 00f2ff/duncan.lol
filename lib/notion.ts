@@ -1,13 +1,6 @@
 import { Client } from "@notionhq/client";
 import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import { NotionAPI } from "notion-client";
-import { notionAuthToken, notionDatabaseId, notionSecretToken, notionUserId } from "./config";
-
-// todo: add SF timezone
-export const notionX = new NotionAPI({
-  activeUser: notionUserId,
-  authToken: notionAuthToken,
-});
+import { notionDatabaseId, notionSecretToken } from "./config";
 
 const notion = new Client({
   auth: notionSecretToken
