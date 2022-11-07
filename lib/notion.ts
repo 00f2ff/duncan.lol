@@ -1,10 +1,15 @@
 import { Client } from "@notionhq/client";
 import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { notionDatabaseId, notionSecretToken } from "./config";
+import { NotionToMarkdown } from "notion-to-md";
+
+console.log(notionSecretToken)
 
 const notion = new Client({
   auth: notionSecretToken
 });
+
+export const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
   const postsObject = await notion.databases.query({

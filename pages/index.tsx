@@ -3,9 +3,9 @@ import { getPublishedPosts } from "../lib/notion";
 import { uuidToPageId } from '../lib/util';
 import Link from 'next/link';
 
-
 export const getStaticProps = async () => {
   const posts = await getPublishedPosts();
+
   // todo: do a better job of mapping these
   const pageIds = posts.map((post) => uuidToPageId(post.id));
 
