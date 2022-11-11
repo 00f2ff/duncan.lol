@@ -6,7 +6,7 @@
 
 ## Content
 
-- I like the idea of adding a TIL page https://github.com/jbranchaud/til or something like that digital garden site I saw
+- I like the idea of adding a TIL page https://github.com/jbranchaud/til and/or something like that digital garden site I saw
 
 ## Notion thoughts
 
@@ -19,6 +19,8 @@
 https://mdxjs.com/docs/getting-started/#nextjs
 https://nextjs.org/docs/advanced-features/using-mdx
 
+todo: follow this guide for using mdx with next more effectively: https://spacejelly.dev/posts/how-to-source-mdx-content-in-next-js-to-dynamically-create-pages-for-a-blog/
+
 ## Issues
 
-- [] .mdx files highlight improper unicode values for spaces and quotes
+- [] .mdx files don't have target="\_blank" links; unsure if inter-post linking works

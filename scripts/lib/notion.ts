@@ -9,6 +9,16 @@ const notion = new Client({
 
 export const n2m = new NotionToMarkdown({ notionClient: notion });
 
+/**
+ * Type predicate for Notion response types
+ * 
+ * @param response 
+ * @returns 
+ */
+function isPageObjectResponse(response: PageObjectResponse | PartialPageObjectResponse): response is PageObjectResponse {
+  return (response as PageObjectResponse).properties !== undefined;
+}
+
 export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
   const postsObject = await notion.databases.query({
     database_id: notionDatabaseId,
@@ -30,10 +40,7 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
     ]
   });
 
-  const isPageObjectResponse = (r: PageObjectResponse | PartialPageObjectResponse): boolean => "properties" in r;
-
-  // Type narrowing not working :/
-  return postsObject.results.filter(isPageObjectResponse).map((r) => r as PageObjectResponse);
+  return postsObject.results.filter(isPageObjectResponse);
 }
 
 export async function getPostBySlug(slug: string) {

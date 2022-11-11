@@ -28,18 +28,33 @@ export async function base(script: () => Promise<void>) {
 
 const PAGES_PATH = "../src/pages/";
 
-export async function mdTest() {
+// todo: I'll need a pipeline of transformers on the raw markdown string text
+
+/**
+ * Replace invisible / uncommon Unicode characters.
+ * 
+ * Replacement occurs on a case-by-case basis since I don't want to do a deep dive into Unicode
+ * 
+ * @param copy 
+ */
+function replaceWeirdCharacters(copy: string): string {
+  return copy.replace(/[\u00A0\u2019]/gu, "");
+}
+
+export async function exportNotionPosts() {
   const posts = await getPublishedPosts(); // todo: pull more metadata out of this and write to md files too (frontmatter)
 
   const pageIds = posts.map((post) => uuidToPageId(post.id));
   for await (const id of pageIds) {
     const mdblocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(mdblocks);
+
+    const fixedString = replaceWeirdCharacters(mdString);
   
-    await fs.writeFile(`${PAGES_PATH}${"index"}.mdx`, mdString);
+    await fs.writeFile(`${PAGES_PATH}${"index"}.mdx`, fixedString);
   }
 }
 
-base(mdTest);
+base(exportNotionPosts);
 
 export {}
