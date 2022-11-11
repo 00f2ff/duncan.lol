@@ -44,11 +44,14 @@ function replaceWeirdCharacters(copy: string): string {
 }
 
 export async function exportNotionPosts() {
-  const posts = await getPublishedPosts(); // todo: pull more metadata out of this and write to md files too (frontmatter)
+  const posts = await getPublishedPosts(); 
+
+  console.log(JSON.stringify(posts, null, 2)) // todo: I think I need to pull the frontmatter out of .properties and do a zip or something
 
   const pageIds = posts.map((post) => uuidToPageId(post.id));
   for await (const id of pageIds) {
     const mdblocks = await n2m.pageToMarkdown(id);
+    // console.log(JSON.stringify(mdblocks));
     const mdString = n2m.toMarkdownString(mdblocks);
 
     const fixedString = replaceWeirdCharacters(mdString);
