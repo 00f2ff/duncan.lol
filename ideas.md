@@ -15,16 +15,8 @@
 ## Tech notes
 
 - Move to SSG to reduce latency. I can just redeploy the site with a new build via git each time I publish a new post
-
-https://mdxjs.com/docs/getting-started/#nextjs
-https://nextjs.org/docs/advanced-features/using-mdx
-
-todo: follow this guide for using mdx with next more effectively: https://spacejelly.dev/posts/how-to-source-mdx-content-in-next-js-to-dynamically-create-pages-for-a-blog/
-
-Look into using this library. Should make things easier!: https://github.com/hashicorp/next-mdx-remote
-
-notion-to-md package supports custom transformers: https://github.com/souvikinator/notion-to-md#custom-transformers
-
+- notion-to-md package supports custom transformers: https://github.com/souvikinator/notion-to-md#custom-transformers
+- things to keep in mind with next-mdx-remote: https://github.com/hashicorp/next-mdx-remote#caveats
 
 ## Bugs
 
@@ -34,4 +26,5 @@ notion-to-md package supports custom transformers: https://github.com/souvikinat
 ## Todo
 
 - [] Test inter-post linking
-
+- [] Default components for styling: https://github.com/hashicorp/next-mdx-remote#replacing-default-components
+- [] populate frontmatter in pipeline

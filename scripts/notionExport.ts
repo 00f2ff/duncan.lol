@@ -26,7 +26,7 @@ export async function base(script: () => Promise<void>) {
   process.exit();
 }
 
-const PAGES_PATH = "../src/pages/";
+const PAGES_PATH = "../src/content/posts/";
 
 // todo: I'll need a pipeline of transformers on the raw markdown string text
 
@@ -38,8 +38,9 @@ const PAGES_PATH = "../src/pages/";
  * @param copy 
  */
 function replaceWeirdCharacters(copy: string): string {
-  const fixedSpaces = copy.replace(/[\u00A0]/gu, " ")
-  return fixedSpaces.replace(/[\u2019]/gu, "");
+  const fixedSpaces = copy.replace(/[\u00A0]/gu, " ");
+  const fixedQuotes = fixedSpaces.replace(/[\u2019]/gu, "'");
+  return fixedQuotes;
 }
 
 export async function exportNotionPosts() {

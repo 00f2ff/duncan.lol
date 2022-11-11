@@ -1,25 +1,28 @@
-import { promises as fs } from "fs";
-import path from "path";
-import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import Layout from "components/Layout";
+import { getSlugsForDirectory, serializeMDX } from "util/files";
 
-export default function Post({ postData }) {
-  console.log(postData)
+interface Props {
+  postData: MDXRemoteSerializeResult;
+}
+
+export default function Post({ postData }: Props) {
   return (
-    <MDXRemote {...postData} />
+    <Layout>
+      <MDXRemote {...postData} />
+    </Layout>
   )
 }
 
 export async function getStaticPaths() {
-  const postDirectory = path.join(process.cwd(), "pages/posts");
-  const filenames = await fs.readdir(postDirectory);
+  const slugs = await getSlugsForDirectory("posts");
 
-  const paths = filenames.map((filename) => {
+  const paths = slugs.map((slug) => {
     return {
       params: {
-        slug: filename.replace(/\.mdx/, ''),
-      },
-    };
+        slug
+      }
+    }
   });
 
   return {
@@ -29,18 +32,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
-  const postDirectory = path.join(process.cwd(), "pages/posts");
-  const absolutePath = path.join(postDirectory, `${slug}.mdx`);
-  const contentBuffer = await fs.readFile(absolutePath, "utf8");
-
-  const mdxSource: MDXRemoteSerializeResult = await serialize(contentBuffer, {
-    parseFrontmatter: true
-  });
-
+  const postData = await serializeMDX(params.slug, "posts");
   return {
     props: {
-      mdxSource
+      postData
     }
   }
 }
