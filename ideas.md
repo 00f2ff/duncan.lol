@@ -21,6 +21,17 @@ https://nextjs.org/docs/advanced-features/using-mdx
 
 todo: follow this guide for using mdx with next more effectively: https://spacejelly.dev/posts/how-to-source-mdx-content-in-next-js-to-dynamically-create-pages-for-a-blog/
 
-## Issues
+Look into using this library. Should make things easier!: https://github.com/hashicorp/next-mdx-remote
 
-- [] .mdx files don't have target="\_blank" links; unsure if inter-post linking works
+notion-to-md package supports custom transformers: https://github.com/souvikinator/notion-to-md#custom-transformers
+
+
+## Bugs
+
+- [x] .mdx files don't have target="\_blank" links
+      ^ decided not to address this for now
+
+## Todo
+
+- [] Test inter-post linking
+

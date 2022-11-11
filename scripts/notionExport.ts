@@ -38,7 +38,8 @@ const PAGES_PATH = "../src/pages/";
  * @param copy 
  */
 function replaceWeirdCharacters(copy: string): string {
-  return copy.replace(/[\u00A0\u2019]/gu, "");
+  const fixedSpaces = copy.replace(/[\u00A0]/gu, " ")
+  return fixedSpaces.replace(/[\u2019]/gu, "");
 }
 
 export async function exportNotionPosts() {
