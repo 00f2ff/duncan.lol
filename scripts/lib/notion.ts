@@ -2,6 +2,7 @@ import { Client } from "@notionhq/client";
 import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { notionDatabaseId, notionSecretToken } from "./config";
 import { NotionToMarkdown } from "notion-to-md";
+import { DateProperty, MultiSelectProperty, RichTextProperty, SelectProperty, StatusProperty, TitleProperty } from "lib/notionDatabasePropertyTypes";
 
 const notion = new Client({
   auth: notionSecretToken
@@ -57,4 +58,33 @@ export async function getPostBySlug(slug: string) {
       ]
     }
   });
+}
+
+/**
+ * Pull out page properties and convert to frontmatter. 
+ * Hardcoded to my particular Notion DB setup
+ * 
+ * @param page 
+ */
+export function pagePropertiesToFrontmatter(page: PageObjectResponse) {
+  const { properties } = page;
+  const title = properties["Title"] as TitleProperty;
+  const excerpt = properties["Excerpt"] as RichTextProperty;
+  const slug = properties["Slug"] as SelectProperty;
+  const tags = properties["Tags"] as MultiSelectProperty;
+  const status = properties["Status"] as StatusProperty;
+  const publishedOn = properties["Published On"] as DateProperty;
+  const updatedOn = properties["Updated On"] as DateProperty;
+
+  return `
+  ---
+  Title: ${title.title[0].plain_text}
+  Excerpt: ${excerpt.rich_text[0].plain_text}
+  Slug: ${slug.select.name}
+  Tags: ${JSON.stringify(tags.multi_select.map((ms) => ms.name))}
+  Status: ${status.status.name}
+  Published On: ${publishedOn.date.start}
+  Updated On: ${updatedOn.date.start}
+  ---
+  `;
 }
