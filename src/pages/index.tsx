@@ -23,7 +23,7 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
   return (
     <>
-    {JSON.stringify(posts)}
+    {posts}
     </>
   );
 }
