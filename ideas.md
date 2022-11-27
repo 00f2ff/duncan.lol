@@ -3,6 +3,9 @@
 - [] Deploy to Vercel, route duncanmcisaac.com and duncan.lol to blog
 - [] Pick a more privacy-centric analytics tool than Google (I remember seeing some options on HN)
 - [] Deploy using git merge (captures code changes and new md files)
+- [] Color fonts https://material.io/blog/color-fonts-are-here
+- [] Look into using Chakra UI for easy formatting stuff
+- [] Loading spinner: rotating fish cake emoji haha
 
 ## Content
 
@@ -23,7 +26,7 @@ Do I need this or does it work differently with the hashicorp lib? https://mdxjs
 ## Bugs
 
 - [x] .mdx files don't have target="\_blank" links
-      ^ decided not to address this for now
+      ^ decided not to address this for now. People can command-click
 
 ## Todo
 

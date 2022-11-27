@@ -1,6 +1,6 @@
 import { Client } from "@notionhq/client";
 import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import { notionDatabaseId, notionSecretToken } from "./config";
+import { notionDatabaseId, notionSecretToken } from "../util/config";
 import { NotionToMarkdown } from "notion-to-md";
 import { DateProperty, MultiSelectProperty, RichTextProperty, SelectProperty, StatusProperty, TitleProperty } from "lib/notionDatabasePropertyTypes";
 
@@ -44,22 +44,6 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
   return postsObject.results.filter(isPageObjectResponse);
 }
 
-export async function getPostBySlug(slug: string) {
-  return await notion.databases.query({
-    database_id: notionDatabaseId,
-    filter: {
-      and: [
-        {
-          property: "Slug",
-          select: {
-            equals: slug
-          }
-        }
-      ]
-    }
-  });
-}
-
 /**
  * Pull out page properties and convert to frontmatter. 
  * Hardcoded to my particular Notion DB setup
@@ -77,14 +61,14 @@ export function pagePropertiesToFrontmatter(page: PageObjectResponse) {
   const updatedOn = properties["Updated On"] as DateProperty;
 
   return `
-  ---
-  Title: ${title.title[0].plain_text}
-  Excerpt: ${excerpt.rich_text[0].plain_text}
-  Slug: ${slug.select.name}
-  Tags: ${JSON.stringify(tags.multi_select.map((ms) => ms.name))}
-  Status: ${status.status.name}
-  Published On: ${publishedOn.date.start}
-  Updated On: ${updatedOn.date.start}
-  ---
+---
+Title: ${title.title[0].plain_text}
+Excerpt: ${excerpt.rich_text[0].plain_text}
+Slug: ${slug.select.name}
+Tags: ${JSON.stringify(tags.multi_select.map((ms) => ms.name))}
+Status: ${status.status.name}
+Published On: ${publishedOn.date.start}
+Updated On: ${updatedOn.date?.start}
+---
   `;
 }

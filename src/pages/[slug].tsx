@@ -7,6 +7,7 @@ interface Props {
 }
 
 export default function Post({ postData }: Props) {
+  console.log(postData);
   return (
     <Layout>
       <MDXRemote {...postData} />

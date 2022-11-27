@@ -1,6 +1,6 @@
-import { getPublishedPosts, n2m } from "./lib/notion";
+import { getPublishedPosts, n2m, pagePropertiesToFrontmatter } from "./lib/notion";
 import { promises as fs } from "fs";
-import { uuidToPageId } from "./lib/util";
+import { replaceWeirdCharacters, uuidToPageId } from "./util/string";
 
 // todo: replace with top-level await
 export async function base(script: () => Promise<void>) {
@@ -28,33 +28,24 @@ export async function base(script: () => Promise<void>) {
 
 const PAGES_PATH = "../src/content/posts/";
 
-// todo: I'll need a pipeline of transformers on the raw markdown string text
-
-/**
- * Replace invisible / uncommon Unicode characters.
- * 
- * Replacement occurs on a case-by-case basis since I don't want to do a deep dive into Unicode
- * 
- * @param copy 
- */
-function replaceWeirdCharacters(copy: string): string {
-  const fixedSpaces = copy.replace(/[\u00A0]/gu, " ");
-  const fixedQuotes = fixedSpaces.replace(/[\u2019]/gu, "'");
-  return fixedQuotes;
-}
-
 export async function exportNotionPosts() {
   const posts = await getPublishedPosts(); 
 
-  const pageIds = posts.map((post) => uuidToPageId(post.id));
-  for await (const id of pageIds) {
+  const pageData: { [pageId: string]: string } = posts.reduce((acc, post) => {
+    const pageId = uuidToPageId(post.id);
+    const frontmatter = pagePropertiesToFrontmatter(post);
+    acc[pageId] = frontmatter;
+    return acc;
+  }, {})
+
+  for await (const id of Object.keys(pageData)) {
     const mdblocks = await n2m.pageToMarkdown(id);
-    // console.log(JSON.stringify(mdblocks));
     const mdString = n2m.toMarkdownString(mdblocks);
 
+    const frontmatter = pageData[id];
     const fixedString = replaceWeirdCharacters(mdString);
   
-    await fs.writeFile(`${PAGES_PATH}${"index"}.mdx`, fixedString);
+    await fs.writeFile(`${PAGES_PATH}${"index"}.mdx`, `${frontmatter}${fixedString}`);
   }
 }
 
