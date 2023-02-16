@@ -38,3 +38,7 @@ Do I need this or does it work differently with the hashicorp lib? https://mdxjs
 
 - [] .mdx files don't have target="\_blank" links
   ^ decided not to address this for now. People can command-click
+
+----
+
+Can visit at http://localhost:8080/index
