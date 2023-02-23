@@ -3,6 +3,7 @@ import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, Li
 // import Image from 'next/image';
 
 // see https://github.com/knowankit/knowankit.com/blob/develop/components/mdx/index.tsx
+// todo: need to make sure any theming 
 
 const a = (props: ChakraLinkProps) => <ChakraLink target={"_blank"} {...props}>{props.children}</ChakraLink>
 

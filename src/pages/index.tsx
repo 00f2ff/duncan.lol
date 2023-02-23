@@ -1,41 +1,18 @@
+import { Box, Center, Link } from "@chakra-ui/react";
+import Layout from "components/Layout";
 import { getSlugsForDirectory, serializeMDX } from "util/files";
-
-/**
- * 
- * @returns export async function getStaticPaths() {
-  const slugs = await getSlugsForDirectory("posts");
-
-  const paths = slugs.map((slug) => {
-    return {
-      params: {
-        slug
-      }
-    }
-  });
-
-  return {
-    paths,
-    fallback: false,
-  }
-}
- */
-
 
 export async function getStaticProps() {
   const slugs = await getSlugsForDirectory("posts");
   const mdxResults = await Promise.all(
-    slugs.map((slug) => serializeMDX(slug, "posts")) // fixme: not pulling out frontmatter
+    slugs.map((slug) => serializeMDX(slug, "posts"))
   );
   const posts = mdxResults.map((result) => {
-    console.log("helloooo")
-    console.log(JSON.stringify(result.frontmatter)); 
     return {
-      path: `/posts/${result.frontmatter.Slug}`,
+      path: `/${result.frontmatter.Slug}`,
       title: result.frontmatter.Title,
     }
   });
-
-  console.log(JSON.stringify(posts))
 
   return {
     props: {
@@ -44,10 +21,24 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ posts }) {
+type Props = {
+  posts: {
+    path: string;
+    title: string;
+  }[]
+}
+
+export default function Home({ posts }: Props ) {
+  console.log(posts)
   return (
-    <>
-    {JSON.stringify(posts)}
-    </>
+    <Layout>
+      <Box>
+        {posts && posts.map((post) => {
+          return (
+            <Link key={post.title} href={post.path}>{post.title}</Link>
+          )
+        })}
+      </Box>
+    </Layout>
   );
 }

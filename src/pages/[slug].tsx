@@ -7,7 +7,9 @@ interface Props {
 }
 
 export default function Post({ postData }: Props) {
-  console.log(postData);
+  console.log(postData.frontmatter)
+
+  // todo: pass frontmatter as props into a Post component
   return (
     <Layout>
       <MDXRemote {...postData} />
