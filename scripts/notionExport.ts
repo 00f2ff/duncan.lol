@@ -1,4 +1,4 @@
-import { getPublishedPosts, n2m, pagePropertiesToFrontmatter } from "./lib/notion";
+import { frontmatterBlobToString, getPublishedPosts, n2m, pagePropertiesToFrontmatterBlob } from "./lib/notion";
 import { promises as fs } from "fs";
 import { replaceWeirdCharacters, uuidToPageId } from "./util/string";
 
@@ -28,13 +28,18 @@ export async function base(script: () => Promise<void>) {
 
 const PAGES_PATH = "../src/content/posts/";
 
-export async function exportNotionPosts() {
+export async function exportNotionPosts() { // fixme: add better typing. maybe make the frontmatter stuff a class with a toString
   const posts = await getPublishedPosts(); 
 
   const pageData: { [pageId: string]: string } = posts.reduce((acc, post) => {
     const pageId = uuidToPageId(post.id);
-    const frontmatter = pagePropertiesToFrontmatter(post);
-    acc[pageId] = frontmatter;
+    const frontmatterBlob = pagePropertiesToFrontmatterBlob(post);
+    const slug = frontmatterBlob.Slug;
+    const frontmatter = frontmatterBlobToString(frontmatterBlob);
+    acc[pageId] = {
+      frontmatter,
+      slug,
+    };
     return acc;
   }, {})
 
@@ -42,10 +47,11 @@ export async function exportNotionPosts() {
     const mdblocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(mdblocks);
 
-    const frontmatter = pageData[id];
+    const frontmatter = pageData[id]["frontmatter"];
+    const slug = pageData[id]["slug"];
     const fixedString = replaceWeirdCharacters(mdString);
   
-    await fs.writeFile(`${PAGES_PATH}${"index"}.mdx`, `${frontmatter}${fixedString}`);
+    await fs.writeFile(`${PAGES_PATH}${slug}.mdx`, `${frontmatter}${fixedString}`); 
   }
 }
 

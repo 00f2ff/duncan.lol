@@ -45,12 +45,12 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
 }
 
 /**
- * Pull out page properties and convert to frontmatter. 
+ * Pull out page properties and convert to an object that can be easily converted to frontmatter. 
  * Hardcoded to my particular Notion DB setup
  * 
  * @param page 
  */
-export function pagePropertiesToFrontmatter(page: PageObjectResponse) {
+export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): { [key: string]: string } {
   const { properties } = page;
   const title = properties["Title"] as TitleProperty;
   const excerpt = properties["Excerpt"] as RichTextProperty;
@@ -60,15 +60,22 @@ export function pagePropertiesToFrontmatter(page: PageObjectResponse) {
   const publishedOn = properties["Published On"] as DateProperty;
   const updatedOn = properties["Updated On"] as DateProperty;
 
+  return {
+    "Title": title.title[0].plain_text,
+    "Excerpt": excerpt.rich_text[0].plain_text,
+    "Slug": slug.select.name,
+    "Tags": JSON.stringify(tags.multi_select.map((ms) => ms.name)),
+    "Status": status.status.name,
+    "Published On": publishedOn.date.start,
+    "Updated On": updatedOn.date?.start
+  }
+}
+
+export function frontmatterBlobToString(blob: { [key: string]: string }): string {
+  const str = Object.keys(blob).reduce((acc, key) => `${acc}${key}: ${blob[key]}\n`, "");
   return `
 ---
-Title: ${title.title[0].plain_text}
-Excerpt: ${excerpt.rich_text[0].plain_text}
-Slug: ${slug.select.name}
-Tags: ${JSON.stringify(tags.multi_select.map((ms) => ms.name))}
-Status: ${status.status.name}
-Published On: ${publishedOn.date.start}
-Updated On: ${updatedOn.date?.start}
+${str}
 ---
-  `;
+`;
 }

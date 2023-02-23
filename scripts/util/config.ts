@@ -6,12 +6,12 @@ if (typeof window === "undefined" && isDev) {
   dotenv.config({ path: ".env.local" });
 }
 
-export const notionRootPageId = process.env.NOTION_ROOT_PAGE_ID;
+// export const notionRootPageId = process.env.NOTION_ROOT_PAGE_ID;
 
 export const notionDatabaseId = process.env.NOTION_DATABASE_ID;
-export const notionDatabaseViewId = process.env.NOTION_DATABASE_VIEW_ID;
+// export const notionDatabaseViewId = process.env.NOTION_DATABASE_VIEW_ID;
 
-export const notionUserId = process.env.NOTION_USER_ID;
-export const notionAuthToken = process.env.NOTION_TOKEN_V2;
+// export const notionUserId = process.env.NOTION_USER_ID;
+// export const notionAuthToken = process.env.NOTION_TOKEN_V2;
 
 export const notionSecretToken = process.env.NOTION_CONNECTION_TOKEN;
