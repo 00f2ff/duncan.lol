@@ -73,8 +73,7 @@ export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): { [ke
 
 export function frontmatterBlobToString(blob: { [key: string]: string }): string {
   const str = Object.keys(blob).reduce((acc, key) => `${acc}${key}: ${blob[key]}\n`, "");
-  return `
----
+  return `---
 ${str}
 ---
 `;
