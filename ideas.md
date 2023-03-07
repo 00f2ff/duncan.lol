@@ -26,7 +26,6 @@ Do I need this or does it work differently with the hashicorp lib? https://mdxjs
 ## Todo
 
 - [] Default components for styling: https://github.com/hashicorp/next-mdx-remote#replacing-default-components
-- [] populate frontmatter in pipeline -- done?
 
 ## Icebox
 

@@ -6,8 +6,6 @@ import dynamic from "next/dynamic";
 
 const PostBlock = dynamic(() => import("components/PostBlock"), { ssr: false });
 
-//import dynamic from "next/dynamic"; const BasicModal = dynamic(() => import("../../Modal/BasicModal"), { ssr: false, });
-
 export async function getStaticProps() {
   const slugs = await getSlugsForDirectory("posts");
   const mdxResults = await Promise.all(

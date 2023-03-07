@@ -1,8 +1,8 @@
-import { Badge, Box, Center, Divider, Flex, Heading, HStack, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { FrontmatterSchema } from "util/files";
-import theme from "style/theme";
-import NextLink from 'next/link'
+// import theme from "style/theme";
+import NextLink from 'next/link';
 
 // fixme: make badge colors a theme variant. for now just using this enum.
 // fixme: decide if it's worth it trying to get badges to work
@@ -11,7 +11,6 @@ enum tagColors {
   Organizations = "brand.mint",
 }
 
-// todo: verify that the brandon grotesque 'medium' weight comes through (adobe needs to sync). I think bold is too much, even for copy
 function Pill(keyPrefix: string, tagName: string) {
   return (
     <Box
@@ -39,7 +38,7 @@ export default function PostBlock(props: FrontmatterSchema) {
     }
   })();
 
-  const badges = props.tags.map((tag) => Pill(props.title, tag));
+  const pills = props.tags.map((tag) => Pill(props.title, tag));
 
   return (
     <LinkBox 
@@ -52,7 +51,7 @@ export default function PostBlock(props: FrontmatterSchema) {
           <Flex mb="1">
             <Text fontSize="md">{dateString} </Text>
             <Center>
-              {badges}
+              {pills}
             </Center>
           </Flex>
           
