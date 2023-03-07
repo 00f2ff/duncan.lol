@@ -5,8 +5,11 @@ import NextLink from 'next/link'
 // import { ThemeTypings } from '@chakra-ui/react'
 import { FrontmatterSchema, getSlugsForDirectory, serializeMDX } from "util/files";
 import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 
+const PostBlock = dynamic(() => import("components/PostBlock"), { ssr: false });
 
+//import dynamic from "next/dynamic"; const BasicModal = dynamic(() => import("../../Modal/BasicModal"), { ssr: false, });
 
 export async function getStaticProps() {
   const slugs = await getSlugsForDirectory("posts");
@@ -22,33 +25,6 @@ export async function getStaticProps() {
       posts
     }
   }
-}
-
-function PostBlock(props: FrontmatterSchema) {
-  const dateString = (() => {
-    const formatString = "MMMM D, YYYY";
-    const baseString = `${dayjs(props.publishedOn).format(formatString)}`
-    if (props.updatedOn) {
-      return `${baseString} (Updated ${dayjs(props.updatedOn).format(formatString)})`
-    } else {
-      return baseString;
-    }
-  })();
-
-  return (
-    <LinkBox 
-      key={props.title} 
-      textAlign="left"
-    >
-      <NextLink href={props.path} passHref>
-        <LinkOverlay>
-          <Heading size="md" mb="2">{props.title}</Heading>
-          <Text fontSize="md" mb="1">{dateString}</Text>
-          <Text fontSize="md">{props.excerpt}</Text>
-        </LinkOverlay>
-      </NextLink>        
-    </LinkBox>
-  );
 }
 
 type Props = {
