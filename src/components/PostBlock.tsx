@@ -1,19 +1,45 @@
-import { Heading, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
+import { Badge, Box, Center, Divider, Flex, Heading, HStack, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { FrontmatterSchema } from "util/files";
+import theme from "style/theme";
 import NextLink from 'next/link'
 
+// fixme: make badge colors a theme variant. for now just using this enum.
+// fixme: decide if it's worth it trying to get badges to work
+
+enum tagColors {
+  Organizations = "brand.mint",
+}
+
+// todo: verify that the brandon grotesque 'medium' weight comes through (adobe needs to sync). I think bold is too much, even for copy
+function Pill(keyPrefix: string, tagName: string) {
+  return (
+    <Box
+      key={`${keyPrefix}-${tagName}`}
+      backgroundColor={tagColors[tagName]}
+      padding="1px"
+      borderRadius="md"
+      marginLeft="3"
+      fontWeight="500" 
+      fontSize="md"
+    >
+      &nbsp;{tagName}&nbsp;
+    </Box>
+  )
+}
 
 export default function PostBlock(props: FrontmatterSchema) {
   const dateString = (() => {
     const formatString = "MMMM D, YYYY";
     const baseString = `${dayjs(props.publishedOn).format(formatString)}`
-    if (props.updatedOn) {
+    if (props.updatedOn && props.updatedOn !== "undefined") {
       return `${baseString} (Updated ${dayjs(props.updatedOn).format(formatString)})`
     } else {
       return baseString;
     }
   })();
+
+  const badges = props.tags.map((tag) => Pill(props.title, tag));
 
   return (
     <LinkBox 
@@ -23,7 +49,13 @@ export default function PostBlock(props: FrontmatterSchema) {
       <NextLink href={props.path} passHref>
         <LinkOverlay>
           <Heading size="md" mb="2">{props.title}</Heading>
-          <Text fontSize="md" mb="1">{dateString}</Text>
+          <Flex mb="1">
+            <Text fontSize="md">{dateString} </Text>
+            <Center>
+              {badges}
+            </Center>
+          </Flex>
+          
           <Text fontSize="md">{props.excerpt}</Text>
         </LinkOverlay>
       </NextLink>        

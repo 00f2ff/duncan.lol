@@ -1,10 +1,7 @@
 import { Box, Center, Heading, Link, LinkBox, LinkOverlay, SimpleGrid, Text, useTheme, VStack } from "@chakra-ui/react";
 import Layout from "components/Layout";
-import theme from "style/theme";
-import NextLink from 'next/link'
 // import { ThemeTypings } from '@chakra-ui/react'
 import { FrontmatterSchema, getSlugsForDirectory, serializeMDX } from "util/files";
-import dayjs from "dayjs";
 import dynamic from "next/dynamic";
 
 const PostBlock = dynamic(() => import("components/PostBlock"), { ssr: false });
@@ -43,6 +40,7 @@ export default function Home({ posts }: Props ) {
           marginTop={"50px"}
         >
           <Heading color={"brand.blue"} size="2xl">Duncan McIsaac</Heading>
+          {/* The following squiggle isn't actually a problem */}
           {posts && posts.map((post) => PostBlock(post))}
         </SimpleGrid>
       </Center>
