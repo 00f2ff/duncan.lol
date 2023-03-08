@@ -42,6 +42,7 @@ export default function Home({ posts }: Props ) {
           spacing={10} 
           width={"50%"}
           marginTop={"50px"}
+          marginBottom={"50px"}
         >
           <Heading color={"brand.blue"} size="2xl">Duncan McIsaac</Heading>
           {posts && posts.map((post) => PostBlockDynamic(post))}

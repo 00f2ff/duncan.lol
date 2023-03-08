@@ -3,29 +3,10 @@ import dayjs from "dayjs";
 import { FrontmatterSchema } from "util/files";
 // import theme from "style/theme";
 import NextLink from 'next/link';
+import Pill from "./Pill";
 
 // Flags
 const SHOW_TAGS: boolean = true;
-
-enum tagColors {
-  Work = "brand.mint",
-}
-
-function Pill(keyPrefix: string, tagName: string) {
-  return (
-    <Box
-      key={`${keyPrefix}-${tagName}`}
-      backgroundColor={tagColors[tagName]}
-      padding="1px"
-      borderRadius="md"
-      marginLeft="3"
-      fontWeight="500" 
-      fontSize="md"
-    >
-      &nbsp;{tagName}&nbsp;
-    </Box>
-  )
-}
 
 export default function PostBlock(props: FrontmatterSchema) {
   const dateString = (() => {
@@ -38,7 +19,7 @@ export default function PostBlock(props: FrontmatterSchema) {
     }
   })();
 
-  const pills = props.tags.map((tag) => Pill(props.title, tag));
+  const pills = props.tags.map((tag) => Pill({keyPrefix: props.title, tagName: tag}));
 
   return (
     <LinkBox 
