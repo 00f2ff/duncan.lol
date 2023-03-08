@@ -4,11 +4,11 @@ import { FrontmatterSchema } from "util/files";
 // import theme from "style/theme";
 import NextLink from 'next/link';
 
-// fixme: make badge colors a theme variant. for now just using this enum.
-// fixme: decide if it's worth it trying to get badges to work
+// Flags
+const SHOW_TAGS: boolean = true;
 
 enum tagColors {
-  Organizations = "brand.mint",
+  Work = "brand.mint",
 }
 
 function Pill(keyPrefix: string, tagName: string) {
@@ -50,12 +50,14 @@ export default function PostBlock(props: FrontmatterSchema) {
           <Heading size="md" mb="2">{props.title}</Heading>
           <Flex mb="1">
             <Text fontSize="md">{dateString} </Text>
-            <Center>
-              {pills}
-            </Center>
+            {
+              SHOW_TAGS && <Center>{pills}</Center>
+            }
           </Flex>
+          {
+            props.excerpt && props.excerpt !== "undefined" && <Text fontSize="md">{props.excerpt}</Text>
+          }
           
-          <Text fontSize="md">{props.excerpt}</Text>
         </LinkOverlay>
       </NextLink>        
     </LinkBox>

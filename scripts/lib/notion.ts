@@ -45,6 +45,15 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
 }
 
 /**
+ * Colons (and maybe other special characters) cause next-mdx-remote to throw YAML formatting exceptions
+ * @param s 
+ * @returns 
+ */
+function sanitizeYAML(s: string): string {
+  return s.replace(/:/, "&#58;")
+}
+
+/**
  * Pull out page properties and convert to an object that can be easily converted to frontmatter. 
  * Hardcoded to my particular Notion DB setup
  * 
@@ -52,8 +61,14 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
  */
 export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): { [key: string]: string } {
   const { properties } = page;
-  const title = properties["Title"] as TitleProperty;
-  const excerpt = properties["Excerpt"] as RichTextProperty;
+  const titleProperty = properties["Title"] as TitleProperty;
+  const title = titleProperty.title[0].plain_text
+  const sanitizedTitle = sanitizeYAML(title);
+
+  const excerptProperty = properties["Excerpt"] as RichTextProperty;
+  const excerpt: string | undefined = excerptProperty.rich_text[0]?.plain_text;
+  const sanitizedExcerpt = excerpt ? sanitizeYAML(excerpt) : "";
+
   const slug = properties["Slug"] as SelectProperty;
   const tags = properties["Tags"] as MultiSelectProperty;
   const status = properties["Status"] as StatusProperty;
@@ -61,8 +76,8 @@ export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): { [ke
   const updatedOn = properties["Updated On"] as DateProperty;
 
   return {
-    "Title": title.title[0].plain_text,
-    "Excerpt": excerpt.rich_text[0].plain_text,
+    "Title": sanitizedTitle,
+    "Excerpt": sanitizedExcerpt,
     "Slug": slug.select.name,
     "Tags": JSON.stringify(tags.multi_select.map((ms) => ms.name)),
     "Status": status.status.name,

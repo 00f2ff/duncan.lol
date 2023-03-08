@@ -25,6 +25,17 @@ export async function getSlugsForDirectory(contentDirectory: ContentDirectory): 
   return filenames.map((filename) => filename.replace(/\.mdx/, ""));
 }
 
+/**
+ * Colons (and maybe other special characters) cause next-mdx-remote to throw YAML formatting exceptions,
+ * so they're sanitized when the Notion-export script runs. After the mdx serialization step, we can desanitize
+ * the HTML encoding back to the original character since it's stored in a TS Record type
+ * @param s 
+ * @returns 
+ */
+function desanitizeHTML(s: string): string {
+  return s.replace(/(&#58;)/, ":")
+}
+
 function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemoteSerializeResult {
   const {
     frontmatter,
@@ -61,8 +72,8 @@ function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemoteSeria
   console.log(frontmatter["Tags"]);
 
   const nextFrontmatter: FrontmatterSchema = {
-    title: frontmatter["Title"],
-    excerpt: frontmatter["Excerpt"],
+    title: desanitizeHTML(frontmatter["Title"]),
+    excerpt: frontmatter["Excerpt"] ? desanitizeHTML(frontmatter["Excerpt"]) : "",
     path: `/${frontmatter["Slug"]}`,
     tags: frontmatter["Tags"].toString().split(","), // fixme: make sure this is accurate
     status: frontmatter["Status"],
