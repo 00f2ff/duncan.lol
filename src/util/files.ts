@@ -78,7 +78,7 @@ function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemoteSeria
     tags: frontmatter["Tags"].toString().split(","), // fixme: make sure this is accurate
     status: frontmatter["Status"],
     publishedOn: frontmatter["Published On"].toString(),
-    updatedOn: frontmatter["Updated On"] ? frontmatter["Updated On"].toString() : null
+    updatedOn: (frontmatter["Updated On"] && frontmatter["Updated On"] !== "undefined") ? frontmatter["Updated On"].toString() : null
   }
 
   return {
