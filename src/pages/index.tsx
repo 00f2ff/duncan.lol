@@ -3,8 +3,9 @@ import Layout from "components/Layout";
 // import { ThemeTypings } from '@chakra-ui/react'
 import { FrontmatterSchema, getSlugsForDirectory, serializeMDX } from "util/files";
 import dynamic from "next/dynamic";
+import PostBlock from "components/PostBlock";
 
-const PostBlock = dynamic(() => import("components/PostBlock"), { ssr: false });
+const PostBlockDynamic = dynamic(() => import("components/PostBlock"), { ssr: false }) as typeof PostBlock;
 
 export async function getStaticProps() {
   const slugs = await getSlugsForDirectory("posts");
@@ -39,7 +40,7 @@ export default function Home({ posts }: Props ) {
         >
           <Heading color={"brand.blue"} size="2xl">Duncan McIsaac</Heading>
           {/* The following squiggle isn't actually a problem */}
-          {posts && posts.map((post) => PostBlock(post))}
+          {posts && posts.map((post) => PostBlockDynamic(post))}
         </SimpleGrid>
       </Center>
     </Layout>

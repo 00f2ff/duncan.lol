@@ -35,10 +35,18 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = await serializeMDX(params.slug, "posts");
-  return {
-    props: {
-      postData
+  // todo: change to result once I fix the package
+  try {
+    const postData = await serializeMDX(params.slug, "posts");
+    return {
+      props: {
+        postData
+      }
+    }
+  } catch (e) {
+    return {
+      notFound: true
     }
   }
+  
 }
