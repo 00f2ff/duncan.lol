@@ -37,10 +37,11 @@ export default function Home({ posts }: Props ) {
   return (
     <Layout>
       <Center>
+        {/* fixme: I'd like this to be farther to the left */}
         <SimpleGrid 
           columns={1} 
           spacing={10} 
-          width={"50%"}
+          width={"45%"}
           marginTop={"50px"}
           marginBottom={"50px"}
         >

@@ -4,16 +4,20 @@ import components from 'components/mdxDefaults'
 import { AppProps } from 'next/app'
 import theme from 'style/theme'
 import { Global } from '@emotion/react';
-import fontFamilies from 'style/fonts'
+import fontFamilies from 'style/fonts';
+import { Analytics } from '@vercel/analytics/react';
 
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <Global styles={fontFamilies} />
-      <MDXProvider components={components}>
-        <Component {...pageProps} />
-      </MDXProvider>
-    </ChakraProvider>
+    <>
+      <ChakraProvider theme={theme}>
+        <Global styles={fontFamilies} />
+        <MDXProvider components={components}>
+          <Component {...pageProps} />
+        </MDXProvider>
+      </ChakraProvider>
+      <Analytics />
+    </>
   )
 }
