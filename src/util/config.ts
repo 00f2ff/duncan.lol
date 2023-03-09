@@ -8,5 +8,3 @@ if (isDev) {
 
 export const port = process.env.PORT || 8080;
 export const rootDomain = isDev ? `http://localhost:${port}` : null;
-
-export const insightsToken = process.env.INSIGHTS_TOKEN;
