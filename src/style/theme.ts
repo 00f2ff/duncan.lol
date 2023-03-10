@@ -4,7 +4,6 @@ import Pill from "./component/Pill";
 // https://coolors.co/76d8aa-7dcbd0-e19d22-ecb837-743951
 // todo: clean this up with file extensions: https://chakra-ui.com/docs/styled-system/customize-theme#customizing-global-styles
 // fixme: is it accurate to use 'sans-serif' in the fonts section?
-// fixme: is `code` the right way to frame the monospace font, or do I want to do a custom component style in Chakra?
 
 const theme = extendTheme({
   colors: {
@@ -26,7 +25,7 @@ const theme = extendTheme({
   fonts: {
     heading: `'hoss-sharp', sans-serif`,
     body: `'brandon-grotesque', sans-serif`,
-    code: `'droid-sans-mono', sans-serif`
+    mono: `'droid-sans-mono', sans-serif`
   },
   styles: {
     global: {

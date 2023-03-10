@@ -9,12 +9,17 @@ const withMDX = require('@next/mdx')({
     // If you use `MDXProvider`, uncomment the following line.
     providerImportSource: "@mdx-js/react",
   },
-})
+});
+
+
 module.exports = withMDX({
   // Append the default value with md extensions
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   compiler: {
     // see https://styled-components.com/docs/tooling#babel-plugin for more info on the options.
     styledComponents: true,
-  }
-})
+  },
+  transpilePackages: [ // todo: see if importing result here works
+    // "rehype-highlight"
+  ]
+}) 

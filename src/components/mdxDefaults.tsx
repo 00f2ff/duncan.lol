@@ -1,5 +1,6 @@
 // import { Link as NextLink } from 'next/link'; // todo: add support for relative / absolute linking
-import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, ListItem, ListItemProps, ListProps, OrderedList, TextProps, UnorderedList, Text } from '@chakra-ui/react';
+import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, ListItem, ListItemProps, ListProps, OrderedList, TextProps, UnorderedList, Text, CodeProps, Code } from '@chakra-ui/react';
+import HighlightedCode from './HighlightedCode';
 // import Image from 'next/image';
 
 // see https://github.com/knowankit/knowankit.com/blob/develop/components/mdx/index.tsx
@@ -29,6 +30,8 @@ const li = (props: ListItemProps) => <ListItem mb={1} {...commonProps} {...props
 
 const p = (props: TextProps) => <Text {...commonProps} {...props}>{props.children}</Text>
 
+const code = (props: CodeProps) => <HighlightedCode {...props}>{props.children}</HighlightedCode>
+
 // const strong = (props: TextProps) => <Text fontWeight="medium" {...commonProps} {...props}>{props.children}</Text>
 
 const components = {
@@ -42,6 +45,7 @@ const components = {
   ol,
   li,
   p,
+  code,
   // strong,
 };
 
