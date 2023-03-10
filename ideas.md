@@ -1,6 +1,5 @@
 # Ideas
 
-- [] Deploy using git merge (captures code changes and new md files)
 - [] Color fonts https://material.io/blog/color-fonts-are-here
 - [] Loading spinner: rotating fish cake emoji haha
 

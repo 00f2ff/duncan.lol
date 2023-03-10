@@ -17,6 +17,8 @@ const ul = (props: ListProps) => <UnorderedList {...props}></UnorderedList>
 const ol = (props: ListProps) => <OrderedList {...props}></OrderedList>
 const li = (props: ListItemProps) => <ListItem {...props}>{props.children}</ListItem>
 
+// fixme: why does fontSize=md for p equal 16, but 20 on index?
+
 const p = (props: TextProps) => <Text fontSize={"md"} {...props}>{props.children}</Text>
 
 const components = {

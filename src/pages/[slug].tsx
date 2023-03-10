@@ -1,20 +1,39 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import Layout from "components/Layout";
 import { getSlugsForDirectory, serializeMDX } from "util/files";
+import { Center, Heading, SimpleGrid } from '@chakra-ui/react';
+import GoBack from 'components/GoBack';
+
 
 interface Props {
-  postData: MDXRemoteSerializeResult;
+  post: MDXRemoteSerializeResult;
 }
 
-export default function Post({ postData }: Props) {
-  console.log(postData.frontmatter)
+// fixme: abstract layout component more for index and slug
 
-  // todo: pass frontmatter as props into a Post component
+export default function Post({ post }: Props) {
+  // todo: do I need a use effect to wait until page is loaded to render the back button? seems weird
   return (
     <Layout>
-      <MDXRemote {...postData} />
+      <Center>
+        <SimpleGrid 
+          key={`post-${post.frontmatter.title}`}
+          columns={1} 
+          spacing={5} 
+          width={"45%"}
+          marginTop={"50px"}
+          marginBottom={"50px"}
+        >
+          <GoBack path="/" text="home" />
+          
+          <Heading>{post.frontmatter.title}</Heading>
+
+          {/* This renders the post */}
+          <MDXRemote {...post} />
+        </SimpleGrid>
+      </Center>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
@@ -37,10 +56,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // todo: change to result once I fix the package
   try {
-    const postData = await serializeMDX(params.slug, "posts");
+    const post = await serializeMDX(params.slug, "posts");
     return {
       props: {
-        postData
+        post
       }
     }
   } catch (e) {

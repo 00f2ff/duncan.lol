@@ -26,21 +26,18 @@ export default function PostBlock(props: FrontmatterSchema) {
       key={props.title} 
       textAlign="left"
     >
-      <NextLink href={props.path} passHref>
-        <LinkOverlay>
-          <Heading size="md" mb="2">{props.title}</Heading>
-          <Flex mb="1">
-            <Text fontSize="md">{dateString} </Text>
-            {
-              SHOW_TAGS && <Center>{pills}</Center>
-            }
-          </Flex>
+      <LinkOverlay as={NextLink} href={props.path} passHref>
+        <Heading size="md" mb="2">{props.title}</Heading>
+        <Flex mb="1">
+          <Text fontSize="md">{dateString} </Text>
           {
-            props.excerpt && props.excerpt !== "undefined" && <Text fontSize="md">{props.excerpt}</Text>
+            SHOW_TAGS && <Center>{pills}</Center>
           }
-          
-        </LinkOverlay>
-      </NextLink>        
+        </Flex>
+        {
+          props.excerpt && props.excerpt !== "undefined" && <Text fontSize="md">{props.excerpt}</Text>
+        }
+      </LinkOverlay>
     </LinkBox>
   );
 }
