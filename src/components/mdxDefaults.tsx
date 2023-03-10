@@ -23,7 +23,7 @@ const h5 = (props: BoxProps) => <Heading size={"sm"} {...props}/>
 
 const ul = (props: ListProps) => <UnorderedList {...commonProps} {...props}></UnorderedList> 
 const ol = (props: ListProps) => <OrderedList {...commonProps} {...props}></OrderedList>
-const li = (props: ListItemProps) => <ListItem {...commonProps} {...props}>{props.children}</ListItem>
+const li = (props: ListItemProps) => <ListItem mb={1} {...commonProps} {...props}>{props.children}</ListItem>
 
 const p = (props: TextProps) => <Text {...commonProps} {...props}>{props.children}</Text>
 

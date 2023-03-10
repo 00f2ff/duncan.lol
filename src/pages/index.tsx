@@ -4,7 +4,7 @@ import Layout from "components/Layout";
 import { FrontmatterSchema, getSlugsForDirectory, serializeMDX } from "util/files";
 import dynamic from "next/dynamic";
 import PostBlock from "components/PostBlock";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 
 const PostBlockDynamic = dynamic(() => import("components/PostBlock"), { ssr: false }) as typeof PostBlock;
 

@@ -36,7 +36,7 @@ function desanitizeHTML(s: string): string {
   return s.replace(/(&#58;)/, ":")
 }
 
-function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemoteSerializeResult {
+export function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemoteSerializeResult {
   const {
     frontmatter,
     ...rest
@@ -75,7 +75,7 @@ function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemoteSeria
     title: desanitizeHTML(frontmatter["Title"]),
     excerpt: frontmatter["Excerpt"] ? desanitizeHTML(frontmatter["Excerpt"]) : "",
     path: `/${frontmatter["Slug"]}`,
-    tags: frontmatter["Tags"].toString().split(","), // fixme: make sure this is accurate
+    tags: frontmatter["Tags"].toString().split(","),
     status: frontmatter["Status"],
     publishedOn: frontmatter["Published On"].toString(),
     updatedOn: (frontmatter["Updated On"] && frontmatter["Updated On"] !== "undefined") ? frontmatter["Updated On"].toString() : null

@@ -1,21 +1,29 @@
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 import Layout from "components/Layout";
-import { getSlugsForDirectory, serializeMDX } from "util/files";
-import { Heading } from '@chakra-ui/react';
+import { getSlugsForDirectory, NextMDXRemoteSerializeResult, serializeMDX } from "util/files";
+import { Heading, Stack } from '@chakra-ui/react';
 import GoBack from 'components/GoBack';
+import Metadata from 'components/Metadata';
 
 
 interface Props {
-  post: MDXRemoteSerializeResult;
+  post: NextMDXRemoteSerializeResult;
 }
 
-export default function Post({ post }: Props) {
+export default function Post({ post }: Props) { 
+  const {
+    frontmatter,
+    ...rest
+  } = post;
   return (
-    <Layout verticalSpacing={10}>
+    <Layout verticalSpacing={5}>
       <GoBack path="/" text="home" />
-      <Heading>{post.frontmatter.title}</Heading>
-      {/* This renders the post */}
-      <MDXRemote {...post} />
+      <Stack direction="column" spacing={2}>
+        <Heading>{frontmatter.title}</Heading>
+        <Metadata {...frontmatter} />
+      </Stack>
+      {/* This renders the post minus the frontmatter */}
+      <MDXRemote {...rest} />
     </Layout>
   );
 }
@@ -40,7 +48,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // todo: change to result once I fix the package
   try {
-    const post = await serializeMDX(params.slug, "posts");
+    const post: NextMDXRemoteSerializeResult = await serializeMDX(params.slug, "posts");
     return {
       props: {
         post
