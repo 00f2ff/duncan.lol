@@ -3,7 +3,15 @@ import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, Li
 // import Image from 'next/image';
 
 // see https://github.com/knowankit/knowankit.com/blob/develop/components/mdx/index.tsx
-// todo: need to make sure any theming 
+// todo: need to make sure any theming carries over
+
+// Common Text properties 
+// todo: figure out typing so it's recognized by the list components
+const commonProps = {
+  fontSize: "lg",
+  lineHeight: "1.5",
+
+}
 
 const a = (props: ChakraLinkProps) => <ChakraLink target={"_blank"} {...props}>{props.children}</ChakraLink>
 
@@ -13,13 +21,11 @@ const h3 = (props: BoxProps) => <Heading size={"lg"} {...props}/>
 const h4 = (props: BoxProps) => <Heading size={"md"} {...props}/>
 const h5 = (props: BoxProps) => <Heading size={"sm"} {...props}/>
 
-const ul = (props: ListProps) => <UnorderedList {...props}></UnorderedList> 
-const ol = (props: ListProps) => <OrderedList {...props}></OrderedList>
-const li = (props: ListItemProps) => <ListItem {...props}>{props.children}</ListItem>
+const ul = (props: ListProps) => <UnorderedList {...commonProps} {...props}></UnorderedList> 
+const ol = (props: ListProps) => <OrderedList {...commonProps} {...props}></OrderedList>
+const li = (props: ListItemProps) => <ListItem {...commonProps} {...props}>{props.children}</ListItem>
 
-// fixme: why does fontSize=md for p equal 16, but 20 on index?
-
-const p = (props: TextProps) => <Text fontSize={"md"} {...props}>{props.children}</Text>
+const p = (props: TextProps) => <Text {...commonProps} {...props}>{props.children}</Text>
 
 const components = {
   a,
