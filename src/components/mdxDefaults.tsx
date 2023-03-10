@@ -18,6 +18,8 @@ const a = (props: ChakraLinkProps) => <ChakraLink target={"_blank"} {...props}>{
 const h1 = (props: BoxProps) => <Heading size={"2xl"} {...props}/>
 const h2 = (props: BoxProps) => <Heading size={"xl"} {...props}/>
 const h3 = (props: BoxProps) => <Heading size={"lg"} {...props}/>
+
+// Notion doesn't currently support headings below level 3, so this shouldn't matter
 const h4 = (props: BoxProps) => <Heading size={"md"} {...props}/>
 const h5 = (props: BoxProps) => <Heading size={"sm"} {...props}/>
 
@@ -26,6 +28,8 @@ const ol = (props: ListProps) => <OrderedList {...commonProps} {...props}></Orde
 const li = (props: ListItemProps) => <ListItem mb={1} {...commonProps} {...props}>{props.children}</ListItem>
 
 const p = (props: TextProps) => <Text {...commonProps} {...props}>{props.children}</Text>
+
+// const strong = (props: TextProps) => <Text fontWeight="medium" {...commonProps} {...props}>{props.children}</Text>
 
 const components = {
   a,
@@ -38,6 +42,7 @@ const components = {
   ol,
   li,
   p,
+  // strong,
 };
 
 export default components;

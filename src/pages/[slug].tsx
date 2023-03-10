@@ -19,7 +19,7 @@ export default function Post({ post }: Props) {
     <Layout verticalSpacing={5}>
       <GoBack path="/" text="home" />
       <Stack direction="column" spacing={2}>
-        <Heading>{frontmatter.title}</Heading>
+        <Heading size="2xl">{frontmatter.title}</Heading>
         <Metadata {...frontmatter} />
       </Stack>
       {/* This renders the post minus the frontmatter */}
