@@ -19,7 +19,9 @@ module.exports = withMDX({
     // see https://styled-components.com/docs/tooling#babel-plugin for more info on the options.
     styledComponents: true,
   },
-  transpilePackages: [ // todo: see if importing result here works
+  // Used to transpile ESM modules
+  transpilePackages: [ 
     // "rehype-highlight"
+    "@00f2ff/result"
   ]
 }) 

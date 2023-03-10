@@ -4,6 +4,7 @@ import { getSlugsForDirectory, NextMDXRemoteSerializeResult, serializeMDX } from
 import { Heading, Stack } from '@chakra-ui/react';
 import GoBack from 'components/GoBack';
 import Metadata from 'components/Metadata';
+import { settle } from '@00f2ff/result';
 
 
 interface Props {
@@ -46,15 +47,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // todo: change to result once I fix the package
-  try {
-    const post: NextMDXRemoteSerializeResult = await serializeMDX(params.slug, "posts");
+  const postResult = await settle(serializeMDX(params.slug, "posts"));
+  if (postResult.isFulfilled()) {
     return {
       props: {
-        post
+        post: postResult.value
       }
     }
-  } catch (e) {
+  } else {
     return {
       notFound: true
     }
