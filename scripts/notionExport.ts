@@ -60,7 +60,7 @@ export async function exportNotionPosts() { // fixme: add better typing. maybe m
         const seconds = secondsMatch ? secondsMatch[1] : "0";
         return {
           type: "paragraph",
-          parent: `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?start=${seconds}"></iframe>`,
+          parent: `https://www.youtube-nocookie.com/embed/${videoId}?start=${seconds}`,
           children: [],
         }
       } else {

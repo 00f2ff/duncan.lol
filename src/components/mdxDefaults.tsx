@@ -1,6 +1,7 @@
 // import { Link as NextLink } from 'next/link'; // todo: add support for relative / absolute linking
 import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, ListItem, ListItemProps, ListProps, OrderedList, TextProps, UnorderedList, Text, CodeProps, Code, AspectRatio } from '@chakra-ui/react';
 import { IframeHTMLAttributes } from 'react';
+import YouTube from 'react-youtube';
 import HighlightedCode from './HighlightedCode';
 // import Image from 'next/image';
 
@@ -29,19 +30,35 @@ const ul = (props: ListProps) => <UnorderedList {...commonProps} {...props}></Un
 const ol = (props: ListProps) => <OrderedList {...commonProps} {...props}></OrderedList>
 const li = (props: ListItemProps) => <ListItem mb={1} {...commonProps} {...props}>{props.children}</ListItem>
 
-const p = (props: TextProps) => <Text {...commonProps} {...props}>{props.children}</Text>
+// iframe issues: what if we render a youtube link as text, then do the aspect ratio transformation as a conditional in
+// the <p> cast?
+
+
+// fixme: why is it trying to render the iframe relative to local?
+const p = (props: TextProps) => {
+  // iframe check
+  if (props.children?.toString().includes("https://www.youtube-nocookie.com")) {
+    const splitUrl = props.children.toString().split("/");
+    const [videoId, start] = splitUrl[splitUrl.length - 1].split("?");
+    return (
+      <AspectRatio maxW="560px" ratio={16 / 9} >
+        <YouTube 
+          videoId={videoId}
+          opts={{
+            width: "100%",
+            height: "100%",
+            playerVars: {
+              start: start ?? "0"
+            }
+          }}
+        />
+      </AspectRatio>
+    );
+  }
+  return <Text {...commonProps} {...props}>{props.children}</Text>
+}
 
 const code = (props: CodeProps) => <HighlightedCode {...props}>{props.children}</HighlightedCode>
-
-const iframe = (props: any) => {
-  console.log("propppppps")
-  console.log(props);
-  // shit, next-mdx-remote doesn't handle iframe rewrites which is why this doesn't get picked up
-  return (
-    <AspectRatio maxW="560px" ratio={16 / 9} >
-      <iframe frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen {...props}></iframe>
-    </AspectRatio>
-)}
 
 // const strong = (props: TextProps) => <Text fontWeight="medium" {...commonProps} {...props}>{props.children}</Text>
 
@@ -57,11 +74,6 @@ const components = {
   li,
   p,
   code,
-  iframe,
-  // mdx-embed components exported here too: https://www.mdx-embed.com/?path=/docs/mdx-embed--page
-  // fixme: there's a peer dependency violation with this, so get back to it later. update: the package hasn't been updated and is broken
-  // YouTube
-  // strong,
 };
 
 export default components;
