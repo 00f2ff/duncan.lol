@@ -69,7 +69,6 @@ export function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemo
   //   return acc;
   // }, {});
 
-  console.log(frontmatter["Tags"]);
 
   const nextFrontmatter: FrontmatterSchema = {
     title: desanitizeHTML(frontmatter["Title"]),

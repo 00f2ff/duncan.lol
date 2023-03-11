@@ -1,5 +1,6 @@
 // import { Link as NextLink } from 'next/link'; // todo: add support for relative / absolute linking
-import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, ListItem, ListItemProps, ListProps, OrderedList, TextProps, UnorderedList, Text, CodeProps, Code } from '@chakra-ui/react';
+import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, ListItem, ListItemProps, ListProps, OrderedList, TextProps, UnorderedList, Text, CodeProps, Code, AspectRatio } from '@chakra-ui/react';
+import { IframeHTMLAttributes } from 'react';
 import HighlightedCode from './HighlightedCode';
 // import Image from 'next/image';
 
@@ -32,6 +33,16 @@ const p = (props: TextProps) => <Text {...commonProps} {...props}>{props.childre
 
 const code = (props: CodeProps) => <HighlightedCode {...props}>{props.children}</HighlightedCode>
 
+const iframe = (props: any) => {
+  console.log("propppppps")
+  console.log(props);
+  // shit, next-mdx-remote doesn't handle iframe rewrites which is why this doesn't get picked up
+  return (
+    <AspectRatio maxW="560px" ratio={16 / 9} >
+      <iframe frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen {...props}></iframe>
+    </AspectRatio>
+)}
+
 // const strong = (props: TextProps) => <Text fontWeight="medium" {...commonProps} {...props}>{props.children}</Text>
 
 const components = {
@@ -46,6 +57,10 @@ const components = {
   li,
   p,
   code,
+  iframe,
+  // mdx-embed components exported here too: https://www.mdx-embed.com/?path=/docs/mdx-embed--page
+  // fixme: there's a peer dependency violation with this, so get back to it later. update: the package hasn't been updated and is broken
+  // YouTube
   // strong,
 };
 

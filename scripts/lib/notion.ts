@@ -10,6 +10,16 @@ const notion = new Client({
 
 export const n2m = new NotionToMarkdown({ notionClient: notion });
 
+// Custom transformer for YouTube embeds
+// fixme: this isn't working
+// n2m.setCustomTransformer("embed", async (block) => {
+//   const { embed } = block as any;
+//   if (!embed?.url) return "";
+//   const url = embed.url as string;
+//   if (!url.includes("www.youtube.com")) return "";
+//   return `<iframe src="${url}"></iframe>`;
+// });
+
 /**
  * Type predicate for Notion response types
  * 
