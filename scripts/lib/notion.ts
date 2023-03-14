@@ -40,7 +40,14 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
           status: {
             equals: "Published"
           }
-        }
+        }, 
+        // Uncomment for testing specific post transformations
+        // {
+        //   property: "Tags",
+        //   multi_select: {
+        //     contains: "Poetry"
+        //   }
+        // }
       ]
     },
     sorts: [

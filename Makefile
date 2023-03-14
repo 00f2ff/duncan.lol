@@ -3,5 +3,5 @@
 server:
 	(cd src && npm run dev)
 
-notion-export:
+notion:
 	(cd scripts && npx ts-node notionExport.ts)

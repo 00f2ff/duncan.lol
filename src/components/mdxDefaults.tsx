@@ -39,9 +39,10 @@ const p = (props: TextProps) => {
   // iframe check
   if (props.children?.toString().includes("https://www.youtube-nocookie.com")) {
     const splitUrl = props.children.toString().split("/");
-    const [videoId, start] = splitUrl[splitUrl.length - 1].split("?");
+    const [videoId, start] = splitUrl[splitUrl.length - 1].split("?start=");
+    console.log(start);
     return (
-      <AspectRatio maxW="560px" ratio={16 / 9} >
+      <AspectRatio maxW="100%" ratio={16 / 9} >
         <YouTube 
           videoId={videoId}
           opts={{
@@ -59,8 +60,6 @@ const p = (props: TextProps) => {
 }
 
 const code = (props: CodeProps) => <HighlightedCode {...props}>{props.children}</HighlightedCode>
-
-// const strong = (props: TextProps) => <Text fontWeight="medium" {...commonProps} {...props}>{props.children}</Text>
 
 const components = {
   a,

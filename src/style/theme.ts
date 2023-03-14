@@ -31,6 +31,9 @@ const theme = extendTheme({
     global: {
       body: {
         bg: "brand.alabaster"
+      },
+      strong: {
+        fontWeight: "500"
       }
     }
   },
