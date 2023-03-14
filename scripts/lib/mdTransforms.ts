@@ -28,8 +28,28 @@ function videoBlock(block: MdBlock): MdBlock {
   }
 }
 
-function linkBlock(block: MdBlock, pageData: PageDatum[]): MdBlock {
-  return block;
+/**
+ * Relative Notion links follow the pattern `/<page id>`
+ * This function matches such links--but not external links--and replaces the page id
+ * with that page's corresponding slug.
+ * 
+ * String.replaceAll is used to account for instances where a paragraph has multiple
+ * relative links to the same page.
+ * 
+ * Note: DOES NOT SUPPORT NESTED RELATIVE LINKS
+ * 
+ * @param block 
+ * @param pageData 
+ * @returns 
+ */
+function linkSpanTransform(block: MdBlock, pageData: PageDatum[]): MdBlock {
+  const relativeLinkRegex = /(?<=(\]\(\/))([\w\d]+)(?=\))/gm;
+  const pageIdReplacer = (match: string): string => pageData.find((d) => d.pageId === match).slug;
+  return {
+    type: "paragraph",
+    parent: block.parent.replaceAll(relativeLinkRegex, pageIdReplacer),
+    children: [],
+  }
 }
 
 /**
@@ -38,7 +58,7 @@ function linkBlock(block: MdBlock, pageData: PageDatum[]): MdBlock {
  * 
  * @param blocks 
  */
-function poetryPost(blocks: MdBlock[]): MdBlock[] {
+function poetryPost(blocks: MdBlock[]): MdBlock[] { // fixme: clean up this code by flipping conditions
   // A stanza is defined as a series of paragraph blocks with non-empty parent fields, between 
   // paragraph blocks with an empty parent field
   return blocks.reduce((acc, block) => {
@@ -76,8 +96,10 @@ export function transformMarkdown({tags, blocks}: {
     switch (block.type) {
       case "video":
         return videoBlock(block);
-      case "link": // fixme: test
-        return linkBlock(block, pageData);
+      case "paragraph":
+        // Pipe more transformations here for paragraphs
+        const linkTransform = linkSpanTransform(block, pageData);
+        return linkTransform;
       default:
         return block;
     }

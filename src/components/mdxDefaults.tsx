@@ -1,6 +1,5 @@
-// import { Link as NextLink } from 'next/link'; // todo: add support for relative / absolute linking
+import Link from 'next/link'; 
 import { BoxProps, Heading, Link as ChakraLink, LinkProps as ChakraLinkProps, ListItem, ListItemProps, ListProps, OrderedList, TextProps, UnorderedList, Text, CodeProps, Code, AspectRatio } from '@chakra-ui/react';
-import { IframeHTMLAttributes } from 'react';
 import YouTube from 'react-youtube';
 import HighlightedCode from './HighlightedCode';
 // import Image from 'next/image';
@@ -15,8 +14,14 @@ const commonProps = {
   lineHeight: "1.5",
 
 }
-
-const a = (props: ChakraLinkProps) => <ChakraLink target={"_blank"} {...props}>{props.children}</ChakraLink>
+// fixme: add support for relative / absolute linking; test that style is consistent
+const a = (props: ChakraLinkProps) => {
+  if (props.href.startsWith("/")) {
+    return <Link target={"_blank"} href={props.href}>{props.children}</Link>
+  } else {
+    return <ChakraLink target={"_blank"} {...props}>{props.children}</ChakraLink>
+  }
+}
 
 const h1 = (props: BoxProps) => <Heading marginTop={"25px"} size={"2xl"} {...props}/>
 const h2 = (props: BoxProps) => <Heading marginTop={"25px"} size={"xl"} {...props}/>
@@ -30,11 +35,6 @@ const ul = (props: ListProps) => <UnorderedList {...commonProps} {...props}></Un
 const ol = (props: ListProps) => <OrderedList {...commonProps} {...props}></OrderedList>
 const li = (props: ListItemProps) => <ListItem mb={1} {...commonProps} {...props}>{props.children}</ListItem>
 
-// iframe issues: what if we render a youtube link as text, then do the aspect ratio transformation as a conditional in
-// the <p> cast?
-
-
-// fixme: why is it trying to render the iframe relative to local?
 const p = (props: TextProps) => {
   // iframe check
   if (props.children?.toString().includes("https://www.youtube-nocookie.com")) {

@@ -45,7 +45,7 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
         // {
         //   property: "Title",
         //   title: {
-        //     contains: "Wizard"
+        //     contains: "Ordinal"
         //   }
         // },
         // {

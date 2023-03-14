@@ -35,7 +35,8 @@ const theme = extendTheme({
       },
       "p strong": {
         fontWeight: "500"
-      }
+      },
+      // textDecoration: "underline" // fixme: figure out how to apply a link variant, or maybe a class since it's Next and Chakra...
     }
   },
   components: {

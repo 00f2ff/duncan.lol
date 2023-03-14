@@ -50,7 +50,6 @@ export async function exportNotionPosts() {
   for await (const {pageId, frontmatter, tags, slug} of pageData) {
     console.info(`Converting page slug ${slug}`);
     const mdblocks: MdBlock[] = await n2m.pageToMarkdown(pageId);
-    console.log(mdblocks);
     const transformedMdblocks: MdBlock[] = transformMarkdown({blocks: mdblocks, tags}, pageData);
     const mdString = n2m.toMarkdownString(transformedMdblocks);
     const fixedString = replaceWeirdCharacters(mdString);
