@@ -2,7 +2,7 @@ import { frontmatterBlobToString, getPublishedPosts, n2m, pagePropertiesToFrontm
 import { promises as fs } from "fs";
 import { replaceWeirdCharacters, uuidToPageId } from "./util/string";
 import { MdBlock } from "notion-to-md/build/types";
-import { transformMarkdown } from "./lib/mdTransforms";
+import { transformMarkdown, PageDatum } from "./lib/mdTransforms";
 
 // todo: replace with top-level await
 export async function base(script: () => Promise<void>) {
@@ -30,13 +30,6 @@ export async function base(script: () => Promise<void>) {
 
 const PAGES_PATH = "../src/content/posts/";
 
-type PageDatum = {
-  pageId: string;
-  frontmatter: string;
-  tags: string;
-  slug: string;
-}
-
 export async function exportNotionPosts() {
   const posts = await getPublishedPosts(); 
 
@@ -57,7 +50,8 @@ export async function exportNotionPosts() {
   for await (const {pageId, frontmatter, tags, slug} of pageData) {
     console.info(`Converting page slug ${slug}`);
     const mdblocks: MdBlock[] = await n2m.pageToMarkdown(pageId);
-    const transformedMdblocks: MdBlock[] = transformMarkdown(tags, mdblocks);
+    console.log(mdblocks);
+    const transformedMdblocks: MdBlock[] = transformMarkdown({blocks: mdblocks, tags}, pageData);
     const mdString = n2m.toMarkdownString(transformedMdblocks);
     const fixedString = replaceWeirdCharacters(mdString);
   

@@ -1,5 +1,12 @@
 import { MdBlock } from "notion-to-md/build/types";
 
+export type PageDatum = {
+  pageId: string;
+  frontmatter: string;
+  tags: string;
+  slug: string;
+}
+
 /**
  * Convert url to privacy-focused, iframe-compatible form, e.g.
  * https://www.youtube.com/watch?v=7X4-jozFVFo&t=606s --> https://www.youtube-nocookie.com/embed/7X4-jozFVFo?start=606
@@ -19,6 +26,10 @@ function videoBlock(block: MdBlock): MdBlock {
     parent: `https://www.youtube-nocookie.com/embed/${videoId}?start=${seconds}`,
     children: [],
   }
+}
+
+function linkBlock(block: MdBlock, pageData: PageDatum[]): MdBlock {
+  return block;
 }
 
 /**
@@ -57,11 +68,16 @@ function poetryPost(blocks: MdBlock[]): MdBlock[] {
  * @param blocks 
  * @returns 
  */
-export function transformMarkdown(tags: string, blocks: MdBlock[]): MdBlock[] {
+export function transformMarkdown({tags, blocks}: {
+  tags: string,
+  blocks: MdBlock[]
+}, pageData: PageDatum[]): MdBlock[] {
   const individualTransforms = blocks.map((block) => {
     switch (block.type) {
       case "video":
         return videoBlock(block);
+      case "link": // fixme: test
+        return linkBlock(block, pageData);
       default:
         return block;
     }
