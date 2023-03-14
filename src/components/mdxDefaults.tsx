@@ -18,9 +18,9 @@ const commonProps = {
 
 const a = (props: ChakraLinkProps) => <ChakraLink target={"_blank"} {...props}>{props.children}</ChakraLink>
 
-const h1 = (props: BoxProps) => <Heading size={"2xl"} {...props}/>
-const h2 = (props: BoxProps) => <Heading size={"xl"} {...props}/>
-const h3 = (props: BoxProps) => <Heading size={"lg"} {...props}/>
+const h1 = (props: BoxProps) => <Heading marginTop={"25px"} size={"2xl"} {...props}/>
+const h2 = (props: BoxProps) => <Heading marginTop={"25px"} size={"xl"} {...props}/>
+const h3 = (props: BoxProps) => <Heading marginTop={"25px"} size={"lg"} {...props}/>
 
 // Notion doesn't currently support headings below level 3, so this shouldn't matter
 const h4 = (props: BoxProps) => <Heading size={"md"} {...props}/>

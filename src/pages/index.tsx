@@ -37,7 +37,7 @@ export default function Home({ posts }: Props ) {
   // const theme = useTheme<ThemeTypings>() // todo: figure out how to get typed styles
   return (
     <Layout>
-      <Heading color={"brand.blue"} size="2xl">Duncan McIsaac</Heading>
+      <Heading color={"brand.spaceCadet"} size="2xl">Duncan McIsaac</Heading>
       {posts && posts.map((post) => PostBlockDynamic(post))}
     </Layout>
   );

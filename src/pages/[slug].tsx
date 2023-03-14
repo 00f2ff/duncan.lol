@@ -3,7 +3,7 @@ import Layout from "components/Layout";
 import { getSlugsForDirectory, NextMDXRemoteSerializeResult, serializeMDX } from "util/files";
 import { Heading, Stack } from '@chakra-ui/react';
 import GoBack from 'components/GoBack';
-import Metadata from 'components/Metadata';
+import PostMetadata from 'components/Metadata';
 import { settle } from '@00f2ff/result';
 
 
@@ -21,7 +21,7 @@ export default function Post({ post }: Props) {
       <GoBack path="/" text="home" />
       <Stack direction="column" spacing={2}>
         <Heading size="2xl">{frontmatter.title}</Heading>
-        <Metadata {...frontmatter} />
+        <PostMetadata {...frontmatter} />
       </Stack>
       {/* This renders the post minus the frontmatter */}
       <MDXRemote {...rest} />

@@ -2,7 +2,7 @@ import { Heading, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
 import { FrontmatterSchema } from "util/files";
 // import theme from "style/theme";
 import NextLink from 'next/link';
-import Metadata from "./Metadata";
+import PostMetadata from "./Metadata";
 
 export default function PostBlock(props: FrontmatterSchema) {
   return (
@@ -12,7 +12,7 @@ export default function PostBlock(props: FrontmatterSchema) {
     >
       <LinkOverlay as={NextLink} href={props.path} passHref>
         <Heading size="md" mb="2">{props.title}</Heading>
-        <Metadata {...props} />
+        <PostMetadata {...props} />
         {
           props.excerpt && props.excerpt !== "undefined" && <Text fontSize="md">{props.excerpt}</Text>
         }

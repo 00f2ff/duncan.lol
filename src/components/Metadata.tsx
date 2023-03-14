@@ -6,7 +6,7 @@ import Pill from "./Pill";
 // Flags
 const SHOW_TAGS: boolean = true;
 
-export default function Metadata(props: FrontmatterSchema) {
+export default function PostMetadata(props: FrontmatterSchema) {
   const dateString = publicationDate(props);
 
   const pills = props.tags.map((tag) => Pill({keyPrefix: props.title, tagName: tag}));

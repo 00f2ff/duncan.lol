@@ -24,7 +24,7 @@ export default function Layout({ children, verticalSpacing }: Props) {
           marginBottom={"50px"}
         >
           {children}
-          <Box>
+          <Box mt="50px">
             <Text>&copy; {year} Duncan McIsaac</Text>
           </Box>
         </SimpleGrid>

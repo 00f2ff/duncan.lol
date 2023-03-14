@@ -10,8 +10,9 @@ const theme = extendTheme({
     brand: {
       alabaster: "#ebe8e2",
       isabelline: "#f6f5f1",
-      blue: "#3E498C",
+      duncan: "#00F2FF",
       delftBlue: "#3c3769",
+      spaceCadet: "#262343",
       ultraViolet: "#56609d",
       lightCoral: "#e07269",
       celadon: "#76d8aa",
@@ -32,13 +33,18 @@ const theme = extendTheme({
       body: {
         bg: "brand.alabaster"
       },
-      strong: {
+      "p strong": {
         fontWeight: "500"
       }
     }
   },
   components: {
     Pill,
+    Heading: {
+      baseStyle: {
+        fontWeight: "600"
+      }
+    }
   }
 });
 
