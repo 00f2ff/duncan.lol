@@ -1,10 +1,12 @@
-import { Box, Center, Heading, SimpleGrid, Text} from "@chakra-ui/react";
+import { Box, Center, Heading, SimpleGrid, Stack, Text, VStack} from "@chakra-ui/react";
 import Layout from "components/Layout";
 // import { ThemeTypings } from '@chakra-ui/react'
 import { FrontmatterSchema, getSlugsForDirectory, serializeMDX } from "util/files";
 import dynamic from "next/dynamic";
 import PostBlock from "components/PostBlock";
 import dayjs from "dayjs";
+import CaptionBar from "components/CaptionBar";
+import Socials from "components/Socials";
 
 const PostBlockDynamic = dynamic(() => import("components/PostBlock"), { ssr: false }) as typeof PostBlock;
 
@@ -37,7 +39,12 @@ export default function Home({ posts }: Props ) {
   // const theme = useTheme<ThemeTypings>() // todo: figure out how to get typed styles
   return (
     <Layout>
-      <Heading color={"brand.spaceCadet"} size="2xl">Duncan McIsaac</Heading>
+      <Stack direction="column" spacing={2}>
+        <Heading color={"brand.spaceCadet"} size="2xl">Duncan McIsaac</Heading>
+        <CaptionBar />
+        <Socials />
+      </Stack>
+     
       {posts && posts.map((post) => PostBlockDynamic(post))}
     </Layout>
   );

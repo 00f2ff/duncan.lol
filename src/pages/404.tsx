@@ -13,7 +13,7 @@ const Custom404: NextPage = () => {
       </Head>
       <Layout>
         <GoBack path="/" text="home" />
-        <Heading size="2xl"><Link href="/">You know I can't eat your ghost chips</Link></Heading>
+        <Heading size="2xl"><Link target="_blank" href="https://www.youtube.com/watch?v=CtWirGxV7Q8">You know I can't grab your ghost chips</Link></Heading>
       </Layout>
     </>
   )
