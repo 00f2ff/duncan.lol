@@ -13,7 +13,7 @@ export default function PostMetadata(props: FrontmatterSchema) {
 
   return (
     <Flex mb="1">
-      <Text fontSize="md">{dateString} </Text>
+      <Text fontSize="lg">{dateString} </Text>
       {
         SHOW_TAGS && <Center>{pills}</Center>
       }

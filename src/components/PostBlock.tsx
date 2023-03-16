@@ -11,10 +11,10 @@ export default function PostBlock(props: FrontmatterSchema) {
       textAlign="left"
     >
       <LinkOverlay as={NextLink} href={props.path} passHref>
-        <Heading size="md" mb="2">{props.title}</Heading>
+        <Heading size="lg" mb="2">{props.title}</Heading>
         <PostMetadata {...props} />
         {
-          props.excerpt && props.excerpt !== "undefined" && <Text fontSize="md">{props.excerpt}</Text>
+          props.excerpt && props.excerpt !== "undefined" && <Text fontSize="lg">{props.excerpt}</Text>
         }
       </LinkOverlay>
     </LinkBox>

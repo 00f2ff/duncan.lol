@@ -31,12 +31,13 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "brand.alabaster"
+        bg: "brand.alabaster",
+        fontSize: "xl",
+        lineHeight: "1.5",
       },
       "p strong": {
         fontWeight: "500"
       },
-      // textDecoration: "underline" // fixme: figure out how to apply a link variant, or maybe a class since it's Next and Chakra...
     }
   },
   components: {
