@@ -38,6 +38,11 @@ const theme = extendTheme({
       "p strong": {
         fontWeight: "500"
       },
+      blockquote: {
+        fontFamily: `'hoss-sharp', sans-serif`,
+        fontStyle: "italic",
+
+      }
     }
   },
   components: {
