@@ -11,7 +11,7 @@ const Custom404: NextPage = () => {
       <Head>
         <title>Page not found</title>
       </Head>
-      <Layout>
+      <Layout key="404">
         <GoBack path="/" text="home" />
         <Heading size="2xl"><Link target="_blank" href="https://www.youtube.com/watch?v=CtWirGxV7Q8">You know I can't grab your ghost chips</Link></Heading>
       </Layout>

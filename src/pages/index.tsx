@@ -38,7 +38,7 @@ export default function Home({ posts }: Props ) {
   const year = dayjs().format("YYYY");
   // const theme = useTheme<ThemeTypings>() // todo: figure out how to get typed styles
   return (
-    <Layout>
+    <Layout key="index">
       <Stack direction="column" spacing={2}>
         <Heading color={"brand.spaceCadet"} size="2xl">Duncan McIsaac</Heading>
         <CaptionBar />

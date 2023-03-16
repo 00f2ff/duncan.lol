@@ -17,7 +17,7 @@ export default function Post({ post }: Props) {
     ...rest
   } = post;
   return (
-    <Layout verticalSpacing={5}>
+    <Layout verticalSpacing={5} key={frontmatter.path}>
       <GoBack path="/" text="home" />
       <Stack direction="column" spacing={2}>
         <Heading size="2xl">{frontmatter.title}</Heading>
