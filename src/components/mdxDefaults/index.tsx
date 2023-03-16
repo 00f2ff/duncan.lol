@@ -1,0 +1,23 @@
+import code from './code';
+import a from './a';
+import { h1, h2, h3, h4, h5 } from './headings';
+import { ul, ol, li } from './lists';
+import p from './p';
+
+// see https://github.com/knowankit/knowankit.com/blob/develop/components/mdx/index.tsx
+
+const components = {
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  ul,
+  ol,
+  li,
+  p,
+  code,
+};
+
+export default components;

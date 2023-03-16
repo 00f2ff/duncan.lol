@@ -5,7 +5,7 @@ const LANGUAGE_DEFAULT = "typescript";
 // fixme: support fenced code vs inline code blocks
 // fixme: add syntax highlighting, ideally compile-time
 
-export default function HighlightedCode(props: CodeProps) {
+export default function code(props: CodeProps) {
   return (
     <Code 
       // width="100%" 
