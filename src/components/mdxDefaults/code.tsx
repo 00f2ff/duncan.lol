@@ -1,18 +1,15 @@
 import { Code, CodeProps } from "@chakra-ui/react";
+import dynamic from 'next/dynamic'
 
-const LANGUAGE_DEFAULT = "typescript";
-
-// fixme: support fenced code vs inline code blocks
-// fixme: add syntax highlighting, ideally compile-time
+const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'), {
+  ssr: false,
+})
 
 export default function code(props: CodeProps) {
-  return (
-    <Code 
-      // width="100%" 
-      // overflowX="scroll" 
-      {...props}
-    >
-      {props.children}
-    </Code>
-  );
+  console.log(props);
+  const languageMatch = props.className?.match(/language-(\w+)/);
+
+  return languageMatch 
+    ? <SyntaxHighlighter language={languageMatch[1]}>{props.children.toString()}</SyntaxHighlighter>
+    : <Code>{props.children}</Code>
 }

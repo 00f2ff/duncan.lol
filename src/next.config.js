@@ -22,6 +22,6 @@ module.exports = withMDX({
   // Used to transpile ESM modules
   transpilePackages: [ 
     // "rehype-highlight"
-    "@00f2ff/result"
+    "@00f2ff/result",
   ]
 }) 

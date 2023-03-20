@@ -41,7 +41,12 @@ const theme = extendTheme({
       blockquote: {
         fontFamily: `'hoss-sharp', sans-serif`,
         fontStyle: "italic",
-
+      },
+      pre: {
+        fontFamily: `'droid-sans-mono', sans-serif`,
+      },
+      code: {
+        fontFamily: `'droid-sans-mono', sans-serif`,
       }
     }
   },
