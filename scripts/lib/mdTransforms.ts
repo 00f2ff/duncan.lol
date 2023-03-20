@@ -52,6 +52,15 @@ function linkSpanTransform(block: MdBlock, pageData: PageDatum[]): MdBlock {
   }
 }
 
+function codeBlock(block: MdBlock): MdBlock {
+  const TAB_WIDTH = 2;
+  return {
+    type: "code",
+    parent: block.parent.replaceAll("\t", " ".repeat(TAB_WIDTH)),
+    children: [],
+  }
+}
+
 /**
  * n2m doesn't differentiate between paragraph breaks and line breaks, 
  * so we need to reduce paragraph blocks into stanzas
@@ -100,6 +109,8 @@ export function transformMarkdown({tags, blocks}: {
         // Pipe more transformations here for paragraphs
         const linkTransform = linkSpanTransform(block, pageData);
         return linkTransform;
+      case "code":
+        return codeBlock(block);
       default:
         return block;
     }

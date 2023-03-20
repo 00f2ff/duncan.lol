@@ -44,9 +44,11 @@ const theme = extendTheme({
       },
       pre: {
         fontFamily: `'droid-sans-mono', sans-serif`,
+        fontSize: "md",
       },
       code: {
         fontFamily: `'droid-sans-mono', sans-serif`,
+        fontSize: "md",
       }
     }
   },
@@ -55,6 +57,12 @@ const theme = extendTheme({
     Heading: {
       baseStyle: {
         fontWeight: "600"
+      }
+    },
+    Code: {
+      baseStyle: {
+        fontFamily: `'droid-sans-mono', sans-serif`,
+        fontSize: "md",
       }
     }
   }
