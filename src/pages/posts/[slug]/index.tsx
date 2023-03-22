@@ -7,6 +7,13 @@ import PostMetadata from 'components/Metadata';
 import { settle } from '@00f2ff/result';
 
 
+/**
+ * debug thoughts
+ * 
+ * - what if it's that the content/posts directory construct is not propagating to pages?
+ *   - there is a difference when loading from / vs refreshing the page
+ */
+
 interface Props {
   post: NextMDXRemoteSerializeResult;
 }
