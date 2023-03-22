@@ -3,7 +3,7 @@ import path from "path";
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-export type ContentDirectory = "posts"; // make it a union type
+// export type ContentDirectory = "posts"; // make it a union type
 
 export type FrontmatterSchema = {
   title: string;
@@ -19,7 +19,13 @@ export type NextMDXRemoteSerializeResult = Omit<MDXRemoteSerializeResult, "front
   frontmatter?: FrontmatterSchema;
 }
 
-export async function getSlugsForDirectory(contentDirectory: ContentDirectory): Promise<string[]> {
+/**
+ * May also return directories
+ * 
+ * @param contentDirectory 
+ * @returns 
+ */
+export async function getFilenamesForDirectory(contentDirectory: string): Promise<string[]> {
   const directory = path.join(process.cwd(), `content/${contentDirectory}`);
   const filenames = await fs.readdir(directory);
   return filenames.map((filename) => filename.replace(/\.mdx/, ""));
@@ -36,7 +42,7 @@ function desanitizeHTML(s: string): string {
   return s.replace(/(&#58;)/, ":")
 }
 
-export function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemoteSerializeResult {
+export function convert(serializedResult: MDXRemoteSerializeResult, contentDirectory: string, filename: string): NextMDXRemoteSerializeResult {
   const {
     frontmatter,
     ...rest
@@ -73,7 +79,8 @@ export function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemo
   const nextFrontmatter: FrontmatterSchema = {
     title: desanitizeHTML(frontmatter["Title"]),
     excerpt: frontmatter["Excerpt"] ? desanitizeHTML(frontmatter["Excerpt"]) : "",
-    path: `/${frontmatter["Slug"]}`,
+    path: `/${contentDirectory}`,
+    // path: `/${frontmatter["Slug"]}`, // todo: clean this up because it's messy
     tags: frontmatter["Tags"].toString().split(","),
     status: frontmatter["Status"],
     publishedOn: frontmatter["Published On"].toString(),
@@ -92,7 +99,7 @@ export function convert(serializedResult: MDXRemoteSerializeResult): NextMDXRemo
  * @param filename 
  * @returns 
  */
-export async function serializeMDX(filename: string, contentDirectory: ContentDirectory): Promise<NextMDXRemoteSerializeResult> {
+export async function serializeMDX(filename: string, contentDirectory: string): Promise<NextMDXRemoteSerializeResult> {
   const filenameSansSuffix = filename.replace(".mdx", "");
   const directory = path.join(process.cwd(), `content/${contentDirectory}`);
   const absolutePath = path.join(directory, `${filenameSansSuffix}.mdx`);
@@ -102,5 +109,5 @@ export async function serializeMDX(filename: string, contentDirectory: ContentDi
     parseFrontmatter: true
   });
 
-  return convert(rawSerialized);  
+  return convert(rawSerialized, contentDirectory, filename);  
 }

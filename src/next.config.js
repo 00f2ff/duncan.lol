@@ -23,5 +23,6 @@ module.exports = withMDX({
   transpilePackages: [ 
     // "rehype-highlight"
     "@00f2ff/result",
-  ]
+  ],
+  trailingSlash: true, // todo: determine if I need to keep this
 }) 

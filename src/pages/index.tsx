@@ -1,7 +1,7 @@
 import { Box, Center, Heading, SimpleGrid, Stack, Text, VStack} from "@chakra-ui/react";
 import Layout from "components/Layout";
 // import { ThemeTypings } from '@chakra-ui/react'
-import { FrontmatterSchema, getSlugsForDirectory, serializeMDX } from "util/files";
+import { FrontmatterSchema, getFilenamesForDirectory, serializeMDX } from "util/files";
 import dynamic from "next/dynamic";
 import PostBlock from "components/PostBlock";
 import dayjs from "dayjs";
@@ -15,13 +15,17 @@ function sortByDateDescending(a: FrontmatterSchema, b: FrontmatterSchema): numbe
 }
 
 export async function getStaticProps() {
-  const slugs = await getSlugsForDirectory("posts");
+  const filenames = await getFilenamesForDirectory("posts");
+  // In the case of content/posts, filenames are directories
+  const commonMdxFilename = "index";
   const mdxResults = await Promise.all(
-    slugs.map((slug) => serializeMDX(slug, "posts"))
+    filenames.map((filename) => serializeMDX(commonMdxFilename, `posts/${filename}`))
   );
   const posts = mdxResults.map((result) => {
     return result.frontmatter
   }).sort(sortByDateDescending);
+
+  console.log(posts[0]);
 
   return {
     props: {

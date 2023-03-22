@@ -88,10 +88,12 @@ function codeBlock(block: MdBlock): MdBlock {
  * @param index Used to name image
  */
 async function imageBlock(block: MdBlock, index: number): Promise<[MdBlock, ImageBuffer]> {
-  const httpsLinkRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
-  const url = block.parent.match(httpsLinkRegex)[1];
-  const fileTypeRegex = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
-  const fileType = url.match(fileTypeRegex)[1];
+  // const httpsLinkRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
+  // const httpsLinkRegex = /(?<=(\]\(\/))(.+)(?=\))/gm;
+  // todo: clean up regex stuff a bit. it's kinda wonky and way to complex so I'm just using simple string search
+  const url = block.parent.split("(")[1].split(")")[0]
+  const fileTypeRegex = /\.(gif|jpe?g|tiff?|png|webp|bmp)/i;
+  const fileType = url.match(fileTypeRegex)[0];
 
   // Download image
   const response: Response = await fetch(url);
