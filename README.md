@@ -12,4 +12,4 @@ I could have built a more reactive application that would keep the site at conte
 
 todo:
 - [] Add style documentation (chakra, adobe, etc)
-- [] Add concurrent package.json scripting library so I can run checks from the monorepo's package.json commands
+- [] Better monorepo package/tsconfig structure
