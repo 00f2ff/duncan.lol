@@ -8,4 +8,8 @@ My primary requirement this time around was to have an excellent writing and cat
 
 The website itself uses Next.js, React and TypeScript, and is deployed using Vercel. It uses [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote) and [mdx-js](https://mdxjs.com/) to convert static `.mdx` files into JSX. The site uses static site generation for speediness. The other goal of using `.mdx` files is so I can insert visualization or interactivity into an individual post without needing to create a custom page.
 
-I could have built a more reactive application that would keep the site at content parity with my Notion database, but that felt too over-engineered for the frequency at which I write/update content, so instead I use `make notion`, `npm run dev`, `tsc` and `git push origin head` which triggers a production build and deployment in Vercel. I should add [`husky`](https://www.npmjs.com/package/husky) for pre-commit hooks.
+I could have built a more reactive application that would keep the site at content parity with my Notion database, but that felt too over-engineered for the frequency at which I write/update content, so instead I use `make notion`, `npm run dev`, `tsc` and `git push origin head` which triggers a production build and deployment in Vercel. 
+
+todo:
+- [] Add style documentation (chakra, adobe, etc)
+- [] Add concurrent package.json scripting library so I can run checks from the monorepo's package.json commands
