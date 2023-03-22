@@ -30,6 +30,7 @@ export async function base(script: () => Promise<void>) {
 
 const PAGES_PATH = "../src/content/posts/";
 
+// fixme: add some error handling
 export async function exportNotionPosts() {
   const posts = await getPublishedPosts(); 
 
@@ -50,11 +51,16 @@ export async function exportNotionPosts() {
   for await (const {pageId, frontmatter, tags, slug} of pageData) {
     console.info(`Converting page slug ${slug}`);
     const mdblocks: MdBlock[] = await n2m.pageToMarkdown(pageId);
-    const transformedMdblocks: MdBlock[] = transformMarkdown({blocks: mdblocks, tags}, pageData);
+    const { blocks: transformedMdblocks, assets } = await transformMarkdown({blocks: mdblocks, tags}, pageData);
     const mdString = n2m.toMarkdownString(transformedMdblocks);
     const fixedString = replaceWeirdCharacters(mdString);
   
-    await fs.writeFile(`${PAGES_PATH}${slug}.mdx`, `${frontmatter}${fixedString}`); 
+    await fs.writeFile(`${PAGES_PATH}/${slug}/index.mdx`, `${frontmatter}${fixedString}`); 
+    console.info("Wrote mdx file");
+    for await (const { filename, buffer } of assets) {
+      await fs.writeFile(`${PAGES_PATH}/${slug}/${filename}`, buffer);
+      console.info(`Wrote image buffer to '${filename}'`);
+    }
   }
 }
 

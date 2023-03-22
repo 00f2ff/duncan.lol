@@ -42,12 +42,12 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
           }
         }, 
         // Uncomment for testing specific post transformations
-        // {
-        //   property: "Title",
-        //   title: {
-        //     contains: "Ordinal"
-        //   }
-        // },
+        {
+          property: "Title",
+          title: {
+            contains: "console"
+          }
+        },
         // {
         //   property: "Tags",
         //   multi_select: {

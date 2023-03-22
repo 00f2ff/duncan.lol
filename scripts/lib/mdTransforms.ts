@@ -7,6 +7,16 @@ export type PageDatum = {
   slug: string;
 }
 
+export type ImageBuffer = {
+  buffer: Buffer;
+  filename: string;
+}
+
+export type QualifiedPage = {
+  blocks: MdBlock[];
+  assets: ImageBuffer[];
+}
+
 /**
  * Convert url to privacy-focused, iframe-compatible form, e.g.
  * https://www.youtube.com/watch?v=7X4-jozFVFo&t=606s --> https://www.youtube-nocookie.com/embed/7X4-jozFVFo?start=606
@@ -52,6 +62,12 @@ function linkSpanTransform(block: MdBlock, pageData: PageDatum[]): MdBlock {
   }
 }
 
+/**
+ * Replace tabs with spaces for code blocks
+ * 
+ * @param block 
+ * @returns 
+ */
 function codeBlock(block: MdBlock): MdBlock {
   const TAB_WIDTH = 2;
   return {
@@ -59,6 +75,42 @@ function codeBlock(block: MdBlock): MdBlock {
     parent: block.parent.replaceAll("\t", " ".repeat(TAB_WIDTH)),
     children: [],
   }
+}
+
+/**
+ * Downloads an image, converts it to a buffer, and rewrites the block's image URL
+ * to a relative link. Assumes that image file will be colocated with the .mdx file
+ * 
+ * https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
+ * https://stackoverflow.com/questions/10473185/regex-javascript-image-file-extension
+ * 
+ * @param block 
+ * @param index Used to name image
+ */
+async function imageBlock(block: MdBlock, index: number): Promise<[MdBlock, ImageBuffer]> {
+  const httpsLinkRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
+  const url = block.parent.match(httpsLinkRegex)[1];
+  const fileTypeRegex = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
+  const fileType = url.match(fileTypeRegex)[1];
+
+  // Download image
+  const response: Response = await fetch(url);
+  const blob: Blob = await response.blob();
+  const arrayBuffer: ArrayBuffer = await blob.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+  const filename = `block${index}${fileType}`;
+  const imageBuffer: ImageBuffer = {
+    buffer,
+    filename,
+  };
+
+  const relativeLinkBlock: MdBlock = {
+    type: "image",
+    parent: `![](${filename})`,
+    children: [],
+  }
+
+  return [relativeLinkBlock, imageBuffer];
 }
 
 /**
@@ -93,32 +145,59 @@ function poetryPost(blocks: MdBlock[]): MdBlock[] { // fixme: clean up this code
 /**
  * Markdown block transformation pipeline
  * 
+ * todo: find if block types are defined in a .d.ts file, or make an enum
+ * 
  * @param frontmatterBlob 
  * @param blocks 
  * @returns 
  */
-export function transformMarkdown({tags, blocks}: {
+export async function transformMarkdown({tags, blocks}: {
   tags: string,
   blocks: MdBlock[]
-}, pageData: PageDatum[]): MdBlock[] {
-  const individualTransforms = blocks.map((block) => {
+}, pageData: PageDatum[]): Promise<QualifiedPage> {
+  const qualifiedPageWithBlockTransforms: QualifiedPage = await blocks.reduce(async (accPromise, block, index) => {
+    const acc = await accPromise;
     switch (block.type) {
       case "video":
-        return videoBlock(block);
+        return {
+          blocks: [...acc.blocks, videoBlock(block)],
+          assets: acc.assets,
+        };
       case "paragraph":
         // Pipe more transformations here for paragraphs
         const linkTransform = linkSpanTransform(block, pageData);
-        return linkTransform;
+        return {
+          blocks: [...acc.blocks, linkTransform],
+          assets: acc.assets,
+        };
       case "code":
-        return codeBlock(block);
+        return {
+          blocks: [...acc.blocks, codeBlock(block)],
+          assets: acc.assets,
+        };
+      case "image":
+        const [relativeLinkBlock, imageBuffer] = await imageBlock(block, index); 
+        return {
+          blocks: [...acc.blocks, relativeLinkBlock],
+          assets: [...acc.assets, imageBuffer],
+        };
       default:
-        return block;
+        return {
+          blocks: [...acc.blocks, block],
+          assets: acc.assets,
+        };
     }
-  });
+  }, Promise.resolve({
+    blocks: Array<MdBlock>(),
+    assets: Array<ImageBuffer>(),
+  }));
 
   if (tags.includes("Poetry")) {
-    return poetryPost(individualTransforms);
+    return {
+      blocks: poetryPost(qualifiedPageWithBlockTransforms.blocks),
+      ...qualifiedPageWithBlockTransforms
+    }
   } else {
-    return individualTransforms;
+    return qualifiedPageWithBlockTransforms;
   }
 }
