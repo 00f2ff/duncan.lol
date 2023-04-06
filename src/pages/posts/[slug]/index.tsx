@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function Post({ post }: Props) { 
-  console.log(post)
+  console.log("POST: ", post)
   const {
     frontmatter,
     ...rest
@@ -62,19 +62,16 @@ export default function Post({ post }: Props) {
 
 export async function getStaticPaths() {
   const filenames = await getFilenamesForDirectory("posts");
+  console.log(filenames)
   // In the case of content/posts, filenames are directories
   const paths = filenames.map((filename) => {
     return {
       params: {
-        slug: ["posts", filename]
+        slug: filename
+        // slug: ["posts", filename]
       }
     }
   });
-
-  console.log("slug page ####### PATHS", JSON.stringify({
-    paths,
-    fallback: false,
-  }))
 
   return {
     paths,
@@ -86,7 +83,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   console.log("##### PROPS params")
   console.log(params)
-  const postResult = await settle(serializeMDX(params.slug, "posts"));
+  const postResult = await settle(serializeMDX("index", `posts/${params.slug}`));
+  console.log(postResult)
   if (postResult.isFulfilled()) {
     return {
       props: {

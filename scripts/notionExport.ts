@@ -29,6 +29,7 @@ export async function base(script: () => Promise<void>) {
 }
 
 const PAGES_PATH = "../src/content/posts";
+const PUBLIC_PATH = "../src/public/files";
 
 // fixme: add some error handling
 export async function exportNotionPosts() {
@@ -55,13 +56,13 @@ export async function exportNotionPosts() {
     const mdString = n2m.toMarkdownString(transformedMdblocks);
     const fixedString = replaceWeirdCharacters(mdString);
   
-    const dir = `${PAGES_PATH}/${slug}`;
-    await fs.mkdir(dir, { recursive: true });
-    await fs.writeFile(`${dir}/index.mdx`, `${frontmatter}${fixedString}`); 
+    const mdxDir = `${PAGES_PATH}/${slug}`;
+    await fs.mkdir(mdxDir, { recursive: true });
+    await fs.writeFile(`${mdxDir}/index.mdx`, `${frontmatter}${fixedString}`); 
     console.info("Wrote mdx file");
     for await (const { filename, buffer } of assets) {
-      await fs.writeFile(`${dir}/${filename}`, buffer);
-      console.info(`Wrote image buffer to '${filename}'`);
+      await fs.writeFile(`${PUBLIC_PATH}/${slug}-${filename}`, buffer);
+      console.info(`Wrote image buffer to '${slug}-${filename}'`);
     }
   }
 }
