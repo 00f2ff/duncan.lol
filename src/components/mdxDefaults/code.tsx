@@ -6,7 +6,6 @@ const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'), {
 })
 
 export default function code(props: CodeProps) {
-  console.log(props);
   const languageMatch = props.className?.match(/language-(\w+)/);
 
   return languageMatch 

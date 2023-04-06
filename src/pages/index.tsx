@@ -16,16 +16,12 @@ function sortByDateDescending(a: FrontmatterSchema, b: FrontmatterSchema): numbe
 
 export async function getStaticProps() {
   const filenames = await getFilenamesForDirectory("posts");
-  // In the case of content/posts, filenames are directories
-  const commonMdxFilename = "index";
   const mdxResults = await Promise.all(
-    filenames.map((filename) => serializeMDX(commonMdxFilename, `posts/${filename}`))
+    filenames.map((filename) => serializeMDX(filename, `posts`))
   );
   const posts = mdxResults.map((result) => {
     return result.frontmatter
   }).sort(sortByDateDescending);
-
-  console.log(posts[0]);
 
   return {
     props: {
@@ -38,6 +34,7 @@ type Props = {
   posts: FrontmatterSchema[]
 }
 
+// todo: figure out a way to make React understand that the key gets passed into the dynamic import in that component
 export default function Home({ posts }: Props ) {
   const year = dayjs().format("YYYY");
   // const theme = useTheme<ThemeTypings>() // todo: figure out how to get typed styles

@@ -56,9 +56,9 @@ export async function exportNotionPosts() {
     const mdString = n2m.toMarkdownString(transformedMdblocks);
     const fixedString = replaceWeirdCharacters(mdString);
   
-    const mdxDir = `${PAGES_PATH}/${slug}`;
+    const mdxDir = `${PAGES_PATH}`;
     await fs.mkdir(mdxDir, { recursive: true });
-    await fs.writeFile(`${mdxDir}/index.mdx`, `${frontmatter}${fixedString}`); 
+    await fs.writeFile(`${mdxDir}/${slug}.mdx`, `${frontmatter}${fixedString}`); 
     console.info("Wrote mdx file");
     for await (const { filename, buffer } of assets) {
       await fs.writeFile(`${PUBLIC_PATH}/${slug}-${filename}`, buffer);
