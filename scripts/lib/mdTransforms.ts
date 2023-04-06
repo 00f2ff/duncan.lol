@@ -17,6 +17,8 @@ export type QualifiedPage = {
   assets: ImageBuffer[];
 }
 
+const NEXT_ASSET_FOLDER = "/files";
+
 /**
  * Convert url to privacy-focused, iframe-compatible form, e.g.
  * https://www.youtube.com/watch?v=7X4-jozFVFo&t=606s --> https://www.youtube-nocookie.com/embed/7X4-jozFVFo?start=606
@@ -87,7 +89,7 @@ function codeBlock(block: MdBlock): MdBlock {
  * @param block 
  * @param index Used to name image
  */
-async function imageBlock(block: MdBlock, index: number): Promise<[MdBlock, ImageBuffer]> {
+async function imageBlock(block: MdBlock, index: number, slug: string): Promise<[MdBlock, ImageBuffer]> {
   // const httpsLinkRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
   // const httpsLinkRegex = /(?<=(\]\(\/))(.+)(?=\))/gm;
   // todo: clean up regex stuff a bit. it's kinda wonky and way to complex so I'm just using simple string search
@@ -100,7 +102,7 @@ async function imageBlock(block: MdBlock, index: number): Promise<[MdBlock, Imag
   const blob: Blob = await response.blob();
   const arrayBuffer: ArrayBuffer = await blob.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
-  const filename = `block${index}${fileType}`;
+  const filename = `${slug}-block${index}${fileType}`;
   const imageBuffer: ImageBuffer = {
     buffer,
     filename,
@@ -108,7 +110,7 @@ async function imageBlock(block: MdBlock, index: number): Promise<[MdBlock, Imag
 
   const relativeLinkBlock: MdBlock = {
     type: "image",
-    parent: `![](${filename})`,
+    parent: `![](${NEXT_ASSET_FOLDER}/${filename})`,
     children: [],
   }
 
@@ -153,7 +155,8 @@ function poetryPost(blocks: MdBlock[]): MdBlock[] { // fixme: clean up this code
  * @param blocks 
  * @returns 
  */
-export async function transformMarkdown({tags, blocks}: {
+export async function transformMarkdown({ slug, tags, blocks }: {
+  slug: string,
   tags: string,
   blocks: MdBlock[]
 }, pageData: PageDatum[]): Promise<QualifiedPage> {
@@ -178,7 +181,7 @@ export async function transformMarkdown({tags, blocks}: {
           assets: acc.assets,
         };
       case "image":
-        const [relativeLinkBlock, imageBuffer] = await imageBlock(block, index); 
+        const [relativeLinkBlock, imageBuffer] = await imageBlock(block, index, slug); 
         return {
           blocks: [...acc.blocks, relativeLinkBlock],
           assets: [...acc.assets, imageBuffer],
