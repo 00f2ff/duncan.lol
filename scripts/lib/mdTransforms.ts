@@ -18,6 +18,7 @@ export type QualifiedPage = {
 }
 
 const NEXT_ASSET_FOLDER = "/files";
+const CONTENT_DIRECTORY = "posts";
 
 /**
  * Convert url to privacy-focused, iframe-compatible form, e.g.
@@ -56,7 +57,10 @@ function videoBlock(block: MdBlock): MdBlock {
  */
 function linkSpanTransform(block: MdBlock, pageData: PageDatum[]): MdBlock {
   const relativeLinkRegex = /(?<=(\]\(\/))([\w\d]+)(?=\))/gm;
-  const pageIdReplacer = (match: string): string => pageData.find((d) => d.pageId === match).slug;
+  const pageIdReplacer = (match: string): string => {
+    const otherSlug = pageData.find((d) => d.pageId === match).slug;
+    return `${CONTENT_DIRECTORY}/${otherSlug}`;
+  }
   return {
     type: "paragraph",
     parent: block.parent.replaceAll(relativeLinkRegex, pageIdReplacer),

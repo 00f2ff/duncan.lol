@@ -79,8 +79,8 @@ export function convert(serializedResult: MDXRemoteSerializeResult, contentDirec
   const nextFrontmatter: FrontmatterSchema = {
     title: desanitizeHTML(frontmatter["Title"]),
     excerpt: frontmatter["Excerpt"] ? desanitizeHTML(frontmatter["Excerpt"]) : "",
-    // path: `/${contentDirectory}`,
     path: `/${contentDirectory}/${frontmatter["Slug"]}`, // todo: clean this up because it's messy
+    // path: `/${frontmatter["Slug"]}`, // todo: clean this up because it's messy
     tags: frontmatter["Tags"].toString().split(","),
     status: frontmatter["Status"],
     publishedOn: frontmatter["Published On"].toString(),

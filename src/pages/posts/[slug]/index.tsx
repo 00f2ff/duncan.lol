@@ -29,7 +29,8 @@ export default function Post({ post }: Props) {
 }
 
 export async function getStaticPaths() {
-  const filenames = await getFilenamesForDirectory("posts");
+  const contentDirectory = "posts";
+  const filenames = await getFilenamesForDirectory(contentDirectory);
   const paths = filenames.map((filename) => {
     return {
       params: {
@@ -40,8 +41,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
-    // fallback: false, // todo: uncomment once I figure out steady state for rebuilds upon new posts
+    fallback: false,
   }
 }
 

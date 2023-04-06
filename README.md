@@ -11,6 +11,5 @@ The website itself uses Next.js, React and TypeScript, and is deployed using Ver
 I could have built a more reactive application that would keep the site at content parity with my Notion database, but that felt too over-engineered for the frequency at which I write/update content, so instead I use `make notion`, `npm run dev`, `tsc` and `git push origin head` which triggers a production build and deployment in Vercel. 
 
 todo:
-- [ ] CDN for images (or at least download image from Notion in content pipeline and package with mdx)
-- [ ] Add style documentation (chakra, adobe, etc)
+- [ ] Add style documentation to README (chakra, adobe, etc)
 - [ ] Better monorepo package/tsconfig structure
