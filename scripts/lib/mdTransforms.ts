@@ -204,7 +204,7 @@ export async function transformMarkdown({ slug, tags, blocks }: {
   if (tags.includes("Poetry")) {
     return {
       blocks: poetryPost(qualifiedPageWithBlockTransforms.blocks),
-      ...qualifiedPageWithBlockTransforms
+      assets: qualifiedPageWithBlockTransforms.assets,
     }
   } else {
     return qualifiedPageWithBlockTransforms;
