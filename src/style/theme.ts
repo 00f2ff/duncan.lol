@@ -21,6 +21,10 @@ const theme = extendTheme({
       xanthous: "#ecb837",
       quinacridoneMagenta: "#743951",
       red: "#D92525",
+      persianOrange: "#CB9173",
+      olivine: "#8CB369",
+      hunterGreen: "#415D43",
+      vistaBlue: "#8EA4D2",
     },
   },
   fonts: {

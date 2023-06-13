@@ -42,6 +42,24 @@ const Pill = defineStyleConfig({
     music: {
       backgroundColor: "brand.harvestGold",
       color: "black"
+    },
+
+    // Digital Studio statuses 
+    rough: {
+      backgroundColor: "brand.persianOrange",
+      color: "black",
+    },
+    sanded: {
+      backgroundColor: "brand.olivine",
+      color: "black",
+    },
+    polished: {
+      backgroundColor: "brand.hunterGreen",
+      color: "white",
+    },
+    reformed: {
+      backgroundColor: "brand.vistaBlue",
+      color: "black",
     }
 
   }

@@ -9,7 +9,7 @@ const SHOW_TAGS: boolean = true;
 export default function PostMetadata(props: FrontmatterSchema) {
   const dateString = publicationDate(props);
 
-  const pills = props.tags.map((tag) => Pill({keyPrefix: props.title, tagName: tag}));
+  const pills = [props.status, ...props.tags].map((tag) => Pill({keyPrefix: props.title, tagName: tag}));
 
   return (
     <Flex mb="1">

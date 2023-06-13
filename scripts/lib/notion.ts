@@ -35,12 +35,15 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
     database_id: notionDatabaseId,
     filter: {
       and: [
-        // {
-        //   property: "Status",
-        //   status: {
-        //     equals: "Published"
-        //   }
-        // }, 
+        {
+          property: "Published On",
+          date: {
+            is_not_empty: true
+          }
+          // status: {
+          //   // equals: "Published"
+          // }
+        }, 
         // Uncomment for testing specific post transformations
         // {
         //   property: "Title",
@@ -48,12 +51,12 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
         //     contains: "console"
         //   }
         // },
-        {
-          property: "Tags",
-          multi_select: {
-            contains: "Poetry"
-          }
-        }
+        // {
+        //   property: "Tags",
+        //   multi_select: {
+        //     contains: "Poetry"
+        //   }
+        // }
       ]
     },
     sorts: [
