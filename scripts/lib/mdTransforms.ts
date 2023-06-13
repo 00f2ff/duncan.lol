@@ -51,14 +51,17 @@ function videoBlock(block: MdBlock): MdBlock {
  * 
  * Note: DOES NOT SUPPORT NESTED RELATIVE LINKS
  * 
+ * fixme: create a better way to pull ids out and ignore url params. I'm bad at regex lol
+ * 
  * @param block 
  * @param pageData 
  * @returns 
  */
 function linkSpanTransform(block: MdBlock, pageData: PageDatum[]): MdBlock {
-  const relativeLinkRegex = /(?<=(\]\(\/))([\w\d]+)(?=\))/gm;
+  const relativeLinkRegex = /(?<=(\]\(\/))([\w\d\.?=#]+)(?=\))/gm;
   const pageIdReplacer = (match: string): string => {
-    const otherSlug = pageData.find((d) => d.pageId === match).slug;
+    const patchSansParams = match.includes("?") ? match.split("?")[0] : match;
+    const otherSlug = pageData.find((d) => d.pageId === patchSansParams).slug;
     return `${CONTENT_DIRECTORY}/${otherSlug}`;
   }
   return {
