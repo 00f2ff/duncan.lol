@@ -8,6 +8,7 @@ import fontFamilies from 'style/fonts';
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
 
+import "../style/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
