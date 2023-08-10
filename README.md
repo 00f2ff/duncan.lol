@@ -15,6 +15,13 @@ I use [Chakra UI](https://chakra-ui.com/) to theme raw converted JSX, and for it
 
 
 ## Todo
-- [ ] Better monorepo package/tsconfig structure
+- [ ] Better monorepo package/tsconfig structure. Turborepo?
+
+todo layout stuff
+* switch to Next 13 concepts like global layout
+* 12 column layout? I want 2/3 1/3. It works because some layouts will have 1 column of padding on each side, with a inner gutter, leaving a 6-column and 3-column spread
+
+todo general
+* consider using CSS spline handles (see phone for note) to write custom async animations
 
 Copyright 2023 Duncan McIsaac
