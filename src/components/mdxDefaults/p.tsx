@@ -1,25 +1,15 @@
-import { TextProps, AspectRatio, Text } from "@chakra-ui/react";
-import YouTube from "react-youtube";
+import YouTubeEmbed from "components/mdxDefaults/YouTubeEmbed";
+import { ReactNode } from "react";
 
-export default function p(props: TextProps) {
+// TODO: any other props we need?
+type Props = {
+  children?: ReactNode;
+}
+
+export default function p(props: Props) {
   // iframe check
   if (props.children?.toString().includes("https://www.youtube-nocookie.com")) {
-    const splitUrl = props.children.toString().split("/");
-    const [videoId, start] = splitUrl[splitUrl.length - 1].split("?start=");
-    return (
-      <AspectRatio maxW="100%" ratio={16 / 9} >
-        <YouTube 
-          videoId={videoId}
-          opts={{
-            width: "100%",
-            height: "100%",
-            playerVars: {
-              start: start ?? "0"
-            }
-          }}
-        />
-      </AspectRatio>
-    );
+    return <YouTubeEmbed url={props.children.toString()} />
   }
-  return <Text {...props}>{props.children}</Text>
+  return <div>{props.children}</div>;
 }

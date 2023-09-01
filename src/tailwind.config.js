@@ -34,6 +34,8 @@ module.exports = {
       mono: ["droid-sans-mono", "sans-serif"],
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
 
