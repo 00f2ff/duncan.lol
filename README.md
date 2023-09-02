@@ -11,7 +11,7 @@ The website itself uses Next.js, React and TypeScript, and is deployed using Ver
 I could have built a more reactive application that would keep the site at content parity with my Notion database, but that felt too over-engineered for the frequency at which I write/update content, so instead I use `make notion`, `npm run dev`, `tsc` and `git push origin head` which triggers a production build and deployment in Vercel. 
 
 ## Design
-I use [Chakra UI](https://chakra-ui.com/) to theme raw converted JSX, and for its higher-level layout primitives. My fonts are hosted by [Adobe](https://fonts.adobe.com/). 
+I use Tailwind to theme raw converted JSX, and for its higher-level layout primitives. My fonts are hosted by [Adobe](https://fonts.adobe.com/). 
 
 
 ## Todo

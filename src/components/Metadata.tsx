@@ -11,7 +11,7 @@ export default function PostMetadata(props: FrontmatterSchema) {
   const pills = [props.status, ...props.tags].map((tag) => Pill({keyPrefix: props.title, tagName: tag}));
 
   return (
-    <div className="flex justify-left items-center mb-1 text-lg">
+    <div className="flex justify-left items-center mb-2 text-base">
       <span>{`${dateString} `}</span>
       {
         SHOW_TAGS && <div className="ml-2 flex gap-x-2">{pills}</div>

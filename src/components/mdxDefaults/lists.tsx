@@ -1,5 +1,9 @@
-import { ListProps, UnorderedList, OrderedList, ListItemProps, ListItem } from "@chakra-ui/react"
+import { ReactNode } from "react"
 
-export const ul = (props: ListProps) => <UnorderedList spacing={2} {...props}></UnorderedList> 
-export const ol = (props: ListProps) => <OrderedList spacing={2} {...props}></OrderedList>
-export const li = (props: ListItemProps) => <ListItem {...props}>{props.children}</ListItem>
+type Props = {
+  children?: ReactNode;
+}
+
+export const ul = (props: Props) => <ul className="mb-1">{props.children}</ul>
+export const ol = (props: Props) => <ol className="mb-1">{props.children}</ol>
+export const li = (props: Props) => <li>{props.children}</li>

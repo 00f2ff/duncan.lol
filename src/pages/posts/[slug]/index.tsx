@@ -1,7 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote'
 import Layout from "components/Layout";
 import { getFilenamesForDirectory, NextMDXRemoteSerializeResult, serializeMDX } from "util/files";
-import { Heading, Stack } from '@chakra-ui/react';
 import GoBack from 'components/GoBack';
 import PostMetadata from 'components/Metadata';
 import { settle } from '@00f2ff/result';
@@ -18,10 +17,10 @@ export default function Post({ post }: Props) {
   return (
     <Layout verticalSpacing={5} key={frontmatter.path}>
       <GoBack path="/" text="home" />
-      <Stack direction="column" spacing={2}>
-        <h1 className="font-heading font-semibold text-5xl mt-6">{frontmatter.title}</h1>
+      <div className="grid grid-cols-1 gap-2">
+        <h1 className="font-heading font-semibold text-5xl mt-6 mb-2">{frontmatter.title}</h1>
         <PostMetadata {...frontmatter} />
-      </Stack>
+      </div>        
       {/* This renders the post minus the frontmatter */}
       <MDXRemote {...rest} />
     </Layout>

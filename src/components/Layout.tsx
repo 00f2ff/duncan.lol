@@ -1,5 +1,3 @@
-import { Box, Center, Container, SimpleGrid, Text } from "@chakra-ui/react";
-import theme from "style/theme";
 import React from "react";
 import dayjs from "dayjs";
 
@@ -10,25 +8,12 @@ interface Props {
 
 export default function Layout({ children, verticalSpacing }: Props) {
   const year = dayjs().format("YYYY");
-  return (
-    <Container 
-      maxW={"full"}
-    >
-      <Center>
-        {/* fixme: I'd like this to be farther to the left. Need to go into a columnar layout then because center centers (duh) */}
-        <SimpleGrid 
-          columns={1} 
-          spacing={verticalSpacing ?? 10} 
-          width={"45%"}
-          marginTop={"50px"}
-          marginBottom={"50px"}
-        >
-          {children}
-          <Box mt="50px">
-            <Text>&copy; {year} Duncan McIsaac</Text>
-          </Box>
-        </SimpleGrid>
-      </Center>
-    </Container>
+  return (  
+    <div className={`grid grid-cols-12 my-20 gap-y-10`}>
+      <div className={`col-start-4 col-span-6 ${verticalSpacing ?? "gap-y-10"}`}>
+        {children}
+        <p className="mt-20">&copy; {year} Duncan McIsaac</p>
+      </div>
+    </div>
   )
 }
