@@ -18,7 +18,7 @@ export default function Post({ post }: Props) {
     <Layout verticalSpacing={5} key={frontmatter.path}>
       <GoBack path="/" text="home" />
       <div className="grid grid-cols-1 gap-2">
-        <h1 className="font-heading font-semibold text-5xl mt-6 mb-2">{frontmatter.title}</h1>
+        <h1 className="font-heading font-semibold text-5xl mt-6 mb-4">{frontmatter.title}</h1>
         <PostMetadata {...frontmatter} />
       </div>        
       {/* This renders the post minus the frontmatter */}

@@ -22,7 +22,6 @@ const styleVariants = {
 }
 
 export default function Pill({keyPrefix, tagName}: Props) {
-  console.log(styleVariants[tagName])
   return (
     <div className={`font-medium text-base p-[1px] rounded-2xl ${styleVariants[tagName.toLocaleLowerCase()]}`} key={`${keyPrefix}-${tagName}`}>&nbsp;{tagName}&nbsp;</div>
   )

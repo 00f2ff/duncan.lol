@@ -11,5 +11,5 @@ export default function p(props: Props) {
   if (props.children?.toString().includes("https://www.youtube-nocookie.com")) {
     return <YouTubeEmbed url={props.children.toString()} />
   }
-  return <div>{props.children}</div>;
+  return <p className="my-3 leading-6 text-lg">{props.children}</p>;
 }
