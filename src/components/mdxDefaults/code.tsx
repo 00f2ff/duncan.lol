@@ -1,14 +1,14 @@
-import { Code, CodeProps } from "@chakra-ui/react";
-import dynamic from 'next/dynamic'
+import { ReactNode } from "react";
 
-const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'), {
-  ssr: false,
-})
+type Props = {
+  className?: string;
+  children?: ReactNode;
+}
 
-export default function code(props: CodeProps) {
+export default function code(props: Props) {
   const languageMatch = props.className?.match(/language-(\w+)/);
+  const language = `language-${languageMatch ? languageMatch[1] : "plaintext"}`;
+  const multiline = props.children.toString().includes("\n");
 
-  return languageMatch 
-    ? <SyntaxHighlighter language={languageMatch[1]}>{props.children.toString()}</SyntaxHighlighter>
-    : <Code>{props.children}</Code>
+  return multiline ? <pre><code className={language}>{props.children.toString()}</code></pre> : <code className={language}>{props.children.toString()}</code>;
 }

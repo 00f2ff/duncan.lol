@@ -7,10 +7,17 @@ import { Global } from '@emotion/react';
 import fontFamilies from 'style/fonts';
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
+import hljs from "highlight.js";
 
+import "highlight.js/styles/github.css";
 import "../style/globals.css";
+import { useEffect } from 'react'
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
+  
   return (
     <>
       <Head>

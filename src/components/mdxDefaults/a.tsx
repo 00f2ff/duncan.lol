@@ -1,5 +1,4 @@
 import Link from 'next/link'; 
-import { Link as ChakraLink, LinkProps as ChakraLinkProps } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 const anchorProps = {
@@ -19,6 +18,5 @@ export default function a(props: Props) {
     return <Link href={props.href} {...anchorProps}>{props.children}</Link>
   } else {
     return <a href={props.href} {...anchorProps}>{props.children}</a>
-    // return <ChakraLink {...props} {...anchorProps}>{props.children}</ChakraLink>
   }
 }
