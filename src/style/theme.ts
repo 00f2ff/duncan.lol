@@ -30,7 +30,6 @@ const theme = extendTheme({
   fonts: {
     heading: `'hoss-sharp', sans-serif`,
     body: `'brandon-grotesque', sans-serif`,
-    mono: `'droid-sans-mono', sans-serif`
   },
   styles: {
     global: {
@@ -39,21 +38,6 @@ const theme = extendTheme({
         fontSize: "xl",
         lineHeight: "1.5",
       },
-      "p strong": {
-        fontWeight: "500"
-      },
-      blockquote: {
-        fontFamily: `'hoss-sharp', sans-serif`,
-        fontStyle: "italic",
-      },
-      pre: {
-        fontFamily: `'droid-sans-mono', sans-serif`,
-        fontSize: "md",
-      },
-      code: {
-        fontFamily: `'droid-sans-mono', sans-serif`,
-        fontSize: "md",
-      }
     }
   },
   components: {
@@ -63,12 +47,6 @@ const theme = extendTheme({
         fontWeight: "600"
       }
     },
-    Code: {
-      baseStyle: {
-        fontFamily: `'droid-sans-mono', sans-serif`,
-        fontSize: "md",
-      }
-    }
   }
 });
 

@@ -28,6 +28,7 @@ module.exports = {
       vistaBlue: "#8EA4D2",
     },
     // see https://tailwindcss.com/docs/font-family#setting-the-font-family
+    // also consider using prose: https://tailwindcss.com/docs/typography-plugin
     fontFamily: {
       heading: ["hoss-sharp", "sans-serif"],
       body: ["brandon-grotesque", "sans-serif"],

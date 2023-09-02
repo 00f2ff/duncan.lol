@@ -5,7 +5,7 @@ export default function blockquote(props: {children: ReactNode}) {
     <>
     <div className="flex">
       <div className="flex-none bg-delftBlue rounded-sm mr-2 w-[0.175rem]" />
-      <blockquote className="flex-auto">{props.children}</blockquote>
+      <blockquote className="flex-auto font-heading italic">{props.children}</blockquote>
     </div>
     </>
   )

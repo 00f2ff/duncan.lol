@@ -1,9 +1,9 @@
-import { BoxProps, Heading } from "@chakra-ui/react"
+type Props = {
+  children?: string;
+}
 
-export const h1 = (props: BoxProps) => <Heading marginTop={"25px"} size={"2xl"} {...props}/>
-export const h2 = (props: BoxProps) => <Heading marginTop={"25px"} size={"xl"} {...props}/>
-export const h3 = (props: BoxProps) => <Heading marginTop={"25px"} size={"lg"} {...props}/>
+export const h1 = (props: Props) => <h2 className="font-heading text-5xl mt-6">{props.children}</h2>
+export const h2 = (props: Props) => <h2 className="font-heading text-4xl mt-6">{props.children}</h2>
+export const h3 = (props: Props) => <h2 className="font-heading text-3xl mt-6">{props.children}</h2>
 
 // Notion doesn't currently support headings below level 3, so this shouldn't matter
-export const h4 = (props: BoxProps) => <Heading size={"md"} {...props}/>
-export const h5 = (props: BoxProps) => <Heading size={"sm"} {...props}/>
