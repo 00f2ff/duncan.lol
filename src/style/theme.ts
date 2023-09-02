@@ -5,27 +5,6 @@ import { extendTheme } from "@chakra-ui/react"
 // fixme: is it accurate to use 'sans-serif' in the fonts section?
 
 const theme = extendTheme({
-  colors: {
-    brand: {
-      alabaster: "#ebe8e2",
-      isabelline: "#f6f5f1",
-      duncan: "#00F2FF",
-      delftBlue: "#3c3769",
-      spaceCadet: "#262343",
-      ultraViolet: "#56609d",
-      lightCoral: "#e07269",
-      celadon: "#76d8aa",
-      tiffanyBlue: "#7dcbd0",
-      harvestGold: "#e19d22",
-      xanthous: "#ecb837",
-      quinacridoneMagenta: "#743951",
-      red: "#D92525",
-      persianOrange: "#CB9173",
-      olivine: "#8CB369",
-      hunterGreen: "#415D43",
-      vistaBlue: "#8EA4D2",
-    },
-  },
   fonts: {
     heading: `'hoss-sharp', sans-serif`,
     body: `'brandon-grotesque', sans-serif`,
@@ -38,13 +17,6 @@ const theme = extendTheme({
         lineHeight: "1.5",
       },
     }
-  },
-  components: {
-    Heading: {
-      baseStyle: {
-        fontWeight: "600"
-      }
-    },
   }
 });
 
