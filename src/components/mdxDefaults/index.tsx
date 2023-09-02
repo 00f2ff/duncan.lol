@@ -1,6 +1,6 @@
 import code from './code';
 import a from './a';
-import { h1, h2, h3, h4, h5 } from './headings';
+import { h1, h2, h3 } from './headings';
 import { ul, ol, li } from './lists';
 import p from './p';
 import blockquote from './blockquote';
@@ -12,8 +12,6 @@ const components = {
   h1,
   h2,
   h3,
-  h4,
-  h5,
   ul,
   ol,
   li,

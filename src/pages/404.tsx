@@ -1,9 +1,7 @@
-import { Center, Heading } from "@chakra-ui/react";
 import GoBack from "components/GoBack";
 import Layout from "components/Layout";
 import { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 
 const Custom404: NextPage = () => {
   return (
@@ -13,7 +11,7 @@ const Custom404: NextPage = () => {
       </Head>
       <Layout key="404">
         <GoBack path="/" text="home" />
-        <Heading size="2xl"><Link target="_blank" href="https://www.youtube.com/watch?v=CtWirGxV7Q8">You know I can't grab your ghost chips</Link></Heading>
+        <a target="_blank" href="https://www.youtube.com/watch?v=CtWirGxV7Q8"><h1 className="font-heading font-semibold text-5xl mt-6">You know I can't grab your ghost chips</h1></a>
       </Layout>
     </>
   )

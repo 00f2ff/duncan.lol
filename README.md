@@ -11,10 +11,17 @@ The website itself uses Next.js, React and TypeScript, and is deployed using Ver
 I could have built a more reactive application that would keep the site at content parity with my Notion database, but that felt too over-engineered for the frequency at which I write/update content, so instead I use `make notion`, `npm run dev`, `tsc` and `git push origin head` which triggers a production build and deployment in Vercel. 
 
 ## Design
-I use [Chakra UI](https://chakra-ui.com/) to theme raw converted JSX, and for its higher-level layout primitives. My fonts are hosted by [Adobe](https://fonts.adobe.com/). 
+I use Tailwind to theme raw converted JSX, and for its higher-level layout primitives. My fonts are hosted by [Adobe](https://fonts.adobe.com/). 
 
 
 ## Todo
-- [ ] Better monorepo package/tsconfig structure
+- [ ] Better monorepo package/tsconfig structure. Turborepo?
+
+todo layout stuff
+* switch to Next 13 concepts like global layout
+* 12 column layout? I want 2/3 1/3. It works because some layouts will have 1 column of padding on each side, with a inner gutter, leaving a 6-column and 3-column spread
+
+todo general
+* consider using CSS spline handles (see phone for note) to write custom async animations
 
 Copyright 2023 Duncan McIsaac

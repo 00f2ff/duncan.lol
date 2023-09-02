@@ -1,6 +1,4 @@
-import { Box, Center, Heading, SimpleGrid, Stack, Text, VStack} from "@chakra-ui/react";
 import Layout from "components/Layout";
-// import { ThemeTypings } from '@chakra-ui/react'
 import { FrontmatterSchema, getFilenamesForDirectory, serializeMDX } from "util/files";
 import dynamic from "next/dynamic";
 import PostBlock from "components/PostBlock";
@@ -37,14 +35,13 @@ type Props = {
 // todo: figure out a way to make React understand that the key gets passed into the dynamic import in that component
 export default function Home({ posts }: Props ) {
   const year = dayjs().format("YYYY");
-  // const theme = useTheme<ThemeTypings>() // todo: figure out how to get typed styles
   return (
     <Layout key="index">
-      <Stack direction="column" spacing={2}>
-        <Heading color={"brand.spaceCadet"} size="2xl">Duncan McIsaac</Heading>
+      <div className="mb-10">
+        <h1 className="font-heading font-semibold text-5xl mt-6 mb-3">Duncan McIsaac</h1>
         <CaptionBar />
         <Socials />
-      </Stack>
+      </div>
      
       {posts && posts.map((post) => PostBlockDynamic(post))}
     </Layout>
