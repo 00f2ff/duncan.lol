@@ -1,4 +1,3 @@
-import { Center, Flex, Text } from "@chakra-ui/react";
 import { publicationDate } from "util/date";
 import { FrontmatterSchema } from "util/files";
 import Pill from "./Pill";
@@ -12,11 +11,11 @@ export default function PostMetadata(props: FrontmatterSchema) {
   const pills = [props.status, ...props.tags].map((tag) => Pill({keyPrefix: props.title, tagName: tag}));
 
   return (
-    <Flex mb="1">
-      <Text fontSize="lg">{dateString} </Text>
+    <div className="flex justify-left items-center mb-1 text-lg">
+      <span>{`${dateString} `}</span>
       {
-        SHOW_TAGS && <Center>{pills}</Center>
+        SHOW_TAGS && <div className="ml-2 flex gap-x-2">{pills}</div>
       }
-    </Flex>
+    </div>
   )
 }

@@ -1,5 +1,4 @@
 import { extendTheme } from "@chakra-ui/react"
-import Pill from "./component/Pill";
 // https://coolors.co/ebe8e2-f6f5f1-3c3769-56609d-e07269 with the grain photo
 // https://coolors.co/76d8aa-7dcbd0-e19d22-ecb837-743951
 // todo: clean this up with file extensions: https://chakra-ui.com/docs/styled-system/customize-theme#customizing-global-styles
@@ -41,7 +40,6 @@ const theme = extendTheme({
     }
   },
   components: {
-    Pill,
     Heading: {
       baseStyle: {
         fontWeight: "600"

@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     // fixme: rename these and look into shades, not just different complementaries
     colors: {
+      white: "#ffffff",
       alabaster: "#ebe8e2",
       isabelline: "#f6f5f1",
       duncan: "#00F2FF",
