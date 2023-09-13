@@ -9,7 +9,7 @@ export default function PostBlock(props: FrontmatterSchema) {
         <h2 className="font-heading font-semibold text-4xl mb-2">{props.title}</h2>
         <PostMetadata {...props} />
         {
-          props.excerpt && props.excerpt !== "undefined" && <div className="text-lg mt-2">{props.excerpt}</div>
+          props.excerpt && props.excerpt !== "undefined" && <div className="text-xl mt-2">{props.excerpt}</div>
         }
       </NextLink>
     </div>
