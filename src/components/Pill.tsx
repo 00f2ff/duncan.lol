@@ -4,21 +4,21 @@ type Props = {
 }
 
 const styleVariants = {
-  work: "bg-delftBlue text-white",
-  poetry: "bg-lightCoral text-white",
-  "🚂 of thought": "bg-celadon text-black",
-  synesthesia: "bg-xanthous text-black",
-  school: "bg-red text-white",
-  storytime: "bg-tiffanyBlue text-black",
-  software: "bg-quinacridoneMagenta text-white",
-  meta: "bg-isabelline text-black",
-  music: "bg-harvestGold text-black",
+  work: "bg-blue text-black",
+  poetry: "bg-coral text-white",
+  "🚂 of thought": "bg-lightBlue text-black",
+  synesthesia: "bg-deepBlue text-white",
+  school: "bg-deepRed text-white",
+  storytime: "bg-green text-white",
+  software: "bg-orange text-white",
+  meta: "bg-lightGreen text-black",
+  music: "bg-gold text-black",
 
   // Digital Studio statuses 
-  rough: "bg-persianOrange text-black",
-  sanded: "bg-olivine text-black",
-  polished: "bg-hunterGreen text-white",
-  reformed: "bg-vistaBlue text-black",
+  rough: "bg-marble text-black",
+  sanded: "bg-deepViolet text-white",
+  polished: "bg-deepGreen text-white",
+  reformed: "bg-violetGray text-black",
 }
 
 export default function Pill({keyPrefix, tagName}: Props) {
