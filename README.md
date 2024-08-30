@@ -24,4 +24,4 @@ todo layout stuff
 todo general
 * consider using CSS spline handles (see phone for note) to write custom async animations
 
-Copyright 2023 Duncan McIsaac
+Copyright 2024 Duncan McIsaac
