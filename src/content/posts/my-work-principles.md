@@ -1,0 +1,34 @@
+---
+Title: My work principles
+Excerpt: 
+Slug: my-work-principles
+Tags: ["Work"]
+Status: Sanded
+Published On: 2021-10-26
+Updated On: 2024-09-05
+
+---
+
+## **Leave it better than you found it**
+
+
+Continuously improve the product, the codebase, the processes, the culture. Work such that others appreciate that you were there. “Not my job” is like not picking up litter. While fixing a particular thing may not be my job, finding a fix and fixer is.
+
+
+## **Treat coworkers like customers**
+
+
+Everyone deserves a good user experience. My output results in two products: one for the customer, and one for the coworker. The customer product is the “Product”. The coworker product is engineer-friendly APIs and code, audience-specific documentation, patience, mentorship and support.
+
+
+## Right and wrong is a function of time
+
+
+The right solution for today may not be the right solution next week, next quarter, or next year. If a solution is predicted to be right for the future but an organization fails to define clear measures of success, suggesting that the solution is right may be a contraindication. 
+
+
+## Strong opinions, loosely held
+
+
+The more knowledgeable I feel about product development and software engineering, the stronger my opinions tend to be. I enjoy a good debate, but I love it when people change my mind. My bar is high, but it's not unreachable. 
+

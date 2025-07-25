@@ -3,11 +3,11 @@ import type { BlogPost as BlogPostType } from '../types/blog';
 import { BlogPost } from '../components/BlogPost';
 import { getPostBySlug } from '../content';
 
-interface BlogPostPageProps {
+interface PostProps {
   slug?: string;
 }
 
-export const BlogPostPage = ({ slug }: BlogPostPageProps) => {
+export const Post = ({ slug }: PostProps) => {
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -112,8 +112,6 @@ export const BlogPostPage = ({ slug }: BlogPostPageProps) => {
           </div>
         </div>
       </nav>
-
-      {/* Blog Post Content */}
       <BlogPost post={post} />
     </div>
   );

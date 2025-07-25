@@ -1,0 +1,87 @@
+---
+Title: The Most Wonderful Wizard of Oz
+Excerpt: The heartwarming story of an absurdly ambitious demo.
+Slug: the-most-wonderful-wizard-of-oz
+Tags: ["Storytime","School"]
+Status: Polished
+Published On: 2020-03-15
+Updated On: 2024-08-30
+
+---
+
+In junior year of college I decided to compete in the [Google Lunar X PRIZE](https://www.xprize.org/prizes/google-lunar). For those unfamiliar, the Lunar X-Prize was a competition to see whether a privately funded team could send a lunar rover to the Moon, drive 500 meters, and send images and video back to Earth, with a [big cash prize attached](https://www.cs.cmu.edu/news/google-lunar-x-prize-awards-1-million-astrobotic)! Carnegie Mellon's team was technically composed of two entities, Astrobotic Technology, a firm created by graduates of the school, and a team of CMU undergraduate and graduate students who partook in a class that spanned multiple semesters. _Edit: the newer generation of rover_ [_launched_](https://www.astrobotic.com/astrobotics-peregrine-launches-to-the-moon) _on January 8, 2024. In classic CMU fashion, a payload included_ [_MoonArk_](https://www.cmu.edu/news/stories/archives/2019/july/humankind-time-capsule.html)_, a “collaborative sculpture project”. Unfortunately, shortly after launch, the vehicle suffered an_ [_anomaly_](https://www.astrobotic.com/wp-content/uploads/2024/08/PM1_Post-Mission-Report_2024-1.pdf) _and now is lazily spinning around Earth._
+
+
+Astrobotic was focused on the lunar lander & rover transportation portions of the mission. It was their responsibility to design and test a lunar lander, figure out how to get it to the Moon, and determine size and weight constraints for the rover itself. My class was responsible for the development and test of the lunar rover, which during my tenure was a golden robot affectionately named Andy.
+
+
+The rest of the class was composed of approximately 30 students who each were top students in their respective programs of mechanical engineering, electrical engineering, computer science, chemical engineering, and design. We had SpaceX interns, children of NASA scientists, the manager of the Carnegie Science Center's planetarium, marketing whizzes and more. I felt very out of place before my first formative experience with the team (and when I say team I mean it; this didn't feel like _just_ a class) because I didn't feel particularly special whereas I considered all of my teammates really fucking awesome.
+
+
+The class was taught by [Dr. Red Whittaker](https://en.wikipedia.org/wiki/Red_Whittaker), robotics pioneer, leader of the team that Google hired away to create what eventually became Waymo, and cattle rancher extraordinaire (how he had time to raise one hundred head of cattle while developing robots which withstand nuclear meltdowns, Antarctica, Space and other extreme environments is beyond me). While we certainly learned things and met astronauts and other cool people in the class, the setup was essentially Red paying us course credit in exchange for labor. That said, the dream of making it to the Moon was intoxicating and I'm certain everyone would have done it completely for free.
+
+
+## **A giant leap**
+
+
+Two of my best friends had highly recommended the course (their demeanor when speaking about it was best described as _buzzing_, so I knew this was a special opportunity), and I decided to sign up. On the first day of class, Red announced that Carnegie Mellon had tapped him to speak about robotics at the World Economic Forum in Davos, Switzerland, and that he needed our help figuring out how to run that demonstration. He had considered presenting iconic robots he developed in the past, but ultimately decided Andy itself would be far more memorable. He made a plea for help to the class, emphasizing that this wasn't a homework assignment, would not result in credit, and was purely optional. This was exactly the kind of opportunity I had signed up for the class to participate in. A monumental task that, oh, needed to work without a hitch in _two weeks_.
+
+
+The team quickly got to work. People with no knowledge of international bulk transit began researching how one transports a heavy, fragile robot from Pennsylvania to Switzerland in a cargo container, ensuring a delivery within a two week window. They realized that even in a best case scenario, loading Andy into a container to be transported via rail or truck to a port on the eastern seaboard, placing that container on a ship, sailing to Switzerland, offloading to rail or truck and delivering to Davos could not happen in two weeks. The question then was, “How does Red present the robot without it being physically present?”
+
+
+We decided to stream live video of Andy in action to Davos. As event organizers or anyone who conducts international conference calls knows, running a live stream from one country to another is very difficult to pull off without video lag and other weirdness. But simply live streaming a robot isn't enticing enough. We needed a wow factor, and a wow factor we created indeed.
+
+
+## **< Insert montage here >**
+
+
+Since we couldn't bring Andy onto a Swiss stage, we decided to make it look like Andy was on the best alternative, the Moon. The team quickly got to work. We rented a warehouse in an old Pittsburgh industrial district which was affordable, but had no internet access. Luckily, more than one of my teammates had run the IT networks of their respective highschools, and were able to purchase a business Verizon internet plan and network the warehouse well enough to support high-def video streaming with minimal lag.
+
+
+Meanwhile, another group rented a dump truck and filled it with hundreds of pounds of concrete chunks and dust that were being stored pre-recycling. They brought the dump truck to the warehouse and poured / raked the concrete across the ground, giving it an extraterrestrial allure. They next loaded a gorgeous, ten foot-wide lunar lander prototype onto a truck and placed it at a tasteful angle on our “lunar” surface.
+
+
+We draped heavy black curtains over the walls of the planetarium while a designer digitally painted a compelling lunar landscape from the perspective of a camera facing the rover. The planetarium manager took the painting and digitally stitched it over the drapes to convey a sense of lunar distance while Andy was being live streamed.
+
+
+Separately, myself and the computer scientists were trying to figure out how to let audience members of Red's presentation actually drive Andy in real-time. After a day of hacking, we realized porting Andy's skid steer controls to an intuitive interface was not feasible within a two week window, and we looked for another option. Naturally, we came to the conclusion that we should just fake the driving of the rover, just like we were faking everything else!
+
+
+## **Fake it ‘til you make it**
+
+
+The previous semester I had taken a couple of Human-Computer Interaction classes, as well as a Javascript course. In my HCI courses, I learned about the concept known as a _Wizard of Oz_, a technique used in experiments to convince participants that a technology is operating autonomously, whereas in reality a hidden group of individuals are pulling the strings. In my Javascript course I learned how to hack together visually appealing yet highly constrained web applications very quickly.
+
+
+I put together these two learnings to create a “mobile app” which allowed audience members in Davos to “control” Andy and drive it around “the Moon”. I wrote a web application designed to be full screen on an iPad to give the illusion of being an actual mobile app, and hosted it on the free tier of Red Hat OpenShift. I used websockets to open a connection between two devices (one iPad and one computer), and a designer provided me with a simplified aerial visualization of the warehouse including lander and Andy. Those working on the video streaming affixed a camera on the ceiling of the warehouse to show those on the ground an aerial perspective of our Moon.
+
+
+## **Tying it all together**
+
+
+From the perspective of the audience, this is what happened:
+
+1. Red presents some background, and then begins streaming Andy on the Moon, live.
+2. Red brings out an iPad and explains that audience members can use it to drive Andy.
+3. Red gives the iPad to the audience to control the robot, and then continues to present.
+4. Audience members pass the iPad around, taking turns to drive the robot around the Moon.
+
+Starting with step #4, this is what _actually_ happened, starring we wizards:
+
+1. Someone in the audience taps a portion of the cartoonish aerial view on the “app” and a red circle appears where the robot is going to travel to.
+2. 4,300 miles away (and at 3 am on a Tuesday), a laptop showing the same screen as the iPad lets out a shrill beep, alerting the other “operator” that an audience member wishes to “drive” Andy.
+3. The “operator” and the _operator_ sitting next to him look at the aerial view provided by the ceiling camera, and orchestrate a consistent series of movements to bring Andy to the target point. While the actual operator uses Andy's skid steer interface to drive the robot to the destination, the “operator” uses the arrow keys on his laptop to steer the Andy icon on the web app.
+4. Back in Davos, the audience sees icon Andy moving toward the red circle destination and a corresponding live stream video Andy moving toward the same place, tactically navigating boulders and other lunar debris.
+
+## **I'm not making this up**
+
+
+The video below shows the portion of Red's presentation focusing on the rover. The good stuff starts at 12:09, and around 12:50 you can see Red explaining and handing off “control” to the audience.
+
+
+https://www.youtube-nocookie.com/embed/7X4-jozFVFo?start=606
+
+
+The presentation was a resounding success. No one in the audience had any clue that three layers of indirection lay between their fingers and the actual motion of the rover, and it's clear that they had a ton of fun steering around a lunar robot trying to make history. In the words of one of the World Economic Forum's staffers, _“Is that robot actually on the Moon?”_
+

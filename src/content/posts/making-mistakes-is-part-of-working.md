@@ -1,0 +1,34 @@
+---
+Title: Making mistakes is part of working
+Excerpt: 
+Slug: making-mistakes-is-part-of-working
+Tags: ["Work"]
+Status: Sanded
+Published On: 2021-09-10
+Updated On: 2024-09-05
+
+---
+
+I used to be a perfectionist — I spent an inordinate amount of time trying to minimize failure and create a perfect solution to a problem, only to take too long and see the problem evolve or fade into irrelevance. I've since come to realize that development velocity is a function of productivity and mistake tolerance, or,
+
+
+`velocity = productivity * (1 - mistake tolerance)`
+
+
+where `productivity` is one's average productivity over the course of a workstream, and `mistake tolerance` is a value ranging from 0-1 which corresponds with one's willingness to make a mistake during that workstream.
+
+
+If a developer has too low of a mistake tolerance, velocity will be so slow that work will either never ship, or ship too late. However, too high of a mistake tolerance means that although a developer may ship at a high velocity, what they ship is extra buggy or simply the wrong thing to build. In my experience, a developer's mistake tolerance is influenced by their anxiety, regulation of the problem space, and/or company risk aversion.
+
+
+In my first job, the combination of my inexperience and low mistake tolerance meant that I often contributed very little, or missed the boat when I thought I had a contribution. I felt that what I contributed was “right”, but in reality, a solution's rightness changes depending on the time at which it is evaluated by the business. Oftentimes my solutions may have _been_ right, but since my delivery slipped due to low velocity, they were no longer right by the time I shipped them.
+
+
+After making some fairly significant mistakes at Kiva, I realized that perhaps mistakes weren't so scary after all and my tolerance for them required some adjustment. In Spring 2020 I was leading a team trying to deliver on an ambitious deadline, and through trial and error I discovered that I was comfortable operating with a mistake tolerance of 15-20%. Despite working in the financial space, a few things influenced my willingness to take on more risk:
+
+- Familiarity with problem space: I designed a core algorithm and was acutely familiar with the data models it interacted with, so I never felt lost in the code.
+- Guardrails: I wrote thorough unit and integration tests which alerted me in my VM and deployment pipeline whether my changes were inconsistent.
+- Easy fix process: Kiva had a documented process for quickly fixing problems in production which I felt comfortable using as often as necessary.
+
+I believe it's irresponsible to have a high mistake tolerance without familiarity with the problem space, guardrails and/or an easy way to fix bugs. Of course those things introduce friction which can slow velocity initially, but in the long run velocity increases when developers are comfortable with their ability to remediate mistakes.
+

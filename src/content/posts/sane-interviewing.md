@@ -1,0 +1,26 @@
+---
+Title: Sane interviewing
+Excerpt: 
+Slug: sane-interviewing
+Tags: ["Work"]
+Status: Sanded
+Published On: 2021-11-01
+Updated On: undefined
+
+---
+
+When I was interviewing to leave Capital One two years ago, I threw myself into the process. I spent hours every day studying data structures and algorithms, but more importantly, I closed my life down to a singular focus of getting a new job. For my post-Kiva job search, I decided to be more open-minded about what interviewing success looks like. I began with the hypothesis that shutting out one's life when interviewing will not yield good work-life balance thinking, and rolled from there.
+
+
+Whereas my post-Capital One prep focused on algorithms and data structures and CS facts, my post-Kiva search has incorporated the following values:
+
+- Keep living my life: I'm not going to sacrifice my quality of life to interview. Certainly I'll spend time on preparation throughout the week, but I'm not going to forgo attending parties, concerts, and social gatherings.
+- Study algorithms and data structures sparingly: I believe that if a company thinks my success in a role comes down to my ability to find the right data structure or algorithm for a problem within a 30-60 minute window, then it's not the right company for me. I'm certainly filtering out false positives here, but they're not everything.
+- Lean into my experience: system design is where I do well now, after working as a backend engineer for 5 years. I lean into that, lean into my learnings, lean into the teachings of others around me. I'm better at making decisions about _what_ to make than _how_ to make it. Making the _what_ is more valuable to a business than the _how_, so I lean into that instead. The _how_ should not be discounted, it's just not my strong suit. I try to surround myself with strong _how_ people.
+- Be candid: I'm straight up with interviewers and potential employers about what I'm looking for and how I might be able to provide value. This is an employees' market which makes this approach more palatable for employers, but even if it wasn't, I'd still be perfectly honest. I'm allergic to bullshit, and I want to cut it out wherever. Bullshit slows down processes and organizations, and being candid is a surefire way to find other people who are candid and value it.
+
+I have a hypothesis that this approach will make it less likely that I'll experience Imposter Syndrome at my new company. In particular, I believe the combination of not studying for interviews and being candid means that companies will hire me for who I am, not who I presented as. I don't think I'll be caught in the trap of others saying, “Duncan knows about x technology, and therefore is great at it!” causing me to think, “I learned _about_ x, and now I need to come off as competent at it.” I think this will yield a better learning environment, and assist my mental health when I move.
+
+
+As I write this I'm at the stage where I'm beginning to have onsite interviews (a mix of physical and virtual), and I must say that I'm significantly less stressed out than my last go-round. I'm sure easy scheduling due to work from home is in part to thank, but overall I'm just feeling very zen about the whole process. I'm juggling interviews actively with 10 companies, getting requests from tons more, but I don't feel overwhelmed. I've managed to stay sane.
+
