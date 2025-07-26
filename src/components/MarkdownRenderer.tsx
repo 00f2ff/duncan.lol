@@ -1,8 +1,6 @@
 // src/components/MarkdownRenderer.tsx
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
-import 'highlight.js/styles/github-dark.css';
 
 interface MarkdownRendererProps {
   content: string;
@@ -13,20 +11,19 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
     <div className="prose prose-lg max-w-none dark:prose-invert">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
         components={{
         h1: ({ children }) => (
-          <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h1 className="font-display text-3xl font-bold mb-4 text-gray-900 dark:text-white">
             {children}
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-2xl font-semibold mb-3 mt-8 text-gray-800 dark:text-gray-200">
+          <h2 className="font-display text-2xl font-semibold mb-3 mt-8 text-gray-800 dark:text-gray-200">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-xl font-semibold mb-2 mt-6 text-gray-800 dark:text-gray-200">
+          <h3 className="font-display text-xl font-semibold mb-2 mt-6 text-gray-800 dark:text-gray-200">
             {children}
           </h3>
         ),
@@ -67,15 +64,15 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           // Check if it's inline code by looking for language class or using node info
           const isInline = !className || !className.startsWith('language-');
           return isInline ? (
-            <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono text-red-600 dark:text-red-400">
+            <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm text-red-600 dark:text-red-400">
               {children}
             </code>
           ) : (
-            <code className={className || ''}>{children}</code>
+            <code className={`font-mono ${className || ''}`}>{children}</code>
           );
         },
         pre: ({ children }) => (
-          <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+          <pre className="font-mono bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
             {children}
           </pre>
         ),
