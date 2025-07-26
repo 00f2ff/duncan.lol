@@ -28,17 +28,17 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           </h3>
         ),
         p: ({ children }) => (
-          <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="font-copy mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
             {children}
           </p>
         ),
         ul: ({ children }) => (
-          <ul className="mb-4 ml-6 list-disc text-gray-700 dark:text-gray-300">
+          <ul className="font-copy mb-4 ml-6 list-disc text-gray-700 dark:text-gray-300">
             {children}
           </ul>
         ),
         ol: ({ children }) => (
-          <ol className="mb-4 ml-6 list-decimal text-gray-700 dark:text-gray-300">
+          <ol className="font-copy mb-4 ml-6 list-decimal text-gray-700 dark:text-gray-300">
             {children}
           </ol>
         ),
@@ -46,7 +46,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           <li className="mb-1">{children}</li>
         ),
         blockquote: ({ children }) => (
-          <blockquote className="border-l-4 border-blue-500 pl-4 py-2 mb-4 italic text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800">
+          <blockquote className="font-copy border-l-4 border-blue-500 pl-4 py-2 mb-4 italic text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800">
             {children}
           </blockquote>
         ),
@@ -60,19 +60,19 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             {children}
           </a>
         ),
-        code: ({ children, className }) => {
+        code: ({ children, className, }) => {
           // Check if it's inline code by looking for language class or using node info
           const isInline = !className || !className.startsWith('language-');
           return isInline ? (
-            <code className="font-mono bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm text-red-600 dark:text-red-400">
+            <code className="font-code bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm text-red-600 dark:text-red-400">
               {children}
             </code>
           ) : (
-            <code className={`font-mono ${className || ''}`}>{children}</code>
+            <code className={`font-code ${className || ''}`}>{children}</code>
           );
         },
         pre: ({ children }) => (
-          <pre className="font-mono bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+          <pre className="font-code bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
             {children}
           </pre>
         ),

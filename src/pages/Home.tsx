@@ -26,7 +26,7 @@ export const Home = () => {
   return (
     <Layout key="index">
       <div className="mb-10">
-        <h1 className="font-heading font-semibold text-5xl mt-6 mb-3">Duncan McIsaac</h1>
+        <h1 className="font-display font-semibold text-5xl mt-6 mb-3">Duncan McIsaac</h1>
         <CaptionBar />
         <Socials />
       </div>
