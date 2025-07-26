@@ -1,9 +1,7 @@
-// src/App.tsx
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import { Post } from './pages/Post';
 import { Home } from './pages/Home';
-// import { BlogList } from './pages/BlogList';
-// import { About } from './pages/About';
+import NotFound from './pages/NotFound';
 
 // Wrapper component to extract slug from URL params
 const BlogPostWrapper = () => {
@@ -16,9 +14,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/blog" element={<BlogList />} /> */}
         <Route path="/post/:slug" element={<BlogPostWrapper />} />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

@@ -10,6 +10,12 @@ export const parseMarkdownFile = (content: string) => {
   };
 };
 
+const decodeHTML = (html: string) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    return doc.documentElement.textContent || "";
+}
+
 export const transformPost = (
   slug: string, 
   frontmatter: PostFrontmatter, 
@@ -17,7 +23,7 @@ export const transformPost = (
 ): BlogPost => {
   return {
     id: slug,
-    title: frontmatter.Title,
+    title: decodeHTML(frontmatter.Title),
     excerpt: frontmatter.Excerpt,
     slug: frontmatter.Slug || slug,
     tags: frontmatter.Tags || [],
