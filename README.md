@@ -5,6 +5,10 @@ todo
 - [ ] Update colors to match previous palette for text
 - [ ] Incorporate Notion again
 - [ ] Update date logic where needed to account for updated at
+- [ ] Youtube embed fix
+- [ ] Syntax highlighting
+- [ ] Other visual inconsistencies
+- [ ] Change deployment to use this instead of old app
 
 
 

@@ -5,10 +5,13 @@ import Layout from '../components/Layout';
 import CaptionBar from '../components/CaptionBar';
 import Socials from '../components/Socials';
 import PostBlock from '../components/PostBlock';
+import { Topics } from '../components/Topics';
 
 
 export const Home = () => {
   const [posts, setPosts] = useState<BlogPost[]>([])
+
+  const topics = ['Work', 'Stories', 'Poems', 'Et alia'];
 
   useEffect(() => {
     const loadRecentPosts = async () => {
@@ -27,8 +30,9 @@ export const Home = () => {
     <Layout key="index">
       <div className="mb-10">
         <h1 className="font-display font-semibold text-5xl mt-6 mb-3">Duncan McIsaac</h1>
-        <CaptionBar />
-        <Socials />
+        {/* <CaptionBar /> */}
+        <Topics names={topics} />
+        {/* <Socials /> */}
       </div>
      
       {posts && posts.map((post) => <PostBlock key={post.slug} {...post} />)}
