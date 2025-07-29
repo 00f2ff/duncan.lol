@@ -62,7 +62,10 @@ export const Home = () => {
   return (
     <Layout key="index">
       <div className="mb-10">
-        <h1 className="font-display font-semibold text-5xl mt-6 mb-3">
+        <h1
+          className="font-display font-semibold text-5xl mt-6 mb-3 hover:cursor-pointer"
+          onClick={() => setCurrentPosts(posts)}
+        >
           Duncan McIsaac
         </h1>
         {/* <CaptionBar /> */}
@@ -75,6 +78,9 @@ export const Home = () => {
 
       {currentPosts &&
         currentPosts.map((post) => <PostBlock key={post.slug} {...post} />)}
+      <div className="mt-10 text-gray-800 opacity-30 italic">
+        <a href="/disclaimer">Disclaimer</a>
+      </div>
     </Layout>
   );
 };

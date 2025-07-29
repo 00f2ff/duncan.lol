@@ -10,6 +10,5 @@ export default {
         display: ["hoss-sharp", "brandon-grotesque", "sans-serif"], // Headlines/display
       },
     },
-    
   },
 } satisfies Config;

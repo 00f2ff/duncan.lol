@@ -40,7 +40,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             if (childArray.length === 1) {
               const child = childArray[0] as ReactElement;
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const childProps = child.props as any
+              const childProps = child.props as any;
 
               if (React.isValidElement(child) && childProps.href) {
                 const href = childProps.href;
@@ -63,8 +63,8 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             <li className="leading-7 text-xl my-1">{children}</li>
           ),
           blockquote: ({ children }) => (
-            <div className="flex">
-              <div className="flex-none bg-blue-500 rounded-sm mr-2 w-[0.175rem]" />
+            <div className="flex py-1">
+              <div className="flex-none bg-black rounded-sm mr-2 w-[0.175rem]" />
               <blockquote className="flex-auto font-heading italic">
                 {children}
               </blockquote>
