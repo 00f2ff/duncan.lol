@@ -19,7 +19,7 @@ export default function Layout({ children, verticalSpacing }: Props) {
       py-20 
       gap-y-10 
       font-body 
-      bg-alabaster 
+      bg-alabaster
       text-lg 
       leading-6
     `}

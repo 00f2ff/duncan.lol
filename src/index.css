@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-alabaster: #ebe8e2;
+}
+
 body {
   font-family: "brandon-grotesque", system-ui, sans-serif;
 }
