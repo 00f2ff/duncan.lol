@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   useParams,
+  BrowserRouter,
 } from "react-router-dom";
 import { Post } from "./pages/Post";
 import { Home } from "./pages/Home";
@@ -16,13 +17,13 @@ const BlogPostWrapper = () => {
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts/:slug" element={<BlogPostWrapper />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
