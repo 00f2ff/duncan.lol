@@ -1,7 +1,12 @@
 # Blog 7.25.25
 
 todo
-- [ ] Incorporate Notion again
+- [ ] Incorporate Notion again & bugfix
+- [ ] Go through notion db and add tags where appropriate (probably don't need to replace)
+  - stories, poems
+  - et alia will be implemented as a "not work, stories or poems" filter
+- [ ] Rerun db import
+- [ ] Add filter functionality for posts based on topic
 - [ ] Change deployment to use this instead of old app
 
 
