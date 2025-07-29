@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import remarkGfm from "remark-gfm";
 import YouTubeEmbed from "./YouTubeEmbed";
-import React from "react";
+import React, { type ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface MarkdownRendererProps {
@@ -38,10 +38,12 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             // Check if this paragraph contains only a YouTube link
             const childArray = React.Children.toArray(children);
             if (childArray.length === 1) {
-              const child = childArray[0];
+              const child = childArray[0] as ReactElement;
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const childProps = child.props as any
 
-              if (React.isValidElement(child) && child.props.href) {
-                const href = child.props.href;
+              if (React.isValidElement(child) && childProps.href) {
+                const href = childProps.href;
                 if (href && isYouTubeUrl(href)) {
                   return <YouTubeEmbed url={href} />;
                 }

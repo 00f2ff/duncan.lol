@@ -22,7 +22,7 @@ export const Home = () => {
 
   const selectTopic = (e: React.MouseEvent<HTMLButtonElement>): void => {
     // Ignore the post count
-    const topic = e.target.innerText.split(" (")[0];
+    const topic = (e.target as HTMLButtonElement).innerText.split(" (")[0];
     if (topic == "Et alia") {
       setCurrentPosts(posts.filter(isEtAlia));
     } else {
