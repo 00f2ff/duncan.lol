@@ -9,7 +9,7 @@ import { Topics } from '../components/Topics';
 export const Home = () => {
   const [posts, setPosts] = useState<BlogPost[]>([])
 
-  const topics = ['Work', 'Stories', 'Poems', 'Et alia'];
+  const topics = ['Work', 'Stories', 'Poetry', 'Et alia'];
 
   useEffect(() => {
     const loadRecentPosts = async () => {
