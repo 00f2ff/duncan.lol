@@ -5,7 +5,7 @@
     "lint": "eslint ./src --ext .ts .",
     "lint-stage": "pnpm run check && pnpm run prettify && pnpm run lint",
     "build": "tsc",
-    "pull": "npx ts-node notionExport.ts"
+    "export": "npx ts-node notionExport.ts"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.1",
