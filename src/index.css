@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 body {
-  font-family: 'brandon-grotesque', system-ui, sans-serif;
+  font-family: "brandon-grotesque", system-ui, sans-serif;
 }
 
 .font-display {
-  font-family: 'hoss-sharp', 'brandon-grotesque', system-ui, sans-serif;
+  font-family: "hoss-sharp", "brandon-grotesque", system-ui, sans-serif;
 }
 
 .font-copy {
-  font-family: 'brandon-grotesque', system-ui, sans-serif;
+  font-family: "brandon-grotesque", system-ui, sans-serif;
 }
 
 .font-code {
-  font-family: 'droid-sans-mono', 'Consolas', monospace;
+  font-family: "droid-sans-mono", "Consolas", monospace;
 }
 
 p strong {

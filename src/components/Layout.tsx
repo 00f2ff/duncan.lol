@@ -8,8 +8,9 @@ interface Props {
 
 export default function Layout({ children, verticalSpacing }: Props) {
   const year = dayjs().format("YYYY");
-  return (  
-    <div className={`
+  return (
+    <div
+      className={`
       grid 
       grid-cols-1 
       lg:grid-cols-12 
@@ -21,11 +22,14 @@ export default function Layout({ children, verticalSpacing }: Props) {
       bg-alabaster 
       text-lg 
       leading-6
-    `}>
-      <div className={`col-start-1 lg:col-start-4 lg:col-span-6 ${verticalSpacing ?? "gap-y-10"}`}>
+    `}
+    >
+      <div
+        className={`col-start-1 lg:col-start-4 lg:col-span-6 ${verticalSpacing ?? "gap-y-10"}`}
+      >
         {children}
         <p className="mt-20">&copy; {year} Duncan McIsaac</p>
       </div>
     </div>
-  )
+  );
 }

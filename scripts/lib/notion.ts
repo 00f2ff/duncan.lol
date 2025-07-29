@@ -1,11 +1,21 @@
 import { Client } from "@notionhq/client";
-import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import {
+  PageObjectResponse,
+  PartialPageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 import { notionDatabaseId, notionSecretToken } from "../util/config";
 import { NotionToMarkdown } from "notion-to-md";
-import { DateProperty, MultiSelectProperty, RichTextProperty, SelectProperty, StatusProperty, TitleProperty } from "lib/notionDatabasePropertyTypes";
+import {
+  DateProperty,
+  MultiSelectProperty,
+  RichTextProperty,
+  SelectProperty,
+  StatusProperty,
+  TitleProperty,
+} from "lib/notionDatabasePropertyTypes";
 
 const notion = new Client({
-  auth: notionSecretToken
+  auth: notionSecretToken,
 });
 
 export const n2m = new NotionToMarkdown({ notionClient: notion });
@@ -22,11 +32,13 @@ export const n2m = new NotionToMarkdown({ notionClient: notion });
 
 /**
  * Type predicate for Notion response types
- * 
- * @param response 
- * @returns 
+ *
+ * @param response
+ * @returns
  */
-function isPageObjectResponse(response: PageObjectResponse | PartialPageObjectResponse): response is PageObjectResponse {
+function isPageObjectResponse(
+  response: PageObjectResponse | PartialPageObjectResponse,
+): response is PageObjectResponse {
   return (response as PageObjectResponse).properties !== undefined;
 }
 
@@ -38,12 +50,12 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
         {
           property: "Published On",
           date: {
-            is_not_empty: true
-          }
+            is_not_empty: true,
+          },
           // status: {
           //   // equals: "Published"
           // }
-        }, 
+        },
         // Uncomment for testing specific post transformations
         // {
         //   property: "Title",
@@ -57,14 +69,14 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
         //     contains: "Poetry"
         //   }
         // }
-      ]
+      ],
     },
     sorts: [
       {
         property: "Published On",
-        direction: "descending"
-      }
-    ]
+        direction: "descending",
+      },
+    ],
   });
 
   return postsObject.results.filter(isPageObjectResponse);
@@ -72,23 +84,25 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
 
 /**
  * Colons (and maybe other special characters) cause next-mdx-remote to throw YAML formatting exceptions
- * @param s 
- * @returns 
+ * @param s
+ * @returns
  */
 function sanitizeYAML(s: string): string {
-  return s.replace(/:/, "&#58;")
+  return s.replace(/:/, "&#58;");
 }
 
 /**
- * Pull out page properties and convert to an object that can be easily converted to frontmatter. 
+ * Pull out page properties and convert to an object that can be easily converted to frontmatter.
  * Hardcoded to my particular Notion DB setup
- * 
- * @param page 
+ *
+ * @param page
  */
-export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): { [key: string]: string } {
+export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): {
+  [key: string]: string;
+} {
   const { properties } = page;
   const titleProperty = properties["Title"] as TitleProperty;
-  const title = titleProperty.title[0].plain_text
+  const title = titleProperty.title[0].plain_text;
   const sanitizedTitle = sanitizeYAML(title);
 
   const excerptProperty = properties["Excerpt"] as RichTextProperty;
@@ -102,18 +116,23 @@ export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): { [ke
   const updatedOn = properties["Updated On"] as DateProperty;
 
   return {
-    "Title": sanitizedTitle,
-    "Excerpt": sanitizedExcerpt,
-    "Slug": slug.select.name,
-    "Tags": JSON.stringify(tags.multi_select.map((ms) => ms.name)),
-    "Status": status.status.name,
+    Title: sanitizedTitle,
+    Excerpt: sanitizedExcerpt,
+    Slug: slug.select.name,
+    Tags: JSON.stringify(tags.multi_select.map((ms) => ms.name)),
+    Status: status.status.name,
     "Published On": publishedOn.date.start,
-    "Updated On": updatedOn.date?.start
-  }
+    "Updated On": updatedOn.date?.start,
+  };
 }
 
-export function frontmatterBlobToString(blob: { [key: string]: string }): string {
-  const str = Object.keys(blob).reduce((acc, key) => `${acc}${key}: ${blob[key]}\n`, "");
+export function frontmatterBlobToString(blob: {
+  [key: string]: string;
+}): string {
+  const str = Object.keys(blob).reduce(
+    (acc, key) => `${acc}${key}: ${blob[key]}\n`,
+    "",
+  );
   return `---
 ${str}
 ---

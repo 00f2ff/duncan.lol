@@ -1,16 +1,14 @@
 ---
 Title: Sane interviewing
-Excerpt: 
+Excerpt:
 Slug: sane-interviewing
 Tags: ["Work"]
 Status: Sanded
 Published On: 2021-11-01
 Updated On: undefined
-
 ---
 
 When I was interviewing to leave Capital One two years ago, I threw myself into the process. I spent hours every day studying data structures and algorithms, but more importantly, I closed my life down to a singular focus of getting a new job. For my post-Kiva job search, I decided to be more open-minded about what interviewing success looks like. I began with the hypothesis that shutting out one's life when interviewing will not yield good work-life balance thinking, and rolled from there.
-
 
 Whereas my post-Capital One prep focused on algorithms and data structures and CS facts, my post-Kiva search has incorporated the following values:
 
@@ -21,6 +19,4 @@ Whereas my post-Capital One prep focused on algorithms and data structures and C
 
 I have a hypothesis that this approach will make it less likely that I'll experience Imposter Syndrome at my new company. In particular, I believe the combination of not studying for interviews and being candid means that companies will hire me for who I am, not who I presented as. I don't think I'll be caught in the trap of others saying, “Duncan knows about x technology, and therefore is great at it!” causing me to think, “I learned _about_ x, and now I need to come off as competent at it.” I think this will yield a better learning environment, and assist my mental health when I move.
 
-
 As I write this I'm at the stage where I'm beginning to have onsite interviews (a mix of physical and virtual), and I must say that I'm significantly less stressed out than my last go-round. I'm sure easy scheduling due to work from home is in part to thank, but overall I'm just feeling very zen about the whole process. I'm juggling interviews actively with 10 companies, getting requests from tons more, but I don't feel overwhelmed. I've managed to stay sane.
-

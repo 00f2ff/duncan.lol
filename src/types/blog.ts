@@ -7,7 +7,7 @@ export interface BlogPost {
   updatedOn?: string;
   tags: string[];
   slug: string;
-  status: 'Draft' | 'Polished' | 'Published';
+  status: "Draft" | "Polished" | "Published";
 }
 
 export interface PostFrontmatter {
@@ -15,7 +15,7 @@ export interface PostFrontmatter {
   Excerpt?: string;
   Slug: string;
   Tags: string[];
-  Status: 'Draft' | 'Polished' | 'Published';
-  'Published On': string;
-  'Updated On'?: string;
+  Status: "Draft" | "Polished" | "Published";
+  "Published On": string;
+  "Updated On"?: string;
 }

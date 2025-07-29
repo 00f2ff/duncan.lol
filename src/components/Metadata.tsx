@@ -9,8 +9,10 @@ export default function PostMetadata(props: BlogPost) {
     <div className="flex justify-left items-center mb-2 text-lg">
       <span className="mr-2">{`${dateString} `}</span>
       <div className="flex gap-x-2">
-        {tags.map(tag => <Topic key={`topic-${tag}`} name={tag} treatment="italic" />)}
+        {tags.map((tag) => (
+          <Topic key={`topic-${tag}`} name={tag} treatment="italic" />
+        ))}
       </div>
     </div>
-  )
+  );
 }

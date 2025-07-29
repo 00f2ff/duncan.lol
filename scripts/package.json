@@ -2,7 +2,6 @@
   "private": true,
   "scripts": {
     "check": "tsc --noEmit",
-    "prettify": "prettier --write --ignore-unknown",
     "lint": "eslint ./src --ext .ts .",
     "lint-stage": "pnpm run check && pnpm run prettify && pnpm run lint",
     "build": "tsc",
