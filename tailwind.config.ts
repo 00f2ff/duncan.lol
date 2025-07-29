@@ -9,6 +9,9 @@ export default {
         mono: ['droid-sans-mono', 'Consolas', 'monospace'],         // Code blocks
         display: ['hoss-sharp', 'brandon-grotesque', 'sans-serif'], // Headlines/display
       }
+    },
+    colors: {
+      alabaster: "#ebe8e2",
     }
   },
 } satisfies Config

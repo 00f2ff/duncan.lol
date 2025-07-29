@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/post/:slug" element={<BlogPostWrapper />} />
+        <Route path="/posts/:slug" element={<BlogPostWrapper />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

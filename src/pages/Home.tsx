@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import type { BlogPost } from '../types/blog';
 import { getPublishedPosts } from '../content';
 import Layout from '../components/Layout';
-import CaptionBar from '../components/CaptionBar';
-import Socials from '../components/Socials';
 import PostBlock from '../components/PostBlock';
 import { Topics } from '../components/Topics';
 

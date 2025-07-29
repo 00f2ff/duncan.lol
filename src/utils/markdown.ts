@@ -1,6 +1,7 @@
 // src/utils/markdown.ts
 import fm from 'front-matter';
 import type { BlogPost, PostFrontmatter } from '../types/blog';
+import dayjs from 'dayjs';
 
 export const parseMarkdownFile = (content: string) => {
   const { attributes, body } = fm(content);
@@ -24,7 +25,7 @@ export const transformPost = (
   return {
     id: slug,
     title: decodeHTML(frontmatter.Title),
-    excerpt: frontmatter.Excerpt,
+    excerpt: frontmatter.Excerpt ? decodeHTML(frontmatter.Excerpt) : undefined,
     slug: frontmatter.Slug || slug,
     tags: frontmatter.Tags || [],
     status: frontmatter.Status,
@@ -34,18 +35,13 @@ export const transformPost = (
   };
 };
 
-// Utility to filter posts by status
-export const filterPublishedPosts = (posts: BlogPost[]): BlogPost[] => {
-  return posts.filter(post => post.status === 'Published' || post.status === 'Polished');
-};
+function sortByDateDescending(a: BlogPost, b: BlogPost): number {
+  return dayjs(a.updatedOn ?? a.publishedOn).isBefore(b.updatedOn ?? b.publishedOn) ? 1 : -1;
+}
 
 // Utility to sort posts by date
-export const sortPostsByDate = (posts: BlogPost[], descending = true): BlogPost[] => {
-  return [...posts].sort((a, b) => {
-    const dateA = new Date(a.publishedOn).getTime();
-    const dateB = new Date(b.publishedOn).getTime();
-    return descending ? dateB - dateA : dateA - dateB;
-  });
+export const sortPostsByDate = (posts: BlogPost[]): BlogPost[] => {
+  return [...posts].sort(sortByDateDescending);
 };
 
 // Utility to get posts by tag

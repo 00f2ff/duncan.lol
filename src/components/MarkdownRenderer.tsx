@@ -1,10 +1,16 @@
 // src/components/MarkdownRenderer.tsx
 import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 import remarkGfm from 'remark-gfm';
+import YouTubeEmbed from './YouTubeEmbed';
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface MarkdownRendererProps {
   content: string;
 }
+
+const isYouTubeUrl = (x: string): boolean => x.includes("https://www.youtube-nocookie.com")
 
 export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
   return (
@@ -13,69 +19,80 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
         remarkPlugins={[remarkGfm]}
         components={{
         h1: ({ children }) => (
-          <h1 className="font-display text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-            {children}
-          </h1>
+          <h1 className="font-display font-semibold text-5xl mt-6 mb-3">{children}</h1>
         ),
         h2: ({ children }) => (
-          <h2 className="font-display text-2xl font-semibold mb-3 mt-8 text-gray-800 dark:text-gray-200">
-            {children}
-          </h2>
+          <h2 className="font-display font-semibold text-4xl mt-6 mb-3">{children}</h2>
         ),
         h3: ({ children }) => (
-          <h3 className="font-display text-xl font-semibold mb-2 mt-6 text-gray-800 dark:text-gray-200">
-            {children}
-          </h3>
+          <h3 className="font-display font-semibold text-3xl mt-6 mb-3">{children}</h3>
         ),
-        p: ({ children }) => (
-          <p className="font-copy mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-            {children}
-          </p>
-        ),
+        p: ({ children }) => {
+          // Check if this paragraph contains only a YouTube link
+          const childArray = React.Children.toArray(children);
+          if (childArray.length === 1) {
+            const child = childArray[0];
+            
+            if (React.isValidElement(child) && child.props.href) {
+              const href = child.props.href;
+              if (href && isYouTubeUrl(href)) {
+                return <YouTubeEmbed url={href} />
+              }
+            }
+          }
+          
+          // For all other paragraphs, render normally
+          return <p className="my-3 leading-7 text-xl">{children}</p>;
+        },
         ul: ({ children }) => (
-          <ul className="font-copy mb-4 ml-6 list-disc text-gray-700 dark:text-gray-300">
-            {children}
-          </ul>
+          <ul className="leading-7 text-xl my-4 list-disc">{children}</ul>
         ),
         ol: ({ children }) => (
-          <ol className="font-copy mb-4 ml-6 list-decimal text-gray-700 dark:text-gray-300">
-            {children}
-          </ol>
+          <ol className="leading-7 text-xl my-4 list-decimal">{children}</ol>
         ),
         li: ({ children }) => (
-          <li className="mb-1">{children}</li>
+          <li className="leading-7 text-xl my-1">{children}</li>
         ),
         blockquote: ({ children }) => (
-          <blockquote className="font-copy border-l-4 border-blue-500 pl-4 py-2 mb-4 italic text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800">
-            {children}
-          </blockquote>
+          <div className="flex">
+            <div className="flex-none bg-blue-500 rounded-sm mr-2 w-[0.175rem]" />
+            <blockquote className="flex-auto font-heading italic">{children}</blockquote>
+          </div>
         ),
-        a: ({ href, children }) => (
-          <a
-            href={href}
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {children}
-          </a>
-        ),
+        a: ({ href, children }) => {
+          const anchorProps = {
+            target: "_blank",
+            style: {
+              textDecoration: "underline"
+            }
+          }
+          if (href && isYouTubeUrl(href)) {
+            return <YouTubeEmbed url={href} />
+          }
+          else if (href?.startsWith("/")) {
+            return <Link to={href} {...anchorProps}>{children}</Link>
+          } else {
+            return <a href={href} {...anchorProps}>{children}</a>
+          }},
         code: ({ children, className, }) => {
           // Check if it's inline code by looking for language class or using node info
           const isInline = !className || !className.startsWith('language-');
           return isInline ? (
-            <code className="font-code bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm text-red-600 dark:text-red-400">
+            <code className="font-mono text-base">
               {children}
             </code>
           ) : (
-            <code className={`font-code ${className || ''}`}>{children}</code>
+            <code className={twMerge(`font-mono text-base`, className && className)}>{children}</code>
           );
         },
-        pre: ({ children }) => (
-          <pre className="font-code bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+        pre: ({ children, className }) => {
+          const languageMatch = className?.match(/language-(\w+)/);
+          const language = `language-${languageMatch ? languageMatch[1] : "plaintext"}`;
+
+          return <pre className={twMerge(language, "font-mono text-base")}>
             {children}
           </pre>
-        ),
+        },
         img: ({ src, alt }) => (
           <img
             src={src}

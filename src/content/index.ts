@@ -1,5 +1,5 @@
 import type { BlogPost } from '../types/blog';
-import { parseMarkdownFile, transformPost, sortPostsByDate, filterPublishedPosts } from '../utils/markdown';
+import { parseMarkdownFile, transformPost, sortPostsByDate } from '../utils/markdown';
 
 export const getAllPosts = async (): Promise<BlogPost[]> => {
   // Vite's way to import all markdown files
@@ -28,8 +28,7 @@ export const getAllPosts = async (): Promise<BlogPost[]> => {
 };
 
 export const getPublishedPosts = async (): Promise<BlogPost[]> => {
-  const allPosts = await getAllPosts();
-  return filterPublishedPosts(allPosts);
+  return getAllPosts();
 };
 
 // For lazy loading (if you prefer)

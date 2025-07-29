@@ -4,7 +4,7 @@ import PostMetadata from "./Metadata";
 export default function PostBlock(props: BlogPost) {
   return (
     <div className="mt-10">
-      <a key={props.title} href={`/post/${props.slug}`} >
+      <a key={props.title} href={`/posts/${props.slug}`} >
         <h2 className="font-display font-semibold text-4xl mb-2">{props.title}</h2>
         <PostMetadata {...props} />
         {

@@ -1,13 +1,7 @@
 # Blog 7.25.25
 
 todo
-- [ ] Change styling for pills. Probably change to introduce categories or something. Maybe limited to 'work, stories, poems, freeform'
-- [ ] Update colors to match previous palette for text
 - [ ] Incorporate Notion again
-- [ ] Update date logic where needed to account for updated at
-- [ ] Youtube embed fix
-- [ ] Syntax highlighting
-- [ ] Other visual inconsistencies
 - [ ] Change deployment to use this instead of old app
 
 
