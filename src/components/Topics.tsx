@@ -14,10 +14,10 @@ export function Topic({name, treatment, onClick, fontSize}: TopicProps) {
   )
 }
 
-export function Topics({names}: {names: string[]}) {
+export function Topics({names, onClick}: {names: string[], onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void}) {
   return (
     <div className={`flex gap-x-6`}>
-        {names.map(name => <Topic key={`topic-${name}`} name={name} treatment="underline" fontSize="text-lg"/>)}
+        {names.map(name => <Topic key={`topic-${name}`} name={name} onClick={onClick} treatment="underline" fontSize="text-lg"/>)}
     </div>
   )
 }
