@@ -2,7 +2,7 @@
 Title: The Most Wonderful Wizard of Oz
 Excerpt: The heartwarming story of an absurdly ambitious demo.
 Slug: the-most-wonderful-wizard-of-oz
-Tags: ["Storytime","School"]
+Tags: ["School","Stories"]
 Status: Polished
 Published On: 2020-03-15
 Updated On: 2024-08-30

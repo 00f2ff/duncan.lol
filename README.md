@@ -1,8 +1,6 @@
 # Blog 7.25.25
 
 todo
-- [ ] Incorporate Notion again & bugfix
-- [ ] Rerun db import
 - [ ] Add filter functionality for posts based on topic
   - et alia will be implemented as a "not work, stories or poetry" filter
 - [ ] Change deployment to use this instead of old app

@@ -2,7 +2,7 @@
 Title: In Tech Mostly By Accident
 Excerpt: A story of questionable judgment, poor planning, and going with the flow.
 Slug: in-tech-mostly-by-accident
-Tags: ["Work","School","Storytime"]
+Tags: ["Work","School","Stories"]
 Status: Polished
 Published On: 2019-03-20
 Updated On: undefined

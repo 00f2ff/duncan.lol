@@ -1,7 +1,7 @@
 import { frontmatterBlobToString, getPublishedPosts, n2m, pagePropertiesToFrontmatterBlob } from "./lib/notion";
 import { promises as fs } from "fs";
 import { replaceWeirdCharacters, uuidToPageId } from "./util/string";
-import { MdBlock } from "notion-to-md/build/types";
+import { MdBlock, MdStringObject } from "notion-to-md/build/types";
 import { transformMarkdown, PageDatum } from "./lib/mdTransforms";
 
 // todo: replace with top-level await
@@ -29,7 +29,7 @@ export async function base(script: () => Promise<void>) {
 }
 
 const PAGES_PATH = "../src/content/posts";
-const PUBLIC_PATH = "../src/public/files";
+const PUBLIC_PATH = "../public/files";
 
 // fixme: add some error handling
 export async function exportNotionPosts() {
@@ -53,13 +53,13 @@ export async function exportNotionPosts() {
     console.info(`Converting page slug ${slug}`);
     const mdblocks: MdBlock[] = await n2m.pageToMarkdown(pageId);
     const { blocks: transformedMdblocks, assets } = await transformMarkdown({slug, blocks: mdblocks, tags}, pageData);
-    const mdString = n2m.toMarkdownString(transformedMdblocks);
-    const fixedString = replaceWeirdCharacters(mdString);
+    const mdStringObj: MdStringObject = n2m.toMarkdownString(transformedMdblocks);
+    const fixedString = replaceWeirdCharacters(mdStringObj.parent);
   
     const mdxDir = `${PAGES_PATH}`;
     await fs.mkdir(mdxDir, { recursive: true });
-    await fs.writeFile(`${mdxDir}/${slug}.mdx`, `${frontmatter}${fixedString}`); 
-    console.info("Wrote mdx file");
+    await fs.writeFile(`${mdxDir}/${slug}.md`, `${frontmatter}${fixedString}`); 
+    console.info("Wrote .md file");
     for await (const { filename, buffer } of assets) {
       await fs.writeFile(`${PUBLIC_PATH}/${slug}-${filename}`, buffer);
       console.info(`Wrote image buffer to '${slug}-${filename}'`);

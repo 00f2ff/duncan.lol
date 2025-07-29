@@ -93,13 +93,13 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             {children}
           </pre>
         },
-        img: ({ src, alt }) => (
-          <img
+        img: ({ src, alt }) => {
+          return <img
             src={src}
             alt={alt}
-            className="max-w-full h-auto rounded-lg shadow-md mb-4"
+            className="max-w-full h-auto rounded-lg mb-4"
           />
-        ),
+        },
         table: ({ children }) => (
           <div className="overflow-x-auto mb-4">
             <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600">
