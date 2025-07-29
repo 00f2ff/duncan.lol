@@ -6,6 +6,7 @@
 
 body {
   font-family: "brandon-grotesque", system-ui, sans-serif;
+  @apply bg-alabaster;
 }
 
 .font-display {
