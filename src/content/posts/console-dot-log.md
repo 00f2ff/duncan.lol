@@ -6,12 +6,17 @@ Tags: ["Software"]
 Status: Polished
 Published On: 2018-02-24
 Updated On: undefined
+
 ---
 
 console.log inserts environmental consciousness and puns into logging for web development. It's inspired by an excellent, Leptodactylidaeic approach to logging pioneered by [Tim Holman](http://tholman.com/console-dot-frog/).
 
+
 With console.log, you can now log messages to a browser console that look more like logs than they did before:
+
 
 ![](/files/console-dot-log-block2.png)
 
+
 For more features and bad jokes, check out console.log on [GitHub](https://github.com/00f2ff/console.log).
+
