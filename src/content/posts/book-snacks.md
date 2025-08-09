@@ -18,16 +18,25 @@ When I read a book and come across a line or section I find illuminating or thou
 I went through all the books I could find in my apartment in San Francisco and sought out the snacks. The following list is chronically incomplete, which is another way of saying my current pantry is much smaller than that at the house I grew up in and all of the other places I spent reading a lot of books (not libraries though — I only do this to my own books).
 
 
+LINEBREAK_MARKER
+
+
 > The demands of the modern world make it such that we are forced to steal the time we need to think and process. Making the conscious move to hit a trail checks all of the boxes: solitude, quiet, attention. In other words, I advise Normal People to focus their efforts not on finding passion but rather on creating an environment that will facilitate the arrival of inspiration. Trails are the perfect environment for this.
 
 
 _Ultra Running for Normal People_, Sid Garza-Hillman
 
 
+LINEBREAK_MARKER
+
+
 > Two days later, at a state dinner in the White House, Mark gets another chance to speak with Xi. In Mandarin, he asked Xi if he'll do him the honor of naming his unborn child. Xi refuses.
 
 
 _Careless People_, Sarah Wynn-Williams
+
+
+LINEBREAK_MARKER
 
 
 > Dots are information. The more information you collect, the more frequently you can make meaningful connections that can make other people feel good and give you an edge in business. Using whatever information I've collected to gather guests together in a spirit of shared experience is what I call connecting the dots. If I don't turn over the rocks, I won't see the dots. If I don't collect the dots, I can't connect the dots. If I don't know that someone works, say, for a magazine whose managing editor I happen to know, I've lost a chance to make a meaningful connection that could enhance our relationship with the guest and the guest's relationship with us. The information is there. You just have to choose to look.
@@ -37,6 +46,9 @@ _Careless People_, Sarah Wynn-Williams
 
 
 _Setting the Table_, Danny Meyer
+
+
+LINEBREAK_MARKER
 
 
 > Other nights, Ayrs likes me to read him poetry, especially his beloved Keats. He whispers the verses as I recite, as if his voice is leaning on mine.
@@ -75,10 +87,16 @@ _Setting the Table_, Danny Meyer
 _Cloud Atlas_, David Mitchell
 
 
+LINEBREAK_MARKER
+
+
 > There's a common misconception that Silicon Valley is the accelerator of the world. The real story is that the world keeps getting faster—Silicon Valley is just the first place to figure out how to keep pace.
 
 
 _Blitzscaling_, Reid Hoffman & Chris Yeh
+
+
+LINEBREAK_MARKER
 
 
 > Divide your views into “soft opinions” and “hard opinions”:  
@@ -89,6 +107,9 @@ _Blitzscaling_, Reid Hoffman & Chris Yeh
 
 
 _Multipliers,_ Liz Wiseman
+
+
+LINEBREAK_MARKER
 
 
 > In our experience about 10% of synesthetes experience eidetic images, or what is popularly called “photographic memory.” The co-occurence of synesthesia and eideticism was first noted by the German psychologist Jaensch in 1930. Others have studied the relationship more recently. An eidetic image recreates previously seen objects or events with great clarity, either immediately after they have been viewed or after a considerable period of time. Like some synesthetic percepts, eidetic images are spatially extended in that eidetikers behave as if they are scanning an externally projected image. Often they will look at some plain surface that serves as a convenient background.
@@ -110,4 +131,10 @@ _Multipliers,_ Liz Wiseman
 
 
 _wednesday is indigo blue,_ Richard E. Cytowic, M.D. & David M. Eagleman, Ph.D.
+
+
+LINEBREAK_MARKER
+
+
+LINEBREAK_MARKER
 

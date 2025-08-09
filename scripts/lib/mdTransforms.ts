@@ -190,6 +190,19 @@ export async function transformMarkdown(
             assets: acc.assets,
           };
         case "paragraph":
+          // Handle empty paragraphs with a text marker
+          if (block.parent.trim() === "") {
+            const lineBreakBlock: MdBlock = {
+              type: "paragraph", 
+              parent: "LINEBREAK_MARKER",
+              children: [],
+              blockId: block.blockId,
+            };
+            return {
+              blocks: [...acc.blocks, lineBreakBlock],
+              assets: acc.assets,
+            };
+          }
           // Pipe more transformations here for paragraphs
           const linkTransform = linkSpanTransform(block, pageData);
           return {

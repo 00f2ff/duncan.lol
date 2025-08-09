@@ -2,6 +2,7 @@
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 import YouTubeEmbed from "./YouTubeEmbed";
 import React, { type ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
@@ -17,7 +18,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
   return (
     <div className="prose prose-lg max-w-none dark:prose-invert">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkBreaks]}
         components={{
           h1: ({ children }) => (
             <h1 className="font-display font-semibold text-5xl mt-6 mb-3">
@@ -35,6 +36,11 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             </h3>
           ),
           p: ({ children }) => {
+            // Check if this paragraph contains the line break marker
+            if (children === "LINEBREAK_MARKER") {
+              return <br className="my-2" />;
+            }
+
             // Check if this paragraph contains only a YouTube link
             const childArray = React.Children.toArray(children);
             if (childArray.length === 1) {
@@ -145,6 +151,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
               {children}
             </td>
           ),
+          br: () => <br className="my-2" />,
         }}
       >
         {content}
