@@ -4,6 +4,7 @@ import { getPublishedPosts } from "../content";
 import Layout from "../components/Layout";
 import PostBlock from "../components/PostBlock";
 import { Topics } from "../components/Topics";
+import CaptionBar from "../components/CaptionBar";
 
 export const Home = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -68,7 +69,7 @@ export const Home = () => {
         >
           Duncan McIsaac
         </h1>
-        {/* <CaptionBar /> */}
+        <CaptionBar />
         <Topics
           names={Array.from(topics.entries(), ([k, v]) => `${k} (${v})`)}
           onClick={selectTopic}

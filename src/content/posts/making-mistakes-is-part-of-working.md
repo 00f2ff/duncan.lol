@@ -5,17 +5,17 @@ Slug: making-mistakes-is-part-of-working
 Tags: ["Work"]
 Status: Sanded
 Published On: 2021-09-10
-Updated On: 2024-09-05
+Updated On: 2025-08-14
 
 ---
 
 I used to be a perfectionist — I spent an inordinate amount of time trying to minimize failure and create a perfect solution to a problem, only to take too long and see the problem evolve or fade into irrelevance. I've since come to realize that development velocity is a function of productivity and mistake tolerance, or,
 
 
-`velocity = productivity * (1 - mistake tolerance)`
+`velocity = productivity * mistake_tolerance`
 
 
-where `productivity` is one's average productivity over the course of a workstream, and `mistake tolerance` is a value ranging from 0-1 which corresponds with one's willingness to make a mistake during that workstream.
+where `productivity` is one's average productivity over the course of a workstream, and `mistake_tolerance` is a value ranging from 0-1 which corresponds with one's willingness to make a mistake during that workstream.
 
 
 If a developer has too low of a mistake tolerance, velocity will be so slow that work will either never ship, or ship too late. However, too high of a mistake tolerance means that although a developer may ship at a high velocity, what they ship is extra buggy or simply the wrong thing to build. In my experience, a developer's mistake tolerance is influenced by their anxiety, regulation of the problem space, and/or company risk aversion.
