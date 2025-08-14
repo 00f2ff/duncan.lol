@@ -6,17 +6,12 @@ Tags: ["Music"]
 Status: Polished
 Published On: 2016-09-20
 Updated On: undefined
-
 ---
 
 Have you ever seen a performance of Piano Man by Billy Joel and wondered, “Could we improve Billy's efficiency by combining his two instruments?” Probably not, but that amalgamation basically describes a melodica:
 
-
 ![](/files/dangerous-woman-block1.jpg)
-
 
 I love my melodica because it allows me to pretend that I actually know how to play piano. This fantasy is often shattered when playing in front of other people because they notice I wrote the musical alphabet on the keys in pencil. Regardless, I consider two of my finer character traits to be relative pitch and persistence (interpret the adjective-noun agreement as you will).
 
-
 In 2016 I began working in the Northeast Megalopolis, but I had a friend in the Cascadia Megalopolis. That's just a pretentious way of saying we worked on different coasts, but I think the word megalopolis sounds about as funny as a melodica, so maybe it's relevant. Anyway, I convinced her to buy a melodica because I thought a great way to stay in touch would be to play duets over Skype. This never worked due to audio lag, but I did write a two-part rendition of Dangerous Woman by Ariana Grande, so I consider it a win. Click [here](/files/dangerous_woman_1.pdf) for main vocals, and [here](/files/dangerous_woman_2.pdf) for backup vocals / instruments.
-

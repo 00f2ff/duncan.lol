@@ -6,23 +6,17 @@ Tags: ["Synesthesia"]
 Status: Polished
 Published On: 2018-03-31
 Updated On: undefined
-
 ---
 
 I have synesthesia. The first line of the Wikipedia article has this to say about it:
 
-
 > Synesthesia is a perceptual phenomenon in which stimulation of one sensory or cognitive pathway leads to automatic, involuntary experiences in a second sensory or cognitive pathway. People who report a lifelong history of such experiences are known as synesthetes.
-
 
 Despite attempting to explain this to scores of people, I'm not confident anyone has actually ever understood what I was talking about save for other synesthetes and some people who dropped acid.
 
-
 Synesthesia presents itself in many ways. One of the more prevalent forms of synesthesia is grapheme-color. Grapheme-color is the association of letters and/or numbers to specific (and I mean _specific_) colors. Let's do a thought experiment. Grab a pen or pencil and write the word “sofa” on a piece of paper. Now, when you read the “s”, think of the color green. For someone with _associative_ grapheme-color synesthesia, reading the letter automatically triggers the mind's eye perception of the color green. For someone with _projective_ grapheme-color synesthesia, reading the letter automatically triggers a _visual_ perception of the color green. Note to the synesthetic reader: if you have grapheme-color and you don't associate “s” with green, my apologies (and even if you do, it's probably not the same green _I'm_ thinking of). Note to the non-synesthetic reader: synesthetic associations are idiosyncratic, so even if two synesthetes associate “s” with green, it's probably not the same shade. These idiosyncratic associations often lead to passive-aggressive arguments.
 
-
 One camp claims that grapheme-color isn't actually synesthesia, but instead _ideasthesia_. The Wikipedia quote above describes a very broad set of experiences, but generally synesthesia is understood to imply activation of one sense triggers activation of another, whereas ideasthesia means activation of a cognitive pathway related to _semantic reasoning_ triggers activation of a sense. I think the concept of ideasthesia has a lot of merit, but I still refer to any ideasthetic experience as “synesthesia” because most people are still overwhelmed by trying to imagine what _that_ is like.
-
 
 I have a bunch of different kinds of synesthesia. Many of these involve color, and while it would be easiest for you to understand my synesthesia by viewing a visual representation of my experiences, so far I've been too lazy to make any. In the future, I hope to write posts that include artwork that explains the phenomenon better than I do. For the time being you'll have to make due with bullet points. Note: unless otherwise stated, when I say “I see”, I'm referring to my mind's eye. It's a long list, so here goes:
 
@@ -41,12 +35,8 @@ I have a bunch of different kinds of synesthesia. Many of these involve color, a
 
 You're entitled to take a breath. Continuing on: In the fall of 2012 I read an article about synesthesia which made me realize two things: 1) There's a label for what I have (it's a nice gradient of green and white and really rolls off the tongue), and; 2) Everybody else doesn't have it. How bizarre.
 
-
 I've done a lot of introspection since finding out what synesthesia is, and I've discovered that my perception of the world is relatively quirky. One thing I can't wrap my head around, however, is how _you_ perceive the world. I have no idea what it's like to not see color in my mind's eye all the time, and consider the prospect quite baffling. Since the associations are involuntary, I can't just _not_ experience them, and I don't believe I ever have. So, I just assume that life without synesthesia is quite dull. You can try to convince me otherwise, but I have your senses too, you know.
-
 
 Replacing sassiness with openness and a side of narcissism, I want to share my experience with everyone because I think it's for the most part awesome. With virtual- and mixed-reality technologies and creative tools on the rise, it's easier than ever to hand out samples of my mind's eye. I consider sharing this a lifelong project.
 
-
 Last but not least, if you have synesthesia or think you might, please [reach out](mailto:dbmcisaac1@gmail.com); I love to talk about it.
-

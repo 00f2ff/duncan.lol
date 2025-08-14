@@ -1,0 +1,258 @@
+{
+  "plan": {
+    "title": "Duncan's 20 Week Half Marathon Plan",
+    "durationWeeks": 20,
+    "raceDate": "05/12/2026"
+  },
+  "workoutTypes": {
+    "rest": { "color": "#FFFFFF", "name": "Rest" },
+    "easy": { "color": "#7DD3C0", "name": "Easy Run" },
+    "tempo": { "color": "#E879F9", "name": "Tempo" },
+    "hills": { "color": "#FB923C", "name": "Hills" },
+    "long": { "color": "#EF4444", "name": "Long Run" },
+    "timeTrial": { "color": "#6366F1", "name": "Time Trial" },
+    "strength": { "color": "#9CA3AF", "name": "Strength" }
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "days": [
+        { "day": "monday", "type": "easy", "distance": 3.25, "unit": "mi", "description": "Easy Run" },
+        { "day": "tuesday", "type": "rest", "description": "Rest" },
+        { "day": "wednesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "thursday", "type": "tempo", "distance": 3.2, "unit": "mi", "description": "Rolling 800s" },
+        { "day": "friday", "type": "rest", "description": "Rest" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 3.75, "unit": "mi", "description": "Hilly Progressive Long Run" }
+      ]
+    },
+    {
+      "week": 2,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "hills", "distance": 4, "unit": "mi", "description": "Hill Repeats" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 2.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 4.5, "unit": "mi", "description": "Hilly Long Run" }
+      ]
+    },
+    {
+      "week": 3,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 4, "unit": "mi", "description": "Rolling 400s" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 3.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 5, "unit": "mi", "description": "Progressive Repeat Long Run" }
+      ]
+    },
+    {
+      "week": 4,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 2.8, "unit": "mi", "description": "Progression Run" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 2.75, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 3.25, "unit": "mi", "description": "Long Run" }
+      ]
+    },
+    {
+      "week": 5,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "hills", "distance": 4, "unit": "mi", "description": "Alternating Hill Reps" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 3.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 6, "unit": "mi", "description": "Hilly Progressive Repeat Long Run" }
+      ]
+    },
+    {
+      "week": 6,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 4, "unit": "mi", "description": "Over and Unders Miles" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 4.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 6.5, "unit": "mi", "description": "Hilly Long Run" }
+      ]
+    },
+    {
+      "week": 7,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 3.6, "unit": "mi", "description": "Tempo 1200s" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 4.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 7, "unit": "mi", "description": "Hilly Progressive Long Run" }
+      ]
+    },
+    {
+      "week": 8,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "hills", "distance": 3.1, "unit": "mi", "description": "Alternating Hill Reps" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 3.25, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 4.5, "unit": "mi", "description": "Long Run" }
+      ]
+    },
+    {
+      "week": 9,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 4, "unit": "mi", "description": "Tempo 2 Miles" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 4.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 7.5, "unit": "mi", "description": "Progressive Repeat Long Run" }
+      ]
+    },
+    {
+      "week": 10,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 4.5, "unit": "mi", "description": "Rolling 800s" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 4.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 8.5, "unit": "mi", "description": "Hilly Long Run" }
+      ]
+    },
+    {
+      "week": 11,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "hills", "distance": 5, "unit": "mi", "description": "Hill Repeats" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 3.75, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 9, "unit": "mi", "description": "Hilly Progressive Long Run" }
+      ]
+    },
+    {
+      "week": 12,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "timeTrial", "distance": 3.9, "unit": "mi", "description": "5km Time Trial" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 3.25, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 5, "unit": "mi", "description": "Long Run" }
+      ]
+    },
+    {
+      "week": 13,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 5, "unit": "mi", "description": "Over and Under's Miles" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 4.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 10, "unit": "mi", "description": "Long Run" }
+      ]
+    },
+    {
+      "week": 14,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "hills", "distance": 5.1, "unit": "mi", "description": "Alternating Hill Reps" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 4, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 12, "unit": "mi", "description": "Hilly Long Run" }
+      ]
+    },
+    {
+      "week": 15,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 5, "unit": "mi", "description": "Tempo 2.5mi" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 13.1, "unit": "mi", "description": "Half Marathon Hilly Progressive Long Run" }
+      ]
+    },
+    {
+      "week": 16,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 3.9, "unit": "mi", "description": "Over and Under's 1mi" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 4, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 6.5, "unit": "mi", "description": "Long Run" }
+      ]
+    },
+    {
+      "week": 17,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "hills", "distance": 5.5, "unit": "mi", "description": "Hill Repeats" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 5.5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 12, "unit": "mi", "description": "Block Long Run" }
+      ]
+    },
+    {
+      "week": 18,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 4.5, "unit": "mi", "description": "Progression Run" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 9, "unit": "mi", "description": "Hilly Long Run" }
+      ]
+    },
+    {
+      "week": 19,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 3.8, "unit": "mi", "description": "Tempo 1200s" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "easy", "distance": 5, "unit": "mi", "description": "Easy Run" },
+        { "day": "saturday", "type": "rest", "description": "Rest" },
+        { "day": "sunday", "type": "long", "distance": 6.5, "unit": "mi", "description": "Hilly Progressive Long Run" }
+      ]
+    },
+    {
+      "week": 20,
+      "days": [
+        { "day": "monday", "type": "rest", "description": "Rest" },
+        { "day": "tuesday", "type": "strength", "duration": "40m - 50m", "description": "Full Body" },
+        { "day": "wednesday", "type": "tempo", "distance": 4, "unit": "mi", "description": "Race Pace Practice Half Miles" },
+        { "day": "thursday", "type": "rest", "description": "Rest" },
+        { "day": "friday", "type": "rest", "description": "Rest" },
+        { "day": "saturday", "type": "timeTrial", "distance": 13.1, "unit": "mi", "description": "Race/Goal", "raceDate": "05/12/2026" },
+        { "day": "sunday", "type": "rest", "description": "Rest" }
+      ]
+    }
+  ]
+}

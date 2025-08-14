@@ -6,23 +6,16 @@ Tags: ["Synesthesia"]
 Status: Polished
 Published On: 2019-07-21
 Updated On: undefined
-
 ---
 
 As I mentioned in my post [You Know the Half of It](/posts/you-know-the-half-of-it), I have a type of synesthesia called Ordinal Linguistic Personification (OLP). Typically, people with OLP associate highly detailed personas with numbers, letters, and delineations of time. My most regular and prominent association is for 8. She is a strong-willed, big, loud, sassy woman. I won't detail the other numbers since they are so overwhelmed by the mass of her and her personality, but suffice to say they cower.
 
-
 Ordinal Linguistic Personification is a strange phenomenon, and of the things I associate personalities with, numbers are the least weird. I was good at math in high school, and I really shined in calculus. I believe my prowess at math stemmed from my perception that mathematical concepts have personalities, and that conceptual relationships have corresponding interpersonal relationships. For example, if you were to ask me why the derivative of _sin_ is _cos_ but the derivative of _cos_ is _–sin_, I'd reply that obviously, it's because _sin_ is pretty shy and looks up to _cos_, but _cos_ doesn't care about _sin_, thus the negative sign. That's just one example, and I've found that as math problems increase in complexity, so do the narratives. I was blasé about word problems, likely because they didn't have enough he-said-she-said to draw me in. In general, I considered solving math tests in high school a lot like reading an issue of People magazine. Most people don't like it, _but gosh there's so much drama!_
-
 
 You might be thinking, _“Numbers and mathematical concepts are pretty similar, so I can see how you'd associate personalities with both (despite this all being very odd).”_ Well, it's all about to get much odder. I enjoy taking standardized tests. You know, the ones with the rows and columns of little bubbles? The tests that consist of alphabetically labeled columns—typically _A-E_—are my favorite. Before I even make a mark I just gather this strong sense of camaraderie between bubbles of the same column. The military-like regularity of the bubbles reminds me of imagery of lines of swordsmen in Medieval Europe, musketeers in the Revolutionary War, or trench fighters in World War I. I consider each column a separate squad; _A_ and _B_ squads square off against _D_ and _E_. _C_ is No Man's Land, but should there be no fifth column, the test is obviously a tenser experience.
 
-
 Each time I answer a question I mark the corresponding bubble. Due to the realistically static nature of the bubbles and the fact that there isn't actually a war going on, I assign a point system to evaluate which side wins. Given the implicit geography of the field, columns _A_ and _E_ likely have a harder time ensuring their rounds or blows hit a mark, and thus are deserving of two points per fill. Increasing in proximity, a fill of _B_ or _D_ deserves one point. Fills in the _C_ column are misses by both sides, and the frustration is always palpable.
-
 
 As an omniscient observer, it's always a challenge to actually take the test as designed and not wield my omnipotence to benefit one side over the other (I've always been partial to _A_). For the most part I'm successful, but it's tough not to rally around the underdog. Upon completion of a section I tally the points per side (you may refer to this as “checking your work”) and establish a winner. Should the test have multiple parts, I consider the rules of engagement the same across squads of the same company, and after determining the victor of one battle (and writing it down on my scratch paper), I continue onto the next fight.
 
-
 I find Ordinal Linguistic Personification fascinating, in part because I can't disassociate it from my creativity (and what is creativity, anyway?). I find labels grounding, and I'm excited by the prospect of pointing to scientific literature to explain why I think the way I do. I don't believe I'll ever have the full picture, but _8_ is as good a travel companion as one can ask for.
-

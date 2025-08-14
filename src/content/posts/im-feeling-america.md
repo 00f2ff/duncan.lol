@@ -6,10 +6,10 @@ Tags: ["Poetry"]
 Status: Sanded
 Published On: 2020-06-03
 Updated On: undefined
-
 ---
 
-## _Qualified Immunity_  
+## _Qualified Immunity_
+
 LINEBREAK_MARKER  
 Qualified immunity  
 Quantified impunity  
@@ -18,8 +18,8 @@ For we the People will not be mollified
 By police and officials underqualified  
 LINEBREAK_MARKER
 
+## _I'm Feeling America_
 
-## _I'm Feeling America_  
 LINEBREAK_MARKER  
 How do you feel?  
 I feel the pain of millions  
@@ -60,8 +60,8 @@ You're trying to make America nevermore
 LINEBREAK_MARKER  
 LINEBREAK_MARKER
 
+## _America Is A Child_
 
-## _America Is A Child_  
 LINEBREAK_MARKER  
 America is a child  
 It can learn  
@@ -71,4 +71,3 @@ For a new take on its fathers' words:
 “All **People** created equal”  
 Let's make a sequel  
 That ain't the prequel
-

@@ -193,7 +193,7 @@ export async function transformMarkdown(
           // Handle empty paragraphs with a text marker
           if (block.parent.trim() === "") {
             const lineBreakBlock: MdBlock = {
-              type: "paragraph", 
+              type: "paragraph",
               parent: "LINEBREAK_MARKER",
               children: [],
               blockId: block.blockId,
