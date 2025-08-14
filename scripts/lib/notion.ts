@@ -56,6 +56,13 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
           //   // equals: "Published"
           // }
         },
+        // Todo: fix poetry formatting & configure this + Notion for CMS-level delisting
+        {
+          property: "Slug",
+          select: {
+            does_not_equal: "im-feeling-america"
+          }
+        }
         // Uncomment for testing specific post transformations
         // {
         //   property: "Title",
