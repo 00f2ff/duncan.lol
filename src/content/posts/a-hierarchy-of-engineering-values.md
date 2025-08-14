@@ -2,7 +2,7 @@
 Title: A Hierarchy of Engineering Values
 Excerpt: 
 Slug: a-hierarchy-of-engineering-values
-Tags: ["Software"]
+Tags: ["Work"]
 Status: Polished
 Published On: 2020-05-31
 Updated On: undefined
