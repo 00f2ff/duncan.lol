@@ -9,13 +9,13 @@ Updated On: undefined
 
 ---
 
-I read somewhere that engineers can now write code so quickly that the current bottleneck in software creation is idea generation. I don't feel like I've run out of ideas, but I'm certainly being more intentional about what I read and take notes on. Effective use of AI can be a leverage multiplier, and given the shifts I'm observing in organizational behavior and the nature of work for tech professionals, mindful application of an interesting idea can be particularly impactful.
+I read somewhere that engineers can now write code so quickly that the current bottleneck in software creation is idea generation. I don't feel like I've run out of ideas, but I'm certainly being more intentional about what I read and take notes on. Effective use of AI is a leverage multiplier, and given the shifts I'm observing in organizational behavior and the nature of work for tech professionals, mindful application of an interesting idea can be particularly impactful.
 
 
 ### Organizational behavior
 
 
-Junior engineers are no longer tapping senior engineers for assistance or to ask questions; they're just asking AI. AI answers the questions and it's not intimidating. And I'm sure it often communicates more succinctly, accurately, and politely than senior engineers might. But continuous use of AI causes the user to develop a peculiar sense of taste for what good software looks like. This lack of interpersonal communication atrophies the throughways of tribal knowledge, and I want to avoid a world ten years from now where all senior software engineers think the same way. That would be rather bland, and is a disservice to creativity.
+Junior engineers are no longer tapping senior engineers for assistance or to ask questions; they're just asking AI. AI answers the questions and it's not intimidating. I'm sure it often communicates more succinctly, accurately, and politely than senior engineers might. But continuous use of AI causes the user to develop a peculiar sense of taste for what good software looks like. This lack of interpersonal communication atrophies the throughways of tribal knowledge, and I want to avoid a world ten years from now where all senior software engineers think the same way. That would be rather bland, and is a disservice to creativity.
 
 
 ### Nature of work
