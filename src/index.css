@@ -58,27 +58,19 @@
 @theme {
   --color-alabaster: #ebe8e2;
   --color-alabaster-dark: #ddd9cf;
-  /* Tailwind v4 ignores tailwind.config.ts; font utilities resolve from here */
+  /* Font families live here (Tailwind v4 config is CSS, not tailwind.config.ts) */
   --font-sans: "brandon-text", system-ui, sans-serif;
   --font-mono: "droid-sans-mono", "Consolas", monospace;
   --font-display: "hoss-sharp", "brandon-text", system-ui, sans-serif;
 }
 
 body {
-  font-family: "brandon-text", system-ui, sans-serif;
+  font-family: var(--font-sans);
   @apply bg-alabaster;
 }
 
 .font-display {
-  font-family: "hoss-sharp", "brandon-text", system-ui, sans-serif;
-}
-
-.font-copy {
-  font-family: "brandon-text", system-ui, sans-serif;
-}
-
-.font-code {
-  font-family: "droid-sans-mono", "Consolas", monospace;
+  font-family: var(--font-display);
 }
 
 p strong {
