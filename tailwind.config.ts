@@ -5,9 +5,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["brandon-grotesque", "system-ui", "sans-serif"], // Primary text
+        sans: ["brandon-text", "system-ui", "sans-serif"], // Primary text
         mono: ["droid-sans-mono", "Consolas", "monospace"], // Code blocks
-        display: ["hoss-sharp", "brandon-grotesque", "sans-serif"], // Headlines/display
+        display: ["hoss-sharp", "brandon-text", "sans-serif"], // Headlines/display
       },
     },
   },

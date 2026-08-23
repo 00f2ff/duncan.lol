@@ -1,20 +1,80 @@
 @import "tailwindcss";
 
+/* Self-hosted webfonts (licensed) — see public/fonts/ */
+@font-face {
+  font-family: "brandon-text";
+  src:
+    url("/fonts/brandon-text-regular.woff2") format("woff2"),
+    url("/fonts/brandon-text-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "brandon-text";
+  src:
+    url("/fonts/brandon-text-italic.woff2") format("woff2"),
+    url("/fonts/brandon-text-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "brandon-text";
+  src:
+    url("/fonts/brandon-text-medium.woff2") format("woff2"),
+    url("/fonts/brandon-text-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "brandon-text";
+  src:
+    url("/fonts/brandon-text-bold.woff2") format("woff2"),
+    url("/fonts/brandon-text-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "hoss-sharp";
+  src:
+    url("/fonts/hoss-sharp-medium.woff2") format("woff2"),
+    url("/fonts/hoss-sharp-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* Droid Sans Mono — Apache-2.0 (free), woff2-only */
+@font-face {
+  font-family: "droid-sans-mono";
+  src: url("/fonts/droid-sans-mono-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-alabaster: #ebe8e2;
+  --color-alabaster-dark: #ddd9cf;
+  /* Tailwind v4 ignores tailwind.config.ts; font utilities resolve from here */
+  --font-sans: "brandon-text", system-ui, sans-serif;
+  --font-mono: "droid-sans-mono", "Consolas", monospace;
+  --font-display: "hoss-sharp", "brandon-text", system-ui, sans-serif;
 }
 
 body {
-  font-family: "brandon-grotesque", system-ui, sans-serif;
+  font-family: "brandon-text", system-ui, sans-serif;
   @apply bg-alabaster;
 }
 
 .font-display {
-  font-family: "hoss-sharp", "brandon-grotesque", system-ui, sans-serif;
+  font-family: "hoss-sharp", "brandon-text", system-ui, sans-serif;
 }
 
 .font-copy {
-  font-family: "brandon-grotesque", system-ui, sans-serif;
+  font-family: "brandon-text", system-ui, sans-serif;
 }
 
 .font-code {

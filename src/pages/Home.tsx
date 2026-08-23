@@ -64,7 +64,7 @@ export const Home = () => {
     <Layout key="index">
       <div className="mb-10">
         <h1
-          className="font-display font-semibold text-5xl mt-6 mb-3 hover:cursor-pointer"
+          className="font-display font-medium text-5xl mt-6 mb-3 hover:cursor-pointer"
           onClick={() => setCurrentPosts(posts)}
         >
           Duncan McIsaac

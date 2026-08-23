@@ -7,7 +7,7 @@ export const Disclaimer = () => {
     <Layout verticalSpacing={5} key={"disclaimer"}>
       <GoHome text="home" />
       <div className="grid grid-cols-1 gap-2">
-        <h1 className="font-heading font-semibold text-5xl mt-6 mb-4">
+        <h1 className="font-display font-medium text-5xl mt-6 mb-4">
           Disclaimer
         </h1>
       </div>
