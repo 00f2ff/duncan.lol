@@ -44,7 +44,7 @@ export const Post = ({ slug }: PostProps) => {
       {post !== undefined && (
         <>
           <div className="grid grid-cols-1 gap-2">
-            <h1 className="font-heading font-semibold text-5xl mt-6 mb-4">
+            <h1 className="font-display font-medium text-5xl mt-6 mb-4">
               {post.title}
             </h1>
             <PostMetadata {...post} />

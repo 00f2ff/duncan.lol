@@ -21,17 +21,17 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
         remarkPlugins={[remarkGfm, remarkBreaks]}
         components={{
           h1: ({ children }) => (
-            <h1 className="font-display font-semibold text-5xl mt-6 mb-3">
+            <h1 className="font-display font-medium text-5xl mt-6 mb-3">
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="font-display font-semibold text-4xl mt-6 mb-3">
+            <h2 className="font-display font-medium text-4xl mt-6 mb-3">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="font-display font-semibold text-3xl mt-6 mb-3">
+            <h3 className="font-display font-medium text-3xl mt-6 mb-3">
               {children}
             </h3>
           ),
@@ -60,10 +60,12 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             return <p className="my-3 leading-7 text-xl">{children}</p>;
           },
           ul: ({ children }) => (
-            <ul className="leading-7 text-xl my-4 list-disc">{children}</ul>
+            <ul className="leading-7 text-xl my-4 list-disc pl-6">{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol className="leading-7 text-xl my-4 list-decimal">{children}</ol>
+            <ol className="leading-7 text-xl my-4 list-decimal pl-6">
+              {children}
+            </ol>
           ),
           li: ({ children }) => (
             <li className="leading-7 text-xl my-1">{children}</li>
@@ -71,7 +73,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           blockquote: ({ children }) => (
             <div className="flex py-1">
               <div className="flex-none bg-black rounded-sm mr-2 w-[0.175rem]" />
-              <blockquote className="flex-auto font-heading italic">
+              <blockquote className="flex-auto italic">
                 {children}
               </blockquote>
             </div>
@@ -103,7 +105,9 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             // Check if it's inline code by looking for language class or using node info
             const isInline = !className || !className.startsWith("language-");
             return isInline ? (
-              <code className="font-mono text-base">{children}</code>
+              <code className="font-mono text-base bg-alabaster-dark rounded px-1.5 py-0.5">
+                {children}
+              </code>
             ) : (
               <code
                 className={twMerge(
@@ -120,7 +124,12 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             const language = `language-${languageMatch ? languageMatch[1] : "plaintext"}`;
 
             return (
-              <pre className={twMerge(language, "font-mono text-base")}>
+              <pre
+                className={twMerge(
+                  language,
+                  "font-mono text-base bg-alabaster-dark rounded-lg p-4 my-4 overflow-x-auto",
+                )}
+              >
                 {children}
               </pre>
             );
