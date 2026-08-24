@@ -1,81 +1,70 @@
 import {
   frontmatterBlobToString,
+  getPageMarkdown,
   getPublishedPosts,
-  n2m,
   pagePropertiesToFrontmatterBlob,
 } from "./lib/notion";
 import { promises as fs } from "fs";
-import { replaceWeirdCharacters, uuidToPageId } from "./util/string";
-import { MdBlock, MdStringObject } from "notion-to-md/build/types";
-import { transformMarkdown, PageDatum } from "./lib/mdTransforms";
-
-// todo: replace with top-level await
-export async function base(script: () => Promise<void>) {
-  /**
-   * Node process exits with exitCode==0 when there are still
-   * promises awaiting. We prevent this from happening by adding
-   * event-loop timer and clearing it after code finishes.
-   */
-  const i = setInterval(() => {
-    /* do nothing but prevent node process from exiting */
-  }, 1000);
-
-  try {
-    await script();
-  } catch (e) {
-    console.log(e);
-  } finally {
-    clearInterval(i);
-  }
-
-  // revert back to correct status code, because we didn't encounter any errors
-  process.exitCode = 0;
-  process.exit();
-}
+import { uuidToPageId } from "./util/string";
+import { postProcessNFM } from "./lib/mdTransforms";
 
 const PAGES_PATH = "../src/content/posts";
 const PUBLIC_PATH = "../public/files";
 
-// fixme: add some error handling
-export async function exportNotionPosts() {
+type ExportablePage = {
+  pageId: string;
+  frontmatter: string;
+  tags: string;
+  slug: string;
+};
+
+async function exportNotionPosts() {
   const posts = await getPublishedPosts();
 
-  const pageData: PageDatum[] = posts.map((post) => {
-    const pageId = uuidToPageId(post.id);
+  const pages: ExportablePage[] = posts.map((post) => {
     const frontmatterBlob = pagePropertiesToFrontmatterBlob(post);
-    const slug = frontmatterBlob.Slug;
-    const tags = frontmatterBlob.Tags;
-    const frontmatter = frontmatterBlobToString(frontmatterBlob);
     return {
-      pageId,
-      frontmatter,
-      tags,
-      slug,
+      pageId: uuidToPageId(post.id),
+      frontmatter: frontmatterBlobToString(frontmatterBlob),
+      tags: frontmatterBlob.Tags,
+      slug: frontmatterBlob.Slug,
     };
   });
 
-  for await (const { pageId, frontmatter, tags, slug } of pageData) {
-    console.info(`Converting page slug ${slug}`);
-    const mdblocks: MdBlock[] = await n2m.pageToMarkdown(pageId);
-    const { blocks: transformedMdblocks, assets } = await transformMarkdown(
-      { slug, blocks: mdblocks, tags },
-      pageData,
-    );
-    const mdStringObj: MdStringObject =
-      n2m.toMarkdownString(transformedMdblocks);
-    const fixedString = replaceWeirdCharacters(mdStringObj.parent);
+  // Map of (dash-stripped) page id -> slug for rewriting internal links.
+  const pageIdToSlug = new Map(pages.map((p) => [p.pageId, p.slug]));
 
-    const mdxDir = `${PAGES_PATH}`;
-    await fs.mkdir(mdxDir, { recursive: true });
-    await fs.writeFile(`${mdxDir}/${slug}.md`, `${frontmatter}${fixedString}`);
-    console.info("Wrote .md file");
-    for await (const { filename, buffer } of assets) {
-      await fs.writeFile(`${PUBLIC_PATH}/${slug}-${filename}`, buffer);
-      console.info(`Wrote image buffer to '${slug}-${filename}'`);
+  await fs.mkdir(PAGES_PATH, { recursive: true });
+  await fs.mkdir(PUBLIC_PATH, { recursive: true });
+
+  for (const { pageId, frontmatter, tags, slug } of pages) {
+    console.info(`Converting page slug ${slug}`);
+
+    const { markdown, truncated, unknownBlockIds } =
+      await getPageMarkdown(pageId);
+    if (truncated || unknownBlockIds.length > 0) {
+      console.warn(
+        `  ⚠️  ${slug}: markdown truncated=${truncated}, ` +
+          `${unknownBlockIds.length} unknown block(s) — review this post.`,
+      );
+    }
+
+    const { markdown: processed, assets } = await postProcessNFM(markdown, {
+      slug,
+      tags,
+      pageIdToSlug,
+    });
+
+    await fs.writeFile(`${PAGES_PATH}/${slug}.md`, `${frontmatter}${processed}`);
+    console.info(`  Wrote ${slug}.md`);
+
+    for (const { filename, buffer } of assets) {
+      await fs.writeFile(`${PUBLIC_PATH}/${filename}`, buffer);
+      console.info(`  Wrote asset ${filename}`);
     }
   }
+
+  console.info(`Done. Exported ${pages.length} post(s).`);
 }
 
-base(exportNotionPosts);
-
-export {};
+await exportNotionPosts();
