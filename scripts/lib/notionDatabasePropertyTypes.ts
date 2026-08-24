@@ -1,4 +1,4 @@
-import { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
+import { RichTextItemResponse } from "@notionhq/client";
 
 /**
  * Notion types copied from their declaration files that don't have well-named exports.

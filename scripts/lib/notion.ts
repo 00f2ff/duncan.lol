@@ -1,10 +1,9 @@
 import { Client } from "@notionhq/client";
-import {
+import type {
   PageObjectResponse,
   PartialPageObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
+} from "@notionhq/client";
 import { notionDatabaseId, notionSecretToken } from "../util/config";
-import { NotionToMarkdown } from "notion-to-md";
 import {
   DateProperty,
   MultiSelectProperty,
@@ -12,29 +11,20 @@ import {
   SelectProperty,
   StatusProperty,
   TitleProperty,
-} from "lib/notionDatabasePropertyTypes";
+} from "./notionDatabasePropertyTypes";
 
+/**
+ * The markdown endpoints (`pages.retrieveMarkdown`) require API version
+ * 2026-03-11. The data source query API (used by getPublishedPosts) is
+ * available from 2025-09-03 onward, so a single pinned version covers both.
+ */
 const notion = new Client({
   auth: notionSecretToken,
+  notionVersion: "2026-03-11",
 });
-
-export const n2m = new NotionToMarkdown({ notionClient: notion });
-
-// Custom transformer for YouTube embeds
-// fixme: this isn't working
-// n2m.setCustomTransformer("embed", async (block) => {
-//   const { embed } = block as any;
-//   if (!embed?.url) return "";
-//   const url = embed.url as string;
-//   if (!url.includes("www.youtube.com")) return "";
-//   return `<iframe src="${url}"></iframe>`;
-// });
 
 /**
  * Type predicate for Notion response types
- *
- * @param response
- * @returns
  */
 function isPageObjectResponse(
   response: PageObjectResponse | PartialPageObjectResponse,
@@ -42,9 +32,30 @@ function isPageObjectResponse(
   return (response as PageObjectResponse).properties !== undefined;
 }
 
-export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
-  const postsObject = await notion.databases.query({
+/**
+ * As of API version 2025-09-03 a database is a container for one or more data
+ * sources, and queries target a data source rather than the database itself.
+ * Discover the (first) data source id at runtime so we don't need a new env var.
+ */
+async function getDataSourceId(): Promise<string> {
+  const database = await notion.databases.retrieve({
     database_id: notionDatabaseId,
+  });
+  const dataSources =
+    "data_sources" in database ? database.data_sources : undefined;
+  if (!dataSources || dataSources.length === 0) {
+    throw new Error(
+      `No data sources found for database ${notionDatabaseId}. ` +
+        `Ensure the integration has access and the database has at least one data source.`,
+    );
+  }
+  return dataSources[0].id;
+}
+
+export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
+  const dataSourceId = await getDataSourceId();
+  const postsObject = await notion.dataSources.query({
+    data_source_id: dataSourceId,
     filter: {
       and: [
         {
@@ -52,30 +63,14 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
           date: {
             is_not_empty: true,
           },
-          // status: {
-          //   // equals: "Published"
-          // }
         },
         // Todo: fix poetry formatting & configure this + Notion for CMS-level delisting
         {
           property: "Slug",
           select: {
-            does_not_equal: "im-feeling-america"
-          }
-        }
-        // Uncomment for testing specific post transformations
-        // {
-        //   property: "Title",
-        //   title: {
-        //     contains: "Digital"
-        //   }
-        // },
-        // {
-        //   property: "Tags",
-        //   multi_select: {
-        //     contains: "Poetry"
-        //   }
-        // }
+            does_not_equal: "im-feeling-america",
+          },
+        },
       ],
     },
     sorts: [
@@ -89,10 +84,29 @@ export async function getPublishedPosts(): Promise<PageObjectResponse[]> {
   return postsObject.results.filter(isPageObjectResponse);
 }
 
+export type PageMarkdown = {
+  markdown: string;
+  truncated: boolean;
+  unknownBlockIds: string[];
+};
+
 /**
- * Colons (and maybe other special characters) cause next-mdx-remote to throw YAML formatting exceptions
- * @param s
- * @returns
+ * Fetch a page's content as Notion-flavored Markdown via the first-party
+ * markdown endpoint. Replaces the previous notion-to-md block conversion.
+ */
+export async function getPageMarkdown(pageId: string): Promise<PageMarkdown> {
+  const response = await notion.pages.retrieveMarkdown({ page_id: pageId });
+  return {
+    markdown: response.markdown,
+    truncated: response.truncated,
+    unknownBlockIds: response.unknown_block_ids ?? [],
+  };
+}
+
+/**
+ * Colons (and maybe other special characters) cause the frontend YAML parser
+ * (front-matter) to throw formatting exceptions. The frontend decodes these
+ * back via decodeHTML, so the escape is round-tripped.
  */
 function sanitizeYAML(s: string): string {
   return s.replace(/:/, "&#58;");
@@ -101,8 +115,6 @@ function sanitizeYAML(s: string): string {
 /**
  * Pull out page properties and convert to an object that can be easily converted to frontmatter.
  * Hardcoded to my particular Notion DB setup
- *
- * @param page
  */
 export function pagePropertiesToFrontmatterBlob(page: PageObjectResponse): {
   [key: string]: string;
